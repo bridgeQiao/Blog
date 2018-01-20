@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bridge Qiao's Blog - blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="BridgeQiao">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="https://bridgeqiao.github.io/blog/theme/css/bootstrap.dark.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-2 {
+        font-size: 8pt;
+      }
+      .tag-4 {
+        font-size: 6pt;
+     }
+    </style>
+    <link href="https://bridgeqiao.github.io/blog/theme/css/bootstrap-responsive.dark.css" rel="stylesheet">
+        <link href="https://bridgeqiao.github.io/blog/theme/css/font-awesome.css" rel="stylesheet">
+
+    <link href="https://bridgeqiao.github.io/blog/theme/css/pygments.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="https://bridgeqiao.github.io/blog/theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="https://bridgeqiao.github.io/blog/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://bridgeqiao.github.io/blog/theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://bridgeqiao.github.io/blog/theme/images/apple-touch-icon-114x114.png">
+
+    <link href="https://bridgeqiao.github.io/blog/" type="application/atom+xml" rel="alternate" title="Bridge Qiao's Blog ATOM Feed" />
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="https://bridgeqiao.github.io/blog/index.html">Bridge Qiao's Blog </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                          <li class="divider-vertical"></li>
+                  <li class="active">
+                    <a href="https://bridgeqiao.github.io/blog/category/blog.html">
+						<i class="icon-folder-open icon-large"></i>blog
+					</a>
+                  </li>
+                  <li >
+                    <a href="https://bridgeqiao.github.io/blog/category/fun.html">
+						<i class="icon-folder-open icon-large"></i>fun
+					</a>
+                  </li>
+                  <li >
+                    <a href="https://bridgeqiao.github.io/blog/category/linux.html">
+						<i class="icon-folder-open icon-large"></i>linux
+					</a>
+                  </li>
+                  <li >
+                    <a href="https://bridgeqiao.github.io/blog/category/machine-learning.html">
+						<i class="icon-folder-open icon-large"></i>Machine Learning
+					</a>
+                  </li>
+                  <li >
+                    <a href="https://bridgeqiao.github.io/blog/category/matlab.html">
+						<i class="icon-folder-open icon-large"></i>Matlab
+					</a>
+                  </li>
+
+                          <ul class="nav pull-right">
+                                <li><a href="https://bridgeqiao.github.io/blog/archives.html"><i class="icon-th-list"></i>Archives</a></li>
+                          </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span9" id="content">
+        <div class="article">
+                <h1><a href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-po-su-bei-xie-si.html">《统计学习方法》-朴素贝叶斯</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2018-01-20T00:00:00+08:00">
+        <i class="icon-calendar"></i>六 20 一月 2018
+</abbr>
+<span class="label">By</span>
+<a href="https://bridgeqiao.github.io/blog/author/bridgeqiao.html"><i class="icon-user"></i>BridgeQiao</a>
+<span class="label">Category</span>
+<a href="https://bridgeqiao.github.io/blog/category/blog.html"><i class="icon-folder-open"></i>blog</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>朴素贝叶斯和knn一样，属于懒惰学习方法的一种，假设输入的特征间是独立的，根据先验概率来求最大化后验概率（MAP）。</p>
+<h2>基本方法</h2>
+<p>了解这个章节需要复习概率统计的知识，关于概率、条件概率、全概率、最大似然等。
+</p>
+<div class="math">$$
+后验概率P(Y=c_k|X=x)=\frac{P(X=x|Y=c_k)P(Y=c_k)}{\sum_k P(X=x|Y=c_k)P(Y=c_k)}
+$$</div>
+<p>
+分母都是相同的，去掉分母，分类器变成了
+</p>
+<div class="math">$$
+y=\arg \max_{c_k}P(Y=c_k)\prod_j P(X^{(j)}=x^{(j …</div>
+                        <a class="btn primary xsmall" href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-po-su-bei-xie-si.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-kjin-lin-fa.html">统计学习方法-k近邻法</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2018-01-19T00:00:00+08:00">
+        <i class="icon-calendar"></i>五 19 一月 2018
+</abbr>
+<span class="label">By</span>
+<a href="https://bridgeqiao.github.io/blog/author/bridgeqiao.html"><i class="icon-user"></i>BridgeQiao</a>
+<span class="label">Category</span>
+<a href="https://bridgeqiao.github.io/blog/category/blog.html"><i class="icon-folder-open"></i>blog</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>k近邻算法不需要显示学习判别模型，属于懒惰学习的一种，这样要素变成了：k值的选取、距离度量和分类决策规则。</p>
+<h2>K值选择</h2>
+<p>k值决定了有多少个点参与决策，拿最简单的欧式距离（距离度量）来说，就是先选择一个固定的K值，然后比较带测试点与所有点的距离，然后将对应最小的k个距离的点选出来，选用投票法（分类决策）来决定带测试点的类别。</p>
+<p>k值的选取与模型有很大的关系，小了容易发生过拟合，大了可以减小学习的估计误差，但会增大近似误差。一般是取一个比较小的数值，然后采用交叉验证的方法来选取最优的k值（书上原话）。</p>
+<h2>距离度量</h2>
+<p>这里需要数学上的概念：范数，P范数定义是这样的：
+</p>
+<div class="math">$$
+P范数：L_p(x_i,x_j)=(\sum_{l=1}^n \vert x_i^{(l)}-x_j^{(l)}\vert^p)^{\frac{1}{p}},p\geqslant 1
+$$</div>
+<blockquote>
+<p>当然，是存在0范数的 …</p></blockquote>
+                        <a class="btn primary xsmall" href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-kjin-lin-fa.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+
+        </div><!--/span-->
+
+                <div class="span3 well sidebar-nav" id="sidebar">
+<ul class="nav nav-list">
+<li class="nav-header"><h4><i class="icon-external-link"></i>blogroll</h4></li>
+    <li><a href="http://getpelican.com/"><i class="icon-external-link"></i>Pelican</a></li>
+    <li><a href="http://python.org/"><i class="icon-external-link"></i>Python.org</a></li>
+    <li><a href="https://github.com"><i class="icon-external-link"></i>Github</a></li>
+
+<li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
+<li>
+<a href="https://bridgeqiao.github.io/blog/category/blog.html">
+    <i class="icon-folder-open icon-large"></i>blog
+</a>
+</li>
+<li>
+<a href="https://bridgeqiao.github.io/blog/category/fun.html">
+    <i class="icon-folder-open icon-large"></i>fun
+</a>
+</li>
+<li>
+<a href="https://bridgeqiao.github.io/blog/category/linux.html">
+    <i class="icon-folder-open icon-large"></i>linux
+</a>
+</li>
+<li>
+<a href="https://bridgeqiao.github.io/blog/category/machine-learning.html">
+    <i class="icon-folder-open icon-large"></i>Machine Learning
+</a>
+</li>
+<li>
+<a href="https://bridgeqiao.github.io/blog/category/matlab.html">
+    <i class="icon-folder-open icon-large"></i>Matlab
+</a>
+</li>
+
+<li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
+
+
+</ul>        </div><!--/.well -->
+
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <address id="about">
+                Proudly powered by <a href="http://pelican.notmyidea.org/">Pelican <i class="icon-external-link"></i></a>,
+                                which takes great advantage of <a href="http://python.org">Python <i class="icon-external-link"></i></a>.
+        </address><!-- /#about -->
+
+        <p>The theme is based on <a href="http://twitter.github.com/bootstrap/">Bootstrap from Twitter <i class="icon-external-link"></i></a>,
+                   and <a href="http://fortawesome.github.com/Font-Awesome/">Font-Awesome <i class="icon-external-link"></i></a>, thanks!</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+
+
+    <!-- Le javascript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://bridgeqiao.github.io/blog/theme/js/jquery-1.7.2.min.js"></script>
+    <script src="https://bridgeqiao.github.io/blog/theme/js/bootstrap.min.js"></script>
+  </body>
+</html>

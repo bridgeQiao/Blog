@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>《统计学习方法》-概论</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="BridgeQiao">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="https://bridgeqiao.github.io/blog/theme/css/bootstrap.dark.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-2 {
+        font-size: 8pt;
+      }
+      .tag-4 {
+        font-size: 6pt;
+     }
+    </style>
+    <link href="https://bridgeqiao.github.io/blog/theme/css/bootstrap-responsive.dark.css" rel="stylesheet">
+        <link href="https://bridgeqiao.github.io/blog/theme/css/font-awesome.css" rel="stylesheet">
+
+    <link href="https://bridgeqiao.github.io/blog/theme/css/pygments.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="https://bridgeqiao.github.io/blog/theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="https://bridgeqiao.github.io/blog/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://bridgeqiao.github.io/blog/theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://bridgeqiao.github.io/blog/theme/images/apple-touch-icon-114x114.png">
+
+    <link href="https://bridgeqiao.github.io/blog/" type="application/atom+xml" rel="alternate" title="Bridge Qiao's Blog ATOM Feed" />
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="https://bridgeqiao.github.io/blog/index.html">Bridge Qiao's Blog </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                          <li class="divider-vertical"></li>
+                  <li >
+                    <a href="https://bridgeqiao.github.io/blog/category/blog.html">
+						<i class="icon-folder-open icon-large"></i>blog
+					</a>
+                  </li>
+                  <li >
+                    <a href="https://bridgeqiao.github.io/blog/category/fun.html">
+						<i class="icon-folder-open icon-large"></i>fun
+					</a>
+                  </li>
+                  <li >
+                    <a href="https://bridgeqiao.github.io/blog/category/linux.html">
+						<i class="icon-folder-open icon-large"></i>linux
+					</a>
+                  </li>
+                  <li class="active">
+                    <a href="https://bridgeqiao.github.io/blog/category/machine-learning.html">
+						<i class="icon-folder-open icon-large"></i>Machine Learning
+					</a>
+                  </li>
+                  <li >
+                    <a href="https://bridgeqiao.github.io/blog/category/matlab.html">
+						<i class="icon-folder-open icon-large"></i>Matlab
+					</a>
+                  </li>
+
+                          <ul class="nav pull-right">
+                                <li><a href="https://bridgeqiao.github.io/blog/archives.html"><i class="icon-th-list"></i>Archives</a></li>
+                          </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span9" id="content">
+<section id="content">
+        <article>
+                <header>
+                        <h1>
+                                <a href=""
+                                        rel="bookmark"
+                                        title="Permalink to 《统计学习方法》-概论">
+                                        《统计学习方法》-概论
+                                </a>
+                        </h1>
+                </header>
+                <div class="entry-content">
+                <div class="well">
+<footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2018-01-15T00:00:00+08:00">
+        <i class="icon-calendar"></i>一 15 一月 2018
+</abbr>
+<span class="label">By</span>
+<a href="https://bridgeqiao.github.io/blog/author/bridgeqiao.html"><i class="icon-user"></i>BridgeQiao</a>
+<span class="label">Category</span>
+<a href="https://bridgeqiao.github.io/blog/category/machine-learning.html"><i class="icon-folder-open"></i>Machine Learning</a>.
+
+
+</footer><!-- /.post-info -->                </div>
+                <p>看完周志华老师的《机器学习》，对机器学习有了一个全面的了解，但其细节部分不是很了解，遂找同学借了本《统计学习方法》（感谢亲爱的波），感觉对机器学习的概念部分讲的很好，这里留作记录。</p>
+<p>概论部分讲了统计学习方法的组成、机器学习的分类及要素，还有一些评估方法。</p>
+<h2>1. 统计学习背景</h2>
+<p>统计学习是由一些数学组成：概率统计、信息论、优化理论，所以想要深入的了解的化，本科学的统计、高数的前几章得熟悉，然后线性代数得着重看下，对了解并行处理有很大的帮助，有需要的还可以看下凸优化相关的东西，对优化部分会有更深刻的理解。</p>
+<p>统计学习的对象是<code>数据</code>，包括数字、文字、图片、视频、音频等，这里有个前提：这些同类数据具有一定的统计规律性。目标是对数据进行预测与分析。</p>
+<!--more-->
+
+<h2>2. 三要素</h2>
+<p><span class="math">\(方法=模型+策略+算法\)</span>。</p>
+<h3>模型：</h3>
+<p>我对模型的理解是：找到一个映射关系（函数），使得输入和输出的对应关系最大化，也就是一些统计特性更好。</p>
+<p>书本上对模型的理解是在假设空间中找到最优的模型，怎么理解？书后面给了解释：
+</p>
+<div class="math">$$
+   F=\{P\vert P_\theta(Y\vert X),\theta \in \textbf{R}^n\}
+$$</div>
+<p>
+   模型可分为条件概率函数和决策函数，这里是以条件概率为例子讲解，<span class="math">\(\theta\mbox{向量}\)</span>为参数，所有可能的<span class="math">\(\theta\)</span>对应的函数构成了假设空间，问题变成了从<span class="math">\(\theta\)</span>中找到最优的值。</p>
+<h3>策略</h3>
+<p>策略是以什么样的准则去得到最优的模型。由于直接从原始的模型函数对得到最优解不是很容易，这里会先将模型转化成另一个关于求解参数的连续函数，更有利于求解问题。下面介绍损失函数和风险函数。</p>
+<p>损失函数是度量预测错误的程度，记作<span class="math">\(L(Y,f(x))\)</span>，有以下几种：</p>
+<ul>
+<li>
+<p>0-1损失函数<span class="math">\((L_0\mbox{范数})\)</span>：
+     <div class="math">$$
+     L(Y,f(x))=
+     \left\{\begin{matrix}
+     1, &amp; Y\neq f(x)\\ 
+     0, &amp; Y = f(x)
+     \end{matrix}\right.
+     $$</div>
+     ​</p>
+</li>
+<li>
+<p>平方损失函数<span class="math">\((L_2\mbox{范数})\)</span>：
+     <div class="math">$$
+     L(y,f(x)) = (Y-f(x))^2
+     $$</div>
+     ​</p>
+</li>
+<li>
+<p>绝对损失函数<span class="math">\((L_1\mbox{范数})\)</span>：
+     <div class="math">$$
+     L(Y,f(x))=\left| Y-f(x) \right|
+     $$</div>
+     ​</p>
+</li>
+<li>
+<p>对数损失函数：
+     <div class="math">$$
+     L(Y,P(Y|X)) = -logP(Y|X)
+     $$</div>
+</p>
+</li>
+</ul>
+<p>损失函数的期望是：
+</p>
+<div class="math">$$
+R_{exp}(f)=E_p[L(Y,f(X))]=\int_{x\times y}L(y,f(x))P(x,y)dxdy
+$$</div>
+<p>
+又被称为风险函数或期望损失。学习的目标就是选择期望风险最小的模型，显然如果这个都能够直接求的话，也就知道了<span class="math">\(P(x,y)\)</span>，没必要学习了，所以需要找到替代的函数。大家都知道当数据是可数的也就是离散的时候，当样本容量也就是数据趋于无穷时，可以用均值来代替期望风险<span class="math">\(R_{exp}(f)\)</span>，其中均值被称为经验风险<span class="math">\(R_{emp}(f)\)</span>，公式如下：
+</p>
+<div class="math">$$
+R_{emp}(f)=\frac{1}{N}\sum_{i=1}^{N}L(y_i,f(x_i))
+$$</div>
+<blockquote>
+<p>插一下，我看了下满足大数定律的条件是<span class="math">\(x_1,x_2,\cdots,x_n相互独立同分布\)</span>，然后看到一篇<a href="https://wenku.baidu.com/view/ed36fb325ef7ba0d4b733b87.html">文章</a>上说了下满足大数定律的充要条件：</p>
+<p>设<span class="math">\(\{X_n\}\)</span>是随机变量序列，记<span class="math">\(Z_n=\frac{1}{N}\sum_{k=1}^{N}X_k-\frac{1}{N}E(\sum_{k=1}^{N}X_k)\)</span>，则<span class="math">\(\{X_n\}\)</span>服从大数定律的充要条件是<span class="math">\(\lim_{n\to \infty }E[\frac{Z_n^2}{1+Z_n^2}]=0\)</span>.</p>
+<p>这样根据模型求解就变成了根据经验风险函数求解，目标变成最小化<span class="math">\(R_{emp}(f)\)</span>：</p>
+</blockquote>
+<div class="math">$$
+\min_{f\in F}\frac{1}{N}\sum_{i=1}^{N}L(y_i,f(x_i))
+$$</div>
+<p>
+但是这只适用当样本容量很大的时候，当样本很小时，会有过拟合现象。结构风险最小化（structural risk minimization）就是为了防止过拟合而提出来的策略。
+</p>
+<div class="math">$$
+R_{srm}(f)=\frac{1}{N}\sum_{i=1}^{N}L(y_i,f(x_i))+\lambda J(f)
+$$</div>
+<p>当使用平方损失函数时，结构风险最小化类似最大后验概率。</p>
+<h3>算法</h3>
+<p>算法指具体使用什么计算方法来求解最优模型。如果最优模型有显示的解析解，也就是可以直接求出来的，比如逻辑回归，这个优化问题就变得很简单，但通常解析解不存在，这就需要用数值计算的方法求解。</p>
+<h2>评估方法</h2>
+<h3>1. 评估主要指标</h3>
+<p>主要是精确率（precision），召回率（recall），准确率（accuracy）主要是评价分类器性能。
+</p>
+<div class="math">$$
+r_{accuracy}=\frac{1}{N'}\sum_{i=1}^{N'}I(y_i=\hat{f}(x_i))\\
+\begin{split}
+P_{precision}=\frac{TP}{TP+FP}\\
+P_{recall}=\frac{TP}{TP+FN}\\
+\end{split}
+\; T:True,F:False,P:Positive,N:negtive
+$$</div>
+<h3>2. 交叉验证</h3>
+<ul>
+<li>简单交叉验证</li>
+</ul>
+<p>将数据集分成两部分：训练集（train set）和测试集（test set）</p>
+<ul>
+<li>S折交叉验证</li>
+</ul>
+<p>将数据分成S个互不相交的大小相同的子集，每次选择S-1个子集用于训练，一个用于测试，将可能的S种选择重复进行，最后选择平均测试误差最小的那组。</p>
+<ul>
+<li>留一交叉验证</li>
+</ul>
+<p>当数据N比较小时，S=N，即一个数据一组，其余和S折交叉验证相同。</p>
+<h3>3. 问题</h3>
+<p>监督学习分为：分类，回归，标注。这里主要说下标注问题。</p>
+<p>标注问题可以认为是分类问题的一个推广，是更复杂的结构预测问题的简单形式，目标是学习一个模型，使其能够对观测序列给出标记序列作为预测。</p>
+<h3>4. 主要流程</h3>
+<ul>
+<li>得到一个有限的训练数据集合；</li>
+<li>确定包含所有可能的模型的假设空间，即学习模型的集合；</li>
+<li>确定模型选择的准则，即学习的策略；</li>
+<li>实现求解最优模型的算法，即学习的算法；</li>
+<li>通过学习方法选择最优模型；</li>
+<li>利用学习的最优模型对新数据进行预测或分析。</li>
+</ul>
+<blockquote>
+<p>这里有很多内容来自《统计学习方法》这本书，如果想详细了解的话还是更推荐书本，上面讲解的更好。</p>
+</blockquote>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+                </div><!-- /.entry-content -->
+        </article>
+</section>
+        </div><!--/span-->
+
+                <div class="span3 well sidebar-nav" id="sidebar">
+<ul class="nav nav-list">
+<li class="nav-header"><h4><i class="icon-external-link"></i>blogroll</h4></li>
+    <li><a href="http://getpelican.com/"><i class="icon-external-link"></i>Pelican</a></li>
+    <li><a href="http://python.org/"><i class="icon-external-link"></i>Python.org</a></li>
+    <li><a href="https://github.com"><i class="icon-external-link"></i>Github</a></li>
+
+<li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
+<li>
+<a href="https://bridgeqiao.github.io/blog/category/blog.html">
+    <i class="icon-folder-open icon-large"></i>blog
+</a>
+</li>
+<li>
+<a href="https://bridgeqiao.github.io/blog/category/fun.html">
+    <i class="icon-folder-open icon-large"></i>fun
+</a>
+</li>
+<li>
+<a href="https://bridgeqiao.github.io/blog/category/linux.html">
+    <i class="icon-folder-open icon-large"></i>linux
+</a>
+</li>
+<li>
+<a href="https://bridgeqiao.github.io/blog/category/machine-learning.html">
+    <i class="icon-folder-open icon-large"></i>Machine Learning
+</a>
+</li>
+<li>
+<a href="https://bridgeqiao.github.io/blog/category/matlab.html">
+    <i class="icon-folder-open icon-large"></i>Matlab
+</a>
+</li>
+
+<li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
+
+
+</ul>        </div><!--/.well -->
+
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <address id="about">
+                Proudly powered by <a href="http://pelican.notmyidea.org/">Pelican <i class="icon-external-link"></i></a>,
+                                which takes great advantage of <a href="http://python.org">Python <i class="icon-external-link"></i></a>.
+        </address><!-- /#about -->
+
+        <p>The theme is based on <a href="http://twitter.github.com/bootstrap/">Bootstrap from Twitter <i class="icon-external-link"></i></a>,
+                   and <a href="http://fortawesome.github.com/Font-Awesome/">Font-Awesome <i class="icon-external-link"></i></a>, thanks!</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+
+
+    <!-- Le javascript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://bridgeqiao.github.io/blog/theme/js/jquery-1.7.2.min.js"></script>
+    <script src="https://bridgeqiao.github.io/blog/theme/js/bootstrap.min.js"></script>
+  </body>
+</html>

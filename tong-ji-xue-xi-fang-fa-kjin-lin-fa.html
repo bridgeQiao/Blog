@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>统计学习方法-k近邻法</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="BridgeQiao">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="https://bridgeqiao.github.io/blog/theme/css/bootstrap.dark.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-2 {
+        font-size: 8pt;
+      }
+      .tag-4 {
+        font-size: 6pt;
+     }
+    </style>
+    <link href="https://bridgeqiao.github.io/blog/theme/css/bootstrap-responsive.dark.css" rel="stylesheet">
+        <link href="https://bridgeqiao.github.io/blog/theme/css/font-awesome.css" rel="stylesheet">
+
+    <link href="https://bridgeqiao.github.io/blog/theme/css/pygments.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="https://bridgeqiao.github.io/blog/theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="https://bridgeqiao.github.io/blog/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://bridgeqiao.github.io/blog/theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://bridgeqiao.github.io/blog/theme/images/apple-touch-icon-114x114.png">
+
+    <link href="https://bridgeqiao.github.io/blog/" type="application/atom+xml" rel="alternate" title="Bridge Qiao's Blog ATOM Feed" />
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="https://bridgeqiao.github.io/blog/index.html">Bridge Qiao's Blog </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                          <li class="divider-vertical"></li>
+                  <li class="active">
+                    <a href="https://bridgeqiao.github.io/blog/category/blog.html">
+						<i class="icon-folder-open icon-large"></i>blog
+					</a>
+                  </li>
+                  <li >
+                    <a href="https://bridgeqiao.github.io/blog/category/fun.html">
+						<i class="icon-folder-open icon-large"></i>fun
+					</a>
+                  </li>
+                  <li >
+                    <a href="https://bridgeqiao.github.io/blog/category/linux.html">
+						<i class="icon-folder-open icon-large"></i>linux
+					</a>
+                  </li>
+                  <li >
+                    <a href="https://bridgeqiao.github.io/blog/category/machine-learning.html">
+						<i class="icon-folder-open icon-large"></i>Machine Learning
+					</a>
+                  </li>
+                  <li >
+                    <a href="https://bridgeqiao.github.io/blog/category/matlab.html">
+						<i class="icon-folder-open icon-large"></i>Matlab
+					</a>
+                  </li>
+
+                          <ul class="nav pull-right">
+                                <li><a href="https://bridgeqiao.github.io/blog/archives.html"><i class="icon-th-list"></i>Archives</a></li>
+                          </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span9" id="content">
+<section id="content">
+        <article>
+                <header>
+                        <h1>
+                                <a href=""
+                                        rel="bookmark"
+                                        title="Permalink to 统计学习方法-k近邻法">
+                                        统计学习方法-k近邻法
+                                </a>
+                        </h1>
+                </header>
+                <div class="entry-content">
+                <div class="well">
+<footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2018-01-19T00:00:00+08:00">
+        <i class="icon-calendar"></i>五 19 一月 2018
+</abbr>
+<span class="label">By</span>
+<a href="https://bridgeqiao.github.io/blog/author/bridgeqiao.html"><i class="icon-user"></i>BridgeQiao</a>
+<span class="label">Category</span>
+<a href="https://bridgeqiao.github.io/blog/category/blog.html"><i class="icon-folder-open"></i>blog</a>.
+
+
+</footer><!-- /.post-info -->                </div>
+                <p>k近邻算法不需要显示学习判别模型，属于懒惰学习的一种，这样要素变成了：k值的选取、距离度量和分类决策规则。</p>
+<h2>K值选择</h2>
+<p>k值决定了有多少个点参与决策，拿最简单的欧式距离（距离度量）来说，就是先选择一个固定的K值，然后比较带测试点与所有点的距离，然后将对应最小的k个距离的点选出来，选用投票法（分类决策）来决定带测试点的类别。</p>
+<p>k值的选取与模型有很大的关系，小了容易发生过拟合，大了可以减小学习的估计误差，但会增大近似误差。一般是取一个比较小的数值，然后采用交叉验证的方法来选取最优的k值（书上原话）。</p>
+<h2>距离度量</h2>
+<p>这里需要数学上的概念：范数，P范数定义是这样的：
+</p>
+<div class="math">$$
+P范数：L_p(x_i,x_j)=(\sum_{l=1}^n \vert x_i^{(l)}-x_j^{(l)}\vert^p)^{\frac{1}{p}},p\geqslant 1
+$$</div>
+<blockquote>
+<p>当然，是存在0范数的，零范数：<span class="math">\(\left\| \boldsymbol{a}\right\|_0\)</span>表示向量<span class="math">\(\boldsymbol{a}\)</span>有多少个非零点，在作为约束条件时比<span class="math">\(L_2\)</span>范数稀疏性更好，但求解麻烦，所以之前一般是用的<span class="math">\(L_1\)</span>范数求解，但根据我导师说<span class="math">\(L_0\)</span>范数求解貌似有了很大的进展，所以如果大家有兴趣的化可以看下相关的文章。</p>
+</blockquote>
+<p>这样子的话，当<span class="math">\(p=1\)</span>时，称为曼哈顿距离，<span class="math">\(p=2\)</span>称为欧式距离，<span class="math">\(p=\infty\)</span>称为无穷范数，是各个坐标距离的最大值。
+</p>
+<div class="math">$$
+L_\infty (x_i,x_j)=\max_l \vert x_i^{(l)}-x_j^{(l)} \vert
+$$</div>
+<p>
+这个用高等代数的知识可以推出来，不同的p值对应的解空间是不同的，这里就不多说了。</p>
+<h2>分类决策规则</h2>
+<p>书上只讲了多数表决规则，也就是看分类数目的多少，哪种多就选哪个，普遍选择这个的原因是该规则等价于经验风险最小化，书上写了证明。</p>
+<h2>搜索方法</h2>
+<p>当样本容量比较大时，一个个的去判断距离无疑是一件很耗时的事情，所以大量的科研工作者做了很多的改进工作，书上介绍了kd树，也就是将包含整个样本的空间划分出一个个超矩形区域，一般以中心点划分，直到再进一步划分的超矩形区域内部没有样本点。详细的算法再书上有。</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+                </div><!-- /.entry-content -->
+        </article>
+</section>
+        </div><!--/span-->
+
+                <div class="span3 well sidebar-nav" id="sidebar">
+<ul class="nav nav-list">
+<li class="nav-header"><h4><i class="icon-external-link"></i>blogroll</h4></li>
+    <li><a href="http://getpelican.com/"><i class="icon-external-link"></i>Pelican</a></li>
+    <li><a href="http://python.org/"><i class="icon-external-link"></i>Python.org</a></li>
+    <li><a href="https://github.com"><i class="icon-external-link"></i>Github</a></li>
+
+<li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
+<li>
+<a href="https://bridgeqiao.github.io/blog/category/blog.html">
+    <i class="icon-folder-open icon-large"></i>blog
+</a>
+</li>
+<li>
+<a href="https://bridgeqiao.github.io/blog/category/fun.html">
+    <i class="icon-folder-open icon-large"></i>fun
+</a>
+</li>
+<li>
+<a href="https://bridgeqiao.github.io/blog/category/linux.html">
+    <i class="icon-folder-open icon-large"></i>linux
+</a>
+</li>
+<li>
+<a href="https://bridgeqiao.github.io/blog/category/machine-learning.html">
+    <i class="icon-folder-open icon-large"></i>Machine Learning
+</a>
+</li>
+<li>
+<a href="https://bridgeqiao.github.io/blog/category/matlab.html">
+    <i class="icon-folder-open icon-large"></i>Matlab
+</a>
+</li>
+
+<li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
+
+
+</ul>        </div><!--/.well -->
+
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <address id="about">
+                Proudly powered by <a href="http://pelican.notmyidea.org/">Pelican <i class="icon-external-link"></i></a>,
+                                which takes great advantage of <a href="http://python.org">Python <i class="icon-external-link"></i></a>.
+        </address><!-- /#about -->
+
+        <p>The theme is based on <a href="http://twitter.github.com/bootstrap/">Bootstrap from Twitter <i class="icon-external-link"></i></a>,
+                   and <a href="http://fortawesome.github.com/Font-Awesome/">Font-Awesome <i class="icon-external-link"></i></a>, thanks!</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+
+
+    <!-- Le javascript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://bridgeqiao.github.io/blog/theme/js/jquery-1.7.2.min.js"></script>
+    <script src="https://bridgeqiao.github.io/blog/theme/js/bootstrap.min.js"></script>
+  </body>
+</html>

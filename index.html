@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bridge Qiao's Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="BridgeQiao">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="https://bridgeqiao.github.io/blog/theme/css/bootstrap.dark.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-2 {
+        font-size: 8pt;
+      }
+      .tag-4 {
+        font-size: 6pt;
+     }
+    </style>
+    <link href="https://bridgeqiao.github.io/blog/theme/css/bootstrap-responsive.dark.css" rel="stylesheet">
+        <link href="https://bridgeqiao.github.io/blog/theme/css/font-awesome.css" rel="stylesheet">
+
+    <link href="https://bridgeqiao.github.io/blog/theme/css/pygments.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="https://bridgeqiao.github.io/blog/theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="https://bridgeqiao.github.io/blog/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://bridgeqiao.github.io/blog/theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://bridgeqiao.github.io/blog/theme/images/apple-touch-icon-114x114.png">
+
+    <link href="https://bridgeqiao.github.io/blog/" type="application/atom+xml" rel="alternate" title="Bridge Qiao's Blog ATOM Feed" />
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="https://bridgeqiao.github.io/blog/index.html">Bridge Qiao's Blog </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                          <li class="divider-vertical"></li>
+                  <li >
+                    <a href="https://bridgeqiao.github.io/blog/category/blog.html">
+						<i class="icon-folder-open icon-large"></i>blog
+					</a>
+                  </li>
+                  <li >
+                    <a href="https://bridgeqiao.github.io/blog/category/fun.html">
+						<i class="icon-folder-open icon-large"></i>fun
+					</a>
+                  </li>
+                  <li >
+                    <a href="https://bridgeqiao.github.io/blog/category/linux.html">
+						<i class="icon-folder-open icon-large"></i>linux
+					</a>
+                  </li>
+                  <li >
+                    <a href="https://bridgeqiao.github.io/blog/category/machine-learning.html">
+						<i class="icon-folder-open icon-large"></i>Machine Learning
+					</a>
+                  </li>
+                  <li >
+                    <a href="https://bridgeqiao.github.io/blog/category/matlab.html">
+						<i class="icon-folder-open icon-large"></i>Matlab
+					</a>
+                  </li>
+
+                          <ul class="nav pull-right">
+                                <li><a href="https://bridgeqiao.github.io/blog/archives.html"><i class="icon-th-list"></i>Archives</a></li>
+                          </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span9" id="content">
+        <div class="article">
+                <h1><a href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-po-su-bei-xie-si.html">《统计学习方法》-朴素贝叶斯</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2018-01-20T00:00:00+08:00">
+        <i class="icon-calendar"></i>六 20 一月 2018
+</abbr>
+<span class="label">By</span>
+<a href="https://bridgeqiao.github.io/blog/author/bridgeqiao.html"><i class="icon-user"></i>BridgeQiao</a>
+<span class="label">Category</span>
+<a href="https://bridgeqiao.github.io/blog/category/blog.html"><i class="icon-folder-open"></i>blog</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>朴素贝叶斯和knn一样，属于懒惰学习方法的一种，假设输入的特征间是独立的，根据先验概率来求最大化后验概率（MAP）。</p>
+<h2>基本方法</h2>
+<p>了解这个章节需要复习概率统计的知识，关于概率、条件概率、全概率、最大似然等。
+</p>
+<div class="math">$$
+后验概率P(Y=c_k|X=x)=\frac{P(X=x|Y=c_k)P(Y=c_k)}{\sum_k P(X=x|Y=c_k)P(Y=c_k)}
+$$</div>
+<p>
+分母都是相同的，去掉分母，分类器变成了
+</p>
+<div class="math">$$
+y=\arg \max_{c_k}P(Y=c_k)\prod_j P(X^{(j)}=x^{(j …</div>
+                        <a class="btn primary xsmall" href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-po-su-bei-xie-si.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-kjin-lin-fa.html">统计学习方法-k近邻法</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2018-01-19T00:00:00+08:00">
+        <i class="icon-calendar"></i>五 19 一月 2018
+</abbr>
+<span class="label">By</span>
+<a href="https://bridgeqiao.github.io/blog/author/bridgeqiao.html"><i class="icon-user"></i>BridgeQiao</a>
+<span class="label">Category</span>
+<a href="https://bridgeqiao.github.io/blog/category/blog.html"><i class="icon-folder-open"></i>blog</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>k近邻算法不需要显示学习判别模型，属于懒惰学习的一种，这样要素变成了：k值的选取、距离度量和分类决策规则。</p>
+<h2>K值选择</h2>
+<p>k值决定了有多少个点参与决策，拿最简单的欧式距离（距离度量）来说，就是先选择一个固定的K值，然后比较带测试点与所有点的距离，然后将对应最小的k个距离的点选出来，选用投票法（分类决策）来决定带测试点的类别。</p>
+<p>k值的选取与模型有很大的关系，小了容易发生过拟合，大了可以减小学习的估计误差，但会增大近似误差。一般是取一个比较小的数值，然后采用交叉验证的方法来选取最优的k值（书上原话）。</p>
+<h2>距离度量</h2>
+<p>这里需要数学上的概念：范数，P范数定义是这样的：
+</p>
+<div class="math">$$
+P范数：L_p(x_i,x_j)=(\sum_{l=1}^n \vert x_i^{(l)}-x_j^{(l)}\vert^p)^{\frac{1}{p}},p\geqslant 1
+$$</div>
+<blockquote>
+<p>当然，是存在0范数的 …</p></blockquote>
+                        <a class="btn primary xsmall" href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-kjin-lin-fa.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="https://bridgeqiao.github.io/blog/wei-xin-tiao-yi-tiao.html">微信跳一跳</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2018-01-16T00:00:00+08:00">
+        <i class="icon-calendar"></i>二 16 一月 2018
+</abbr>
+<span class="label">By</span>
+<a href="https://bridgeqiao.github.io/blog/author/bridgeqiao.html"><i class="icon-user"></i>BridgeQiao</a>
+<span class="label">Category</span>
+<a href="https://bridgeqiao.github.io/blog/category/fun.html"><i class="icon-folder-open"></i>fun</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>之前完微信跳一跳最高才60多。。。然后里面都是三位数起步的，遂刷了个分。。下面是安装记录：</p>
+<ol>
+<li>插上手机，弹出usb调试，点击确定；</li>
+<li>下载adb，我是直接用的刷机精灵，它自带了adb，加到环境变量path里就好了，就是安装目录里有adb.bat的那个，发现下载的外挂里面自带了adb（Tools），郁闷。。。</li>
+<li>下载<a href="https://github.com/wangshub/wechat_jump_game">python外挂</a>。。。git clone或者下载zip包都行；</li>
+<li>运行wechat_jump_auto.py文件，后面是*_py3.py的得自己点，需要matplotlib包，pip安装就行；</li>
+<li>在显示的图片上先点击自己的中心点，再点击要跳的中心点，然后一直重复。。。刷到了233...，当然auto的是直接自动的了。</li>
+</ol>
+                        <a class="btn primary xsmall" href="https://bridgeqiao.github.io/blog/wei-xin-tiao-yi-tiao.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-gai-lun.html">《统计学习方法》-概论</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2018-01-15T00:00:00+08:00">
+        <i class="icon-calendar"></i>一 15 一月 2018
+</abbr>
+<span class="label">By</span>
+<a href="https://bridgeqiao.github.io/blog/author/bridgeqiao.html"><i class="icon-user"></i>BridgeQiao</a>
+<span class="label">Category</span>
+<a href="https://bridgeqiao.github.io/blog/category/machine-learning.html"><i class="icon-folder-open"></i>Machine Learning</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>看完周志华老师的《机器学习》，对机器学习有了一个全面的了解，但其细节部分不是很了解，遂找同学借了本《统计学习方法》（感谢亲爱的波），感觉对机器学习的概念部分讲的很好，这里留作记录。</p>
+<p>概论部分讲了统计学习方法的组成、机器学习的分类及要素，还有一些评估方法。</p>
+<h2>1. 统计学习背景</h2>
+<p>统计学习是由一些数学组成：概率统计、信息论、优化理论，所以想要深入的了解的化，本科学的统计、高数的前几章得熟悉，然后线性代数得着重看下，对了解并行处理有很大的帮助，有需要的还可以看下凸优化相关的东西，对优化部分会有更深刻的理解。</p>
+<p>统计学习的对象是<code>数据</code>，包括数字、文字、图片、视频、音频等，这里有个前提：这些同类数据具有一定的统计规律性。目标是对数据进行预测与分析。</p>
+<!--more-->
+
+<h2>2. 三要素</h2>
+<p><span class="math">\(方法=模型+策略+算法\)</span>。</p>
+<h3>模型：</h3>
+<p>我对模型的理解是：找到一个映射关系（函数），使得输入和输出的对应关系最大化，也就是一些统计特性更好。</p>
+<p>书本上对模型的理解是在假设空间中找到最优的模型，怎么理解？书后面给了解释 …</p>
+                        <a class="btn primary xsmall" href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-gai-lun.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-gan-zhi-ji.html">《统计学习方法》-感知机</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2018-01-15T00:00:00+08:00">
+        <i class="icon-calendar"></i>一 15 一月 2018
+</abbr>
+<span class="label">By</span>
+<a href="https://bridgeqiao.github.io/blog/author/bridgeqiao.html"><i class="icon-user"></i>BridgeQiao</a>
+<span class="label">Category</span>
+<a href="https://bridgeqiao.github.io/blog/category/machine-learning.html"><i class="icon-folder-open"></i>Machine Learning</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><h2>模型</h2>
+<div class="math">$$
+f(x)=sign(\omega X+b)\\
+其中sign(x)=\left\{\begin{matrix}
++1, &amp; x\geqslant 0\\ 
+-1, &amp; x&lt;0
+\end{matrix}\right.
+$$</div>
+<h2>策略</h2>
+<p>感知机的目标是找到一个可以将正负实例完全分开的分离超平面，需要定义一个策略，即定义（经验）损失函数并将损失函数最小化。</p>
+<p>损失函数一个自然选择是误分类点的总数，另一个是误分类点到超平面S的总距离，是参数<span class="math">\(\omega,b\)</span>的连续可导函数，有利于优化。</p>
+<!--more-->
+
+<div class="math">$$
+误分类点到S的总距离是-\frac{1}{\left \| \omega \right \|}\sum_{x_i\in M}y_i(\omega x_i+b),M为误分类点的集合 …</div>
+                        <a class="btn primary xsmall" href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-gan-zhi-ji.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="https://bridgeqiao.github.io/blog/shi-yong-hexo-githubda-jian-blog.html">使用hexo + github搭建blog</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2018-01-14T00:00:00+08:00">
+        <i class="icon-calendar"></i>日 14 一月 2018
+</abbr>
+<span class="label">By</span>
+<a href="https://bridgeqiao.github.io/blog/author/bridgeqiao.html"><i class="icon-user"></i>BridgeQiao</a>
+<span class="label">Category</span>
+<a href="https://bridgeqiao.github.io/blog/category/fun.html"><i class="icon-folder-open"></i>fun</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>最近使用jekyll烦了，经常出现博客编译出问题，打算试下hexo，结果很不错，所以直接换成了hexo，这里写个blog留作记录。</p>
+<h4>1. 安装环境</h4>
+<p>hexo是本地先编译成功后，再上传到github上，和jekyll不一样（github内部支持）。</p>
+<p>这里只介绍linux环境，在windows直接下载软件包安装就行。</p>
+<p>安装<code>nodejs</code>, <code>hexo</code>:</p>
+<div class="highlight"><pre><span></span>sudo apt install nodejs-legacy
+sudo npm install hexo -g
+<span class="c1"># 配置git方式部署</span>
+sudo npm install hexo-deployer-git --save
+</pre></div>
+
+
+<p>这里可以考虑使用<a href="https://lug.ustc.edu.cn/wiki/mirrors/help/npm">USTC</a>加速下载软件包：</p>
+<!--more-->
+
+<div class="highlight"><pre><span></span><span class="c1"># 编辑 ~/.npmrc</span>
+<span class="nv">registry</span><span class="o">=</span>http://npmreg.mirrors.ustc.edu.cn/
+</pre></div>
+
+
+<h4>2. 配置环境</h4>
+<p>在github上新建项目，xxx.github.io或者blog …</p>
+                        <a class="btn primary xsmall" href="https://bridgeqiao.github.io/blog/shi-yong-hexo-githubda-jian-blog.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="https://bridgeqiao.github.io/blog/zai-winxia-an-zhuang-cygwin.html">在win下安装cygwin</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2018-01-14T00:00:00+08:00">
+        <i class="icon-calendar"></i>日 14 一月 2018
+</abbr>
+<span class="label">By</span>
+<a href="https://bridgeqiao.github.io/blog/author/bridgeqiao.html"><i class="icon-user"></i>BridgeQiao</a>
+<span class="label">Category</span>
+<a href="https://bridgeqiao.github.io/blog/category/fun.html"><i class="icon-folder-open"></i>fun</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><ol>
+<li>
+<p>从<a href="https://www.cygwin.com">官网</a>下载setup_x86_64.exe，<strong>注意这是64位的</strong>，大小在1M左右，安装到硬盘，选择网络安装，镜像网站可以选用<a href="http://mirrors.ustc.edu.cn/cygwin/">USTC</a>或者<a href="http://mirrors.163.com/cygwin/">163</a>；</p>
+</li>
+<li>
+<p>下载<a href="https://github.com/transcode-open/apt-cyg">apt-cyg</a>，将该文件放到安装目录下的bin目录；</p>
+</li>
+<li>
+<p><code>bash
+   # 换源
+   apt-cyg update -m http://mirrors.ustc.edu.cn/cygwin/x86_64/</code></p>
+</li>
+<li>
+<p>现在可以用apt-cyg安装软件了，使用方式类似apt</p>
+</li>
+<li>
+<p>可以安装常用的软件：gcc/g++/make</p>
+</li>
+</ol>
+                        <a class="btn primary xsmall" href="https://bridgeqiao.github.io/blog/zai-winxia-an-zhuang-cygwin.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="https://bridgeqiao.github.io/blog/zai-ubuntu1604xia-an-zhuang-matlab2017a.html">在ubuntu16.04下安装Matlab2017a</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2017-09-29T00:00:00+08:00">
+        <i class="icon-calendar"></i>五 29 九月 2017
+</abbr>
+<span class="label">By</span>
+<a href="https://bridgeqiao.github.io/blog/author/bridgeqiao.html"><i class="icon-user"></i>BridgeQiao</a>
+<span class="label">Category</span>
+<a href="https://bridgeqiao.github.io/blog/category/matlab.html"><i class="icon-folder-open"></i>Matlab</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><ol>
+<li>
+<p>从<a href="ftp://116.13.96.74/">szu内部ftp</a>下在MATLAB；</p>
+</li>
+<li>
+<p>安装matlab，首先给MATLAB的install和 <code>bin/glnxa64</code> 加权限</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span>chmod -R <span class="m">777</span> install
+chmod -R <span class="m">777</span> bin/glnxa64
+</pre></div>
+
+
+<ol>
+<li>
+<p>需要jre环境，如果没配置，需要先安装 <code>openjdk-8-jdk</code></p>
+</li>
+<li>
+<p>运行install开始安装，如果没出现安装界面，选择指定jre目录, <code>-javadir /usr/lib/jvm/java-8-openjdk-amd64/jre/</code></p>
+</li>
+<li>
+<p>用硬件opengl, 打开MATLAB后，在控制台里输入</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span>opengl<span class="o">(</span><span class="s1">&#39;save&#39;</span>,<span class="s1">&#39;hardware&#39;</span><span class="o">)</span>
+</pre></div>
+                        <a class="btn primary xsmall" href="https://bridgeqiao.github.io/blog/zai-ubuntu1604xia-an-zhuang-matlab2017a.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="https://bridgeqiao.github.io/blog/install-plymouth.html">install plymouth</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2017-04-09T00:00:00+08:00">
+        <i class="icon-calendar"></i>日 09 四月 2017
+</abbr>
+<span class="label">By</span>
+<a href="https://bridgeqiao.github.io/blog/author/bridgeqiao.html"><i class="icon-user"></i>BridgeQiao</a>
+<span class="label">Category</span>
+<a href="https://bridgeqiao.github.io/blog/category/linux.html"><i class="icon-folder-open"></i>linux</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><ol>
+<li>
+<p>To make Plymouth work:
+     1.1. Add "plymouth" to HOOKS after "base" and "udev" in /etc/mkinitcpio.conf
+     1.2. Add 'quiet splash' to the grub command line in /etc/default/grub</p>
+<p><code>GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"</code></p>
+<p>then: <code>sudo update-grub</code>or<code>sudo grub-mkconfig -o /boot/grub/grub.cfg</code></p>
+<p>1.3. Rebuild your …</p></li></ol>
+                        <a class="btn primary xsmall" href="https://bridgeqiao.github.io/blog/install-plymouth.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="https://bridgeqiao.github.io/blog/an-zhuang-manjaro.html">安裝manjaro</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2017-04-08T00:00:00+08:00">
+        <i class="icon-calendar"></i>六 08 四月 2017
+</abbr>
+<span class="label">By</span>
+<a href="https://bridgeqiao.github.io/blog/author/bridgeqiao.html"><i class="icon-user"></i>BridgeQiao</a>
+<span class="label">Category</span>
+<a href="https://bridgeqiao.github.io/blog/category/linux.html"><i class="icon-folder-open"></i>linux</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><ul>
+<li>
+<p>烧入usb，由于电脑是bios的，将u盘的EFI文件夹重命名为back</p>
+</li>
+<li>
+<p>由于我用的版本是mate live，图形界面安装有点问题，在安装软件包的时候看不到进度，所以我下载了manjaro-architect，用命令行安装：sudo setup，不得不说live文件驱动很好，wifi能正常连接</p>
+</li>
+<li>
+<p>用命令行安装的时候，先分好区，然后挂载，如果安装过archlinux的话，应该知道这点，接着设置软件源，然后安装基础软件、图形界面之类的，装完重启</p>
+</li>
+<li>
+<p>先不登录（lightdm起不来），alt+ctrl+F2，F2到F6都行，su后设置密码，添加用户</p>
+</li>
+</ul>
+<!--more-->
+
+<ul>
+<li>
+<p>进去后设置语言：manjaro-settings-manager</p>
+</li>
+<li>
+<p>安装常用软件：<code>yaourt -S jdk8-openjdk android-studio typora</code>，主要是用来学习android</p>
+</li>
+<li>
+<p>开机后使用pacman时，经常会出现错误，要使用<code>sudo pacman -Syy</code>，先刷新软件源</p>
+</li>
+<li>
+<p>安装fcitx：<code>sudo pacman -S …</code></p></li></ul>
+                        <a class="btn primary xsmall" href="https://bridgeqiao.github.io/blog/an-zhuang-manjaro.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+
+        <div class="pagination">
+        <ul>
+                        <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+                        <li class="active"><a href="https://bridgeqiao.github.io/blog/index.html">1</a></li>
+                        <li class=""><a href="https://bridgeqiao.github.io/blog/index2.html">2</a></li>
+                        <li class="next"><a href="https://bridgeqiao.github.io/blog/index2.html">Next &rarr;</a></li>
+        </ul>
+        </div>
+
+        </div><!--/span-->
+
+                <div class="span3 well sidebar-nav" id="sidebar">
+<ul class="nav nav-list">
+<li class="nav-header"><h4><i class="icon-external-link"></i>blogroll</h4></li>
+    <li><a href="http://getpelican.com/"><i class="icon-external-link"></i>Pelican</a></li>
+    <li><a href="http://python.org/"><i class="icon-external-link"></i>Python.org</a></li>
+    <li><a href="https://github.com"><i class="icon-external-link"></i>Github</a></li>
+
+<li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
+<li>
+<a href="https://bridgeqiao.github.io/blog/category/blog.html">
+    <i class="icon-folder-open icon-large"></i>blog
+</a>
+</li>
+<li>
+<a href="https://bridgeqiao.github.io/blog/category/fun.html">
+    <i class="icon-folder-open icon-large"></i>fun
+</a>
+</li>
+<li>
+<a href="https://bridgeqiao.github.io/blog/category/linux.html">
+    <i class="icon-folder-open icon-large"></i>linux
+</a>
+</li>
+<li>
+<a href="https://bridgeqiao.github.io/blog/category/machine-learning.html">
+    <i class="icon-folder-open icon-large"></i>Machine Learning
+</a>
+</li>
+<li>
+<a href="https://bridgeqiao.github.io/blog/category/matlab.html">
+    <i class="icon-folder-open icon-large"></i>Matlab
+</a>
+</li>
+
+<li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
+
+
+</ul>        </div><!--/.well -->
+
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <address id="about">
+                Proudly powered by <a href="http://pelican.notmyidea.org/">Pelican <i class="icon-external-link"></i></a>,
+                                which takes great advantage of <a href="http://python.org">Python <i class="icon-external-link"></i></a>.
+        </address><!-- /#about -->
+
+        <p>The theme is based on <a href="http://twitter.github.com/bootstrap/">Bootstrap from Twitter <i class="icon-external-link"></i></a>,
+                   and <a href="http://fortawesome.github.com/Font-Awesome/">Font-Awesome <i class="icon-external-link"></i></a>, thanks!</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+
+
+    <!-- Le javascript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://bridgeqiao.github.io/blog/theme/js/jquery-1.7.2.min.js"></script>
+    <script src="https://bridgeqiao.github.io/blog/theme/js/bootstrap.min.js"></script>
+  </body>
+</html>
