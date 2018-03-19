@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>微信跳一跳</title>
+    <title>《统计学习方法》-逻辑斯蒂回归与最大熵模型</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="BridgeQiao">
@@ -69,7 +69,7 @@
 						<i class="icon-folder-open icon-large"></i>blog
 					</a>
                   </li>
-                  <li class="active">
+                  <li >
                     <a href="https://bridgeqiao.github.io/blog/category/fun.html">
 						<i class="icon-folder-open icon-large"></i>fun
 					</a>
@@ -79,7 +79,7 @@
 						<i class="icon-folder-open icon-large"></i>linux
 					</a>
                   </li>
-                  <li >
+                  <li class="active">
                     <a href="https://bridgeqiao.github.io/blog/category/machine-learning.html">
 						<i class="icon-folder-open icon-large"></i>Machine Learning
 					</a>
@@ -110,8 +110,8 @@
                         <h1>
                                 <a href=""
                                         rel="bookmark"
-                                        title="Permalink to 微信跳一跳">
-                                        微信跳一跳
+                                        title="Permalink to 《统计学习方法》-逻辑斯蒂回归与最大熵模型">
+                                        《统计学习方法》-逻辑斯蒂回归与最大熵模型
                                 </a>
                         </h1>
                 </header>
@@ -119,24 +119,111 @@
                 <div class="well">
 <footer class="post-info">
 <span class="label">Date</span>
-<abbr class="published" title="2018-01-16T00:00:00+08:00">
-        <i class="icon-calendar"></i>二 16 一月 2018
+<abbr class="published" title="2018-01-23T00:00:00+08:00">
+        <i class="icon-calendar"></i>二 23 一月 2018
 </abbr>
 <span class="label">By</span>
 <a href="https://bridgeqiao.github.io/blog/author/bridgeqiao.html"><i class="icon-user"></i>BridgeQiao</a>
 <span class="label">Category</span>
-<a href="https://bridgeqiao.github.io/blog/category/fun.html"><i class="icon-folder-open"></i>fun</a>.
+<a href="https://bridgeqiao.github.io/blog/category/machine-learning.html"><i class="icon-folder-open"></i>Machine Learning</a>.
 
 
 </footer><!-- /.post-info -->                </div>
-                <p>之前完微信跳一跳最高才60多。。。然后里面都是三位数起步的，遂刷了个分。。下面是安装记录：</p>
-<ol>
-<li>插上手机，弹出usb调试，点击确定；</li>
-<li>下载adb，我是直接用的刷机精灵，它自带了adb，加到环境变量path里就好了，就是安装目录里有adb.bat的那个，发现下载的外挂里面自带了adb（Tools），但貌似运行不起来。。。</li>
-<li>下载<a href="https://github.com/wangshub/wechat_jump_game">python外挂</a>。。。git clone或者下载zip包都行；</li>
-<li>运行wechat_jump_auto.py文件，后面是*_py3.py的得自己点，需要matplotlib包，pip安装就行；</li>
-<li>在显示的图片上先点击自己的中心点，再点击要跳的中心点，然后一直重复。。。刷到了233...，当然auto的是直接自动的了。</li>
-</ol>
+                <p>逻辑斯蒂回归是一个比较经典的分类方法，最大熵模型是按照最大熵准则来进行分类的算法，两个都属于对数线性模型。</p>
+<h2>逻辑斯蒂回归</h2>
+<p>在二分类中的模型：
+</p>
+<div class="math">$$
+\begin{aligned}
+P(Y=1|X)&amp;=\frac{exp(\omega X+b)}{1+exp(\omega X+b)}\\
+P(Y=0|X)&amp;=\frac{1}{1+exp(\omega X+b)}
+\end{aligned}
+$$</div>
+<p>
+这里<span class="math">\(X\in \boldsymbol{R}^n\)</span>是输入，<span class="math">\(Y\in \{0,1\}\)</span>是输出，比较两个条件概率的大小，将实例x分到概率值大的那一类。这个公式对于求解问题不是很直观，将分类的概率变成对数几率或<code>logit</code>函数：
+</p>
+<div class="math">$$
+logit(p)=log\frac{p}{1-p}=\omega X+b，p表示事件发生的概率
+$$</div>
+<p>
+这样的好处是直接对分布进行建模，避免了假设分布不准确所带来的问题。</p>
+<p>采用极大似然法来估计<span class="math">\(\omega,b\)</span>：
+</p>
+<div class="math">$$
+l(\omega,b)=\sum_{i=1}^{m}\ln p(y_i|x_i;w,b)
+$$</div>
+<p>
+令<span class="math">\(\beta=(\omega;b),\hat{x}=(x;1)\)</span>，则<span class="math">\(\omega^Tx+b\)</span>可简写为<span class="math">\(\beta^Tx\)</span>，最后得到：
+</p>
+<div class="math">$$
+l(\beta)=\sum_{i=1}^{m}(-y_i\beta^T\hat{x}_i+\ln(1+e^{\beta^T\hat{x}_i}))\\
+\beta^*=\arg\min_\beta l(\beta)
+$$</div>
+<h2>最大熵模型</h2>
+<p>求出给定数据集的联合分布<span class="math">\(f(x,y)\)</span>和边缘分布<span class="math">\(f(x)\)</span>。</p>
+<p>最大熵模型定义了在给定输入变量<span class="math">\(x\)</span>时，输出变量y的条件分布：
+</p>
+<div class="math">$$
+P(y|x,\theta)=\frac{e^{\theta f(x,y)}}{\sum_{y\in M}e^{\theta f(x,y)}}
+$$</div>
+<p>
+<span class="math">\(f(x,y)\)</span>相当于约束条件，输入和输出的需要满足的条件，可以当作对输入和输出同时抽取的特征，分类效果还可以，但运行速度不理想。</p>
+<p>在具体计算时，将条件分布转换成对偶问题进行的求解，过程比较复杂，感兴趣的可以看看《统计学习方法》。</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
                 </div><!-- /.entry-content -->
         </article>
 </section>

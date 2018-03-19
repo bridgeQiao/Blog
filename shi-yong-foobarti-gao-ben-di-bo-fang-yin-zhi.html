@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>微信跳一跳</title>
+    <title>使用foobar提高本地播放音质</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="BridgeQiao">
@@ -64,12 +64,12 @@
           <div class="nav-collapse">
             <ul class="nav">
                           <li class="divider-vertical"></li>
-                  <li >
+                  <li class="active">
                     <a href="https://bridgeqiao.github.io/blog/category/blog.html">
 						<i class="icon-folder-open icon-large"></i>blog
 					</a>
                   </li>
-                  <li class="active">
+                  <li >
                     <a href="https://bridgeqiao.github.io/blog/category/fun.html">
 						<i class="icon-folder-open icon-large"></i>fun
 					</a>
@@ -110,8 +110,8 @@
                         <h1>
                                 <a href=""
                                         rel="bookmark"
-                                        title="Permalink to 微信跳一跳">
-                                        微信跳一跳
+                                        title="Permalink to 使用foobar提高本地播放音质">
+                                        使用foobar提高本地播放音质
                                 </a>
                         </h1>
                 </header>
@@ -119,24 +119,79 @@
                 <div class="well">
 <footer class="post-info">
 <span class="label">Date</span>
-<abbr class="published" title="2018-01-16T00:00:00+08:00">
-        <i class="icon-calendar"></i>二 16 一月 2018
+<abbr class="published" title="2018-03-19T00:00:00+08:00">
+        <i class="icon-calendar"></i>一 19 三月 2018
 </abbr>
 <span class="label">By</span>
 <a href="https://bridgeqiao.github.io/blog/author/bridgeqiao.html"><i class="icon-user"></i>BridgeQiao</a>
 <span class="label">Category</span>
-<a href="https://bridgeqiao.github.io/blog/category/fun.html"><i class="icon-folder-open"></i>fun</a>.
+<a href="https://bridgeqiao.github.io/blog/category/blog.html"><i class="icon-folder-open"></i>blog</a>.
 
 
 </footer><!-- /.post-info -->                </div>
-                <p>之前完微信跳一跳最高才60多。。。然后里面都是三位数起步的，遂刷了个分。。下面是安装记录：</p>
-<ol>
-<li>插上手机，弹出usb调试，点击确定；</li>
-<li>下载adb，我是直接用的刷机精灵，它自带了adb，加到环境变量path里就好了，就是安装目录里有adb.bat的那个，发现下载的外挂里面自带了adb（Tools），但貌似运行不起来。。。</li>
-<li>下载<a href="https://github.com/wangshub/wechat_jump_game">python外挂</a>。。。git clone或者下载zip包都行；</li>
-<li>运行wechat_jump_auto.py文件，后面是*_py3.py的得自己点，需要matplotlib包，pip安装就行；</li>
-<li>在显示的图片上先点击自己的中心点，再点击要跳的中心点，然后一直重复。。。刷到了233...，当然auto的是直接自动的了。</li>
-</ol>
+                <p>播放无损音乐aoe之类的，用foobar2000+waspai比较好点，如果用电脑的话。</p>
+<p>下载无损音乐的<a href="http://www.51ape.com/">网站</a>，上面有很多。</p>
+<h2>安装wasapi</h2>
+<p>安装好foobar后，<span class="math">\(File\rightarrow Preference\)</span>，点击<strong>Components</strong>，点击下面的蓝色链接，在里面找到有<strong>WASAPI output support</strong>，同样在这个界面里有<strong>Install</strong>按钮，选择下载的文件就安装好了。</p>
+<h2>配置wasapi</h2>
+<p>点击<span class="math">\(Playback\rightarrow Output\)</span>，里面<strong>Device</strong>有两类WASAPI的选项：event和push，选择含扬声器的那两个其中一个，关于这两个的区别，网上有解释。</p>
+<p>我选择的是<strong>push</strong>，然后<strong>format</strong>选择<strong>32-bit</strong>。</p>
+<p>点开<span class="math">\(Advanced\rightarrow Playback\)</span>，点开<strong>WASAPI</strong>，点击含<strong>push mode</strong>的那句话，修改后面的值，改为320，下面的<strong>event mode</strong>改为50，选上<strong>High worker process priority</strong>。点开<strong>Thread priority</strong>，勾上<strong>Use MMCSS</strong>，<strong>mode</strong>改为<strong>Pro Audio</strong>。</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
                 </div><!-- /.entry-content -->
         </article>
 </section>

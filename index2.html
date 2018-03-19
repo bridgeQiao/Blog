@@ -65,6 +65,11 @@
             <ul class="nav">
                           <li class="divider-vertical"></li>
                   <li >
+                    <a href="https://bridgeqiao.github.io/blog/category/blog.html">
+						<i class="icon-folder-open icon-large"></i>blog
+					</a>
+                  </li>
+                  <li >
                     <a href="https://bridgeqiao.github.io/blog/category/fun.html">
 						<i class="icon-folder-open icon-large"></i>fun
 					</a>
@@ -99,6 +104,159 @@
     <div class="container-fluid">
       <div class="row">
         <div class="span9" id="content">
+        <div class="article">
+                <h1><a href="https://bridgeqiao.github.io/blog/zai-winxia-an-zhuang-cygwin.html">在win下安装cygwin</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2018-01-14T00:00:00+08:00">
+        <i class="icon-calendar"></i>日 14 一月 2018
+</abbr>
+<span class="label">By</span>
+<a href="https://bridgeqiao.github.io/blog/author/bridgeqiao.html"><i class="icon-user"></i>BridgeQiao</a>
+<span class="label">Category</span>
+<a href="https://bridgeqiao.github.io/blog/category/fun.html"><i class="icon-folder-open"></i>fun</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><ol>
+<li>
+<p>从<a href="https://www.cygwin.com">官网</a>下载setup_x86_64.exe，<strong>注意这是64位的</strong>，大小在1M左右，安装到硬盘，选择网络安装，镜像网站可以选用<a href="http://mirrors.ustc.edu.cn/cygwin/">USTC</a>或者<a href="http://mirrors.163.com/cygwin/">163</a>；</p>
+</li>
+<li>
+<p>下载<a href="https://github.com/transcode-open/apt-cyg">apt-cyg</a>，将该文件放到安装目录下的bin目录；</p>
+</li>
+<li>
+<p><code>bash
+   # 换源
+   apt-cyg update -m http://mirrors.ustc.edu.cn/cygwin/x86_64/</code></p>
+</li>
+<li>
+<p>现在可以用apt-cyg安装软件了，使用方式类似apt</p>
+</li>
+<li>
+<p>可以安装常用的软件：gcc/g++/make</p>
+</li>
+</ol>
+                        <a class="btn primary xsmall" href="https://bridgeqiao.github.io/blog/zai-winxia-an-zhuang-cygwin.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="https://bridgeqiao.github.io/blog/zai-ubuntu1604xia-an-zhuang-matlab2017a.html">在ubuntu16.04下安装Matlab2017a</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2017-09-29T00:00:00+08:00">
+        <i class="icon-calendar"></i>五 29 九月 2017
+</abbr>
+<span class="label">By</span>
+<a href="https://bridgeqiao.github.io/blog/author/bridgeqiao.html"><i class="icon-user"></i>BridgeQiao</a>
+<span class="label">Category</span>
+<a href="https://bridgeqiao.github.io/blog/category/matlab.html"><i class="icon-folder-open"></i>Matlab</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><ol>
+<li>
+<p>从<a href="ftp://116.13.96.74/">szu内部ftp</a>下在MATLAB；</p>
+</li>
+<li>
+<p>安装matlab，首先给MATLAB的install和 <code>bin/glnxa64</code> 加权限</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span>chmod -R <span class="m">777</span> install
+chmod -R <span class="m">777</span> bin/glnxa64
+</pre></div>
+
+
+<ol>
+<li>
+<p>需要jre环境，如果没配置，需要先安装 <code>openjdk-8-jdk</code></p>
+</li>
+<li>
+<p>运行install开始安装，如果没出现安装界面，选择指定jre目录, <code>-javadir /usr/lib/jvm/java-8-openjdk-amd64/jre/</code></p>
+</li>
+<li>
+<p>用硬件opengl, 打开MATLAB后，在控制台里输入</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span>opengl<span class="o">(</span><span class="s1">&#39;save&#39;</span>,<span class="s1">&#39;hardware&#39;</span><span class="o">)</span>
+</pre></div>
+                        <a class="btn primary xsmall" href="https://bridgeqiao.github.io/blog/zai-ubuntu1604xia-an-zhuang-matlab2017a.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="https://bridgeqiao.github.io/blog/install-plymouth.html">install plymouth</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2017-04-09T00:00:00+08:00">
+        <i class="icon-calendar"></i>日 09 四月 2017
+</abbr>
+<span class="label">By</span>
+<a href="https://bridgeqiao.github.io/blog/author/bridgeqiao.html"><i class="icon-user"></i>BridgeQiao</a>
+<span class="label">Category</span>
+<a href="https://bridgeqiao.github.io/blog/category/linux.html"><i class="icon-folder-open"></i>linux</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><ol>
+<li>
+<p>To make Plymouth work:
+     1.1. Add "plymouth" to HOOKS after "base" and "udev" in /etc/mkinitcpio.conf
+     1.2. Add 'quiet splash' to the grub command line in /etc/default/grub</p>
+<p><code>GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"</code></p>
+<p>then: <code>sudo update-grub</code>or<code>sudo grub-mkconfig -o /boot/grub/grub.cfg</code></p>
+<p>1.3. Rebuild your …</p></li></ol>
+                        <a class="btn primary xsmall" href="https://bridgeqiao.github.io/blog/install-plymouth.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="https://bridgeqiao.github.io/blog/an-zhuang-manjaro.html">安裝manjaro</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2017-04-08T00:00:00+08:00">
+        <i class="icon-calendar"></i>六 08 四月 2017
+</abbr>
+<span class="label">By</span>
+<a href="https://bridgeqiao.github.io/blog/author/bridgeqiao.html"><i class="icon-user"></i>BridgeQiao</a>
+<span class="label">Category</span>
+<a href="https://bridgeqiao.github.io/blog/category/linux.html"><i class="icon-folder-open"></i>linux</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><ul>
+<li>
+<p>烧入usb，由于电脑是bios的，将u盘的EFI文件夹重命名为back</p>
+</li>
+<li>
+<p>由于我用的版本是mate live，图形界面安装有点问题，在安装软件包的时候看不到进度，所以我下载了manjaro-architect，用命令行安装：sudo setup，不得不说live文件驱动很好，wifi能正常连接</p>
+</li>
+<li>
+<p>用命令行安装的时候，先分好区，然后挂载，如果安装过archlinux的话，应该知道这点，接着设置软件源，然后安装基础软件、图形界面之类的，装完重启</p>
+</li>
+<li>
+<p>先不登录（lightdm起不来），alt+ctrl+F2，F2到F6都行，su后设置密码，添加用户</p>
+</li>
+</ul>
+<!--more-->
+
+<ul>
+<li>
+<p>进去后设置语言：manjaro-settings-manager</p>
+</li>
+<li>
+<p>安装常用软件：<code>yaourt -S jdk8-openjdk android-studio typora</code>，主要是用来学习android</p>
+</li>
+<li>
+<p>开机后使用pacman时，经常会出现错误，要使用<code>sudo pacman -Syy</code>，先刷新软件源</p>
+</li>
+<li>
+<p>安装fcitx：<code>sudo pacman -S …</code></p></li></ul>
+                        <a class="btn primary xsmall" href="https://bridgeqiao.github.io/blog/an-zhuang-manjaro.html">more ...</a>
+                </div>
+        </div>
+        <hr />
         <div class="article">
                 <h1><a href="https://bridgeqiao.github.io/blog/an-zhuang-deepin-154.html">安装deepin 15.4</a></h1>
                 <div class="well small"><footer class="post-info">
@@ -163,6 +321,11 @@ apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E985B27B，添加key</p
     <li><a href="https://github.com"><i class="icon-external-link"></i>Github</a></li>
 
 <li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
+<li>
+<a href="https://bridgeqiao.github.io/blog/category/blog.html">
+    <i class="icon-folder-open icon-large"></i>blog
+</a>
+</li>
 <li>
 <a href="https://bridgeqiao.github.io/blog/category/fun.html">
     <i class="icon-folder-open icon-large"></i>fun

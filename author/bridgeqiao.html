@@ -65,6 +65,11 @@
             <ul class="nav">
                           <li class="divider-vertical"></li>
                   <li >
+                    <a href="https://bridgeqiao.github.io/blog/category/blog.html">
+						<i class="icon-folder-open icon-large"></i>blog
+					</a>
+                  </li>
+                  <li >
                     <a href="https://bridgeqiao.github.io/blog/category/fun.html">
 						<i class="icon-folder-open icon-large"></i>fun
 					</a>
@@ -99,6 +104,138 @@
     <div class="container-fluid">
       <div class="row">
         <div class="span9" id="content">
+        <div class="article">
+                <h1><a href="https://bridgeqiao.github.io/blog/shi-yong-foobarti-gao-ben-di-bo-fang-yin-zhi.html">使用foobar提高本地播放音质</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2018-03-19T00:00:00+08:00">
+        <i class="icon-calendar"></i>一 19 三月 2018
+</abbr>
+<span class="label">By</span>
+<a href="https://bridgeqiao.github.io/blog/author/bridgeqiao.html"><i class="icon-user"></i>BridgeQiao</a>
+<span class="label">Category</span>
+<a href="https://bridgeqiao.github.io/blog/category/blog.html"><i class="icon-folder-open"></i>blog</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>播放无损音乐aoe之类的，用foobar2000+waspai比较好点，如果用电脑的话。</p>
+<p>下载无损音乐的<a href="http://www.51ape.com/">网站</a>，上面有很多。</p>
+<h2>安装wasapi</h2>
+<p>安装好foobar后，<span class="math">\(File\rightarrow Preference\)</span>，点击<strong>Components</strong>，点击下面的蓝色链接，在里面找到有<strong>WASAPI output support</strong>，同样在这个界面里有<strong>Install</strong>按钮，选择下载的文件就安装好了。</p>
+<h2>配置wasapi</h2>
+<p>点击<span class="math">\(Playback\rightarrow Output\)</span>，里面<strong>Device</strong>有两类WASAPI的选项：event和push，选择含扬声器的那两个其中一个，关于这两个的区别，网上有解释。</p>
+<p>我选择的是<strong>push</strong>，然后<strong>format</strong>选择<strong>32-bit</strong>。</p>
+<p>点开<span class="math">\(Advanced\rightarrow Playback\)</span>，点开<strong>WASAPI</strong>，点击含<strong>push mode …</strong></p>
+                        <a class="btn primary xsmall" href="https://bridgeqiao.github.io/blog/shi-yong-foobarti-gao-ben-di-bo-fang-yin-zhi.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-zhi-chi-xiang-liang-ji.html">《统计学习方法》-支持向量机</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2018-01-31T00:00:00+08:00">
+        <i class="icon-calendar"></i>三 31 一月 2018
+</abbr>
+<span class="label">By</span>
+<a href="https://bridgeqiao.github.io/blog/author/bridgeqiao.html"><i class="icon-user"></i>BridgeQiao</a>
+<span class="label">Category</span>
+<a href="https://bridgeqiao.github.io/blog/category/machine-learning.html"><i class="icon-folder-open"></i>Machine Learning</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>支持向量机是找到一个间隔最大的超平面，最大的将不同类数据分开。</p>
+<h2>线性支持向量机</h2>
+<h3>模型</h3>
+<p>硬间隔：
+</p>
+<div class="math">$$
+分界面：\omega x+b=0\\
+y=sign(\omega x+b)
+$$</div>
+<p>
+软间隔：
+</p>
+<div class="math">$$
+分界面：\omega^* x+b^*=0\\
+y=sign(\omega^* x+b^*)\\
+其中\omega^*的解是唯一的，而b^*的解是在一个区间内
+$$</div>
+<h3>策略</h3>
+<p>采用的是最大间隔的策略，也就是最小的分类误差，在解最大化点<span class="math">\(x_i\)</span>到超平面的距离<span class="math">\(\gamma_i = y_i(\frac{\omega x_i}{\left \| \omega \right \|}+\frac{b}{\left \| \omega \right …</span></p>
+                        <a class="btn primary xsmall" href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-zhi-chi-xiang-liang-ji.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-luo-ji-si-di-hui-gui-yu-zui-da-shang-mo-xing.html">《统计学习方法》-逻辑斯蒂回归与最大熵模型</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2018-01-23T00:00:00+08:00">
+        <i class="icon-calendar"></i>二 23 一月 2018
+</abbr>
+<span class="label">By</span>
+<a href="https://bridgeqiao.github.io/blog/author/bridgeqiao.html"><i class="icon-user"></i>BridgeQiao</a>
+<span class="label">Category</span>
+<a href="https://bridgeqiao.github.io/blog/category/machine-learning.html"><i class="icon-folder-open"></i>Machine Learning</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>逻辑斯蒂回归是一个比较经典的分类方法，最大熵模型是按照最大熵准则来进行分类的算法，两个都属于对数线性模型。</p>
+<h2>逻辑斯蒂回归</h2>
+<p>在二分类中的模型：
+</p>
+<div class="math">$$
+\begin{aligned}
+P(Y=1|X)&amp;=\frac{exp(\omega X+b)}{1+exp(\omega X+b)}\\
+P(Y=0|X)&amp;=\frac{1}{1+exp(\omega X+b)}
+\end{aligned}
+$$</div>
+<p>
+这里<span class="math">\(X\in \boldsymbol{R}^n\)</span>是输入，<span class="math">\(Y\in \{0,1\}\)</span>是输出，比较两个条件概率的大小，将实例x分到概率值大的那一类。这个公式对于求解问题不是很直观，将分类的概率变成对数几率或 …</p>
+                        <a class="btn primary xsmall" href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-luo-ji-si-di-hui-gui-yu-zui-da-shang-mo-xing.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-jue-ce-shu.html">《统计学习方法》-决策树</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2018-01-21T00:00:00+08:00">
+        <i class="icon-calendar"></i>日 21 一月 2018
+</abbr>
+<span class="label">By</span>
+<a href="https://bridgeqiao.github.io/blog/author/bridgeqiao.html"><i class="icon-user"></i>BridgeQiao</a>
+<span class="label">Category</span>
+<a href="https://bridgeqiao.github.io/blog/category/machine-learning.html"><i class="icon-folder-open"></i>Machine Learning</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>决策树是一个比较经典的分类与回归的方法，包括特征选择、决策树的生成和决策树的修剪。</p>
+<h2>模型</h2>
+<p>决策树的模型是一棵已经构造完成的决策树，由节点和有向边组成，其中节点分为内部节点和叶子节点，内部节点表示一个特征或属性，即划分的特征，叶子节点表示一个类。</p>
+<blockquote>
+<p>从根节点开始对实例中的某一个特征进行测试，比如西瓜的颜色，有花纹的分成一个类，放在一个子节点中，另一种放在另一个子节点中，如此递归的对实例进行测试，直至叶节点。</p>
+</blockquote>
+<h2>决策规则</h2>
+<p>决策树可以看成if-then规则的集合，决策过程：每一条有向边对应一条规则，路径上内部节点的特征对应着规则的条件，而叶节点的类对应着规则的结论。</p>
+<blockquote>
+<p>路径或其对应的if-then规则集合具有一个重要的性质：互斥并且完备。</p>
+</blockquote>
+<p>从所有可能的决策树中选取最优的决策树是NP完全问题，所以现实中决策树学习算法采用启发式方法，近似求解这一优化问题，这样得到的决策树是次最优的。决策树算法通常是一个递归选择最优特征，并且用该特征对数据进行分割。</p>
+<h2>算法</h2>
+<h3>特征选择</h3>
+<p>随机变量X的熵定义为：
+</p>
+<div class="math">$$
+H(X)=-\sum_{i=1}^{n}p_i\log p_i
+$$</div>
+<p>
+条件熵(conditional entropy)<span class="math">\(H(Y|X)\)</span>，定义为 …</p>
+                        <a class="btn primary xsmall" href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-jue-ce-shu.html">more ...</a>
+                </div>
+        </div>
+        <hr />
         <div class="article">
                 <h1><a href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-po-su-bei-xie-si.html">《统计学习方法》-朴素贝叶斯</a></h1>
                 <div class="well small"><footer class="post-info">
@@ -176,7 +313,7 @@ $$</div>
                 <div class="summary"><p>之前完微信跳一跳最高才60多。。。然后里面都是三位数起步的，遂刷了个分。。下面是安装记录：</p>
 <ol>
 <li>插上手机，弹出usb调试，点击确定；</li>
-<li>下载adb，我是直接用的刷机精灵，它自带了adb，加到环境变量path里就好了，就是安装目录里有adb.bat的那个，发现下载的外挂里面自带了adb（Tools），郁闷。。。</li>
+<li>下载adb，我是直接用的刷机精灵，它自带了adb，加到环境变量path里就好了，就是安装目录里有adb.bat的那个，发现下载的外挂里面自带了adb（Tools），但貌似运行不起来。。。</li>
 <li>下载<a href="https://github.com/wangshub/wechat_jump_game">python外挂</a>。。。git clone或者下载zip包都行；</li>
 <li>运行wechat_jump_auto.py文件，后面是*_py3.py的得自己点，需要matplotlib包，pip安装就行；</li>
 <li>在显示的图片上先点击自己的中心点，再点击要跳的中心点，然后一直重复。。。刷到了233...，当然auto的是直接自动的了。</li>
@@ -204,8 +341,6 @@ $$</div>
 <h2>1. 统计学习背景</h2>
 <p>统计学习是由一些数学组成：概率统计、信息论、优化理论，所以想要深入的了解的化，本科学的统计、高数的前几章得熟悉，然后线性代数得着重看下，对了解并行处理有很大的帮助，有需要的还可以看下凸优化相关的东西，对优化部分会有更深刻的理解。</p>
 <p>统计学习的对象是<code>数据</code>，包括数字、文字、图片、视频、音频等，这里有个前提：这些同类数据具有一定的统计规律性。目标是对数据进行预测与分析。</p>
-<!--more-->
-
 <h2>2. 三要素</h2>
 <p><span class="math">\(方法=模型+策略+算法\)</span>。</p>
 <h3>模型：</h3>
@@ -230,6 +365,8 @@ $$</div>
 
 </footer><!-- /.post-info --></div>
                 <div class="summary"><h2>模型</h2>
+<p>感知机的目标是找到一个可以将正负实例完全分开的分离超平面<span class="math">\(\omega X+b=0\)</span>，模型的形式显而易见，为：
+</p>
 <div class="math">$$
 f(x)=sign(\omega X+b)\\
 其中sign(x)=\left\{\begin{matrix}
@@ -237,13 +374,12 @@ f(x)=sign(\omega X+b)\\
 -1, &amp; x&lt;0
 \end{matrix}\right.
 $$</div>
+<p>当在平面的上面时，划分成一类，下面一类。</p>
 <h2>策略</h2>
 <p>感知机的目标是找到一个可以将正负实例完全分开的分离超平面，需要定义一个策略，即定义（经验）损失函数并将损失函数最小化。</p>
 <p>损失函数一个自然选择是误分类点的总数，另一个是误分类点到超平面S的总距离，是参数<span class="math">\(\omega,b\)</span>的连续可导函数，有利于优化。</p>
-<!--more-->
-
 <div class="math">$$
-误分类点到S的总距离是-\frac{1}{\left \| \omega \right \|}\sum_{x_i\in M}y_i(\omega x_i+b),M为误分类点的集合 …</div>
+误分类点到S的总距离L=-\frac{1}{\left \| \omega …</div>
                         <a class="btn primary xsmall" href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-gan-zhi-ji.html">more ...</a>
                 </div>
         </div>
@@ -288,159 +424,6 @@ sudo npm install hexo-deployer-git --save
                 </div>
         </div>
         <hr />
-        <div class="article">
-                <h1><a href="https://bridgeqiao.github.io/blog/zai-winxia-an-zhuang-cygwin.html">在win下安装cygwin</a></h1>
-                <div class="well small"><footer class="post-info">
-<span class="label">Date</span>
-<abbr class="published" title="2018-01-14T00:00:00+08:00">
-        <i class="icon-calendar"></i>日 14 一月 2018
-</abbr>
-<span class="label">By</span>
-<a href="https://bridgeqiao.github.io/blog/author/bridgeqiao.html"><i class="icon-user"></i>BridgeQiao</a>
-<span class="label">Category</span>
-<a href="https://bridgeqiao.github.io/blog/category/fun.html"><i class="icon-folder-open"></i>fun</a>.
-
-
-</footer><!-- /.post-info --></div>
-                <div class="summary"><ol>
-<li>
-<p>从<a href="https://www.cygwin.com">官网</a>下载setup_x86_64.exe，<strong>注意这是64位的</strong>，大小在1M左右，安装到硬盘，选择网络安装，镜像网站可以选用<a href="http://mirrors.ustc.edu.cn/cygwin/">USTC</a>或者<a href="http://mirrors.163.com/cygwin/">163</a>；</p>
-</li>
-<li>
-<p>下载<a href="https://github.com/transcode-open/apt-cyg">apt-cyg</a>，将该文件放到安装目录下的bin目录；</p>
-</li>
-<li>
-<p><code>bash
-   # 换源
-   apt-cyg update -m http://mirrors.ustc.edu.cn/cygwin/x86_64/</code></p>
-</li>
-<li>
-<p>现在可以用apt-cyg安装软件了，使用方式类似apt</p>
-</li>
-<li>
-<p>可以安装常用的软件：gcc/g++/make</p>
-</li>
-</ol>
-                        <a class="btn primary xsmall" href="https://bridgeqiao.github.io/blog/zai-winxia-an-zhuang-cygwin.html">more ...</a>
-                </div>
-        </div>
-        <hr />
-        <div class="article">
-                <h1><a href="https://bridgeqiao.github.io/blog/zai-ubuntu1604xia-an-zhuang-matlab2017a.html">在ubuntu16.04下安装Matlab2017a</a></h1>
-                <div class="well small"><footer class="post-info">
-<span class="label">Date</span>
-<abbr class="published" title="2017-09-29T00:00:00+08:00">
-        <i class="icon-calendar"></i>五 29 九月 2017
-</abbr>
-<span class="label">By</span>
-<a href="https://bridgeqiao.github.io/blog/author/bridgeqiao.html"><i class="icon-user"></i>BridgeQiao</a>
-<span class="label">Category</span>
-<a href="https://bridgeqiao.github.io/blog/category/matlab.html"><i class="icon-folder-open"></i>Matlab</a>.
-
-
-</footer><!-- /.post-info --></div>
-                <div class="summary"><ol>
-<li>
-<p>从<a href="ftp://116.13.96.74/">szu内部ftp</a>下在MATLAB；</p>
-</li>
-<li>
-<p>安装matlab，首先给MATLAB的install和 <code>bin/glnxa64</code> 加权限</p>
-</li>
-</ol>
-<div class="highlight"><pre><span></span>chmod -R <span class="m">777</span> install
-chmod -R <span class="m">777</span> bin/glnxa64
-</pre></div>
-
-
-<ol>
-<li>
-<p>需要jre环境，如果没配置，需要先安装 <code>openjdk-8-jdk</code></p>
-</li>
-<li>
-<p>运行install开始安装，如果没出现安装界面，选择指定jre目录, <code>-javadir /usr/lib/jvm/java-8-openjdk-amd64/jre/</code></p>
-</li>
-<li>
-<p>用硬件opengl, 打开MATLAB后，在控制台里输入</p>
-</li>
-</ol>
-<div class="highlight"><pre><span></span>opengl<span class="o">(</span><span class="s1">&#39;save&#39;</span>,<span class="s1">&#39;hardware&#39;</span><span class="o">)</span>
-</pre></div>
-                        <a class="btn primary xsmall" href="https://bridgeqiao.github.io/blog/zai-ubuntu1604xia-an-zhuang-matlab2017a.html">more ...</a>
-                </div>
-        </div>
-        <hr />
-        <div class="article">
-                <h1><a href="https://bridgeqiao.github.io/blog/install-plymouth.html">install plymouth</a></h1>
-                <div class="well small"><footer class="post-info">
-<span class="label">Date</span>
-<abbr class="published" title="2017-04-09T00:00:00+08:00">
-        <i class="icon-calendar"></i>日 09 四月 2017
-</abbr>
-<span class="label">By</span>
-<a href="https://bridgeqiao.github.io/blog/author/bridgeqiao.html"><i class="icon-user"></i>BridgeQiao</a>
-<span class="label">Category</span>
-<a href="https://bridgeqiao.github.io/blog/category/linux.html"><i class="icon-folder-open"></i>linux</a>.
-
-
-</footer><!-- /.post-info --></div>
-                <div class="summary"><ol>
-<li>
-<p>To make Plymouth work:
-     1.1. Add "plymouth" to HOOKS after "base" and "udev" in /etc/mkinitcpio.conf
-     1.2. Add 'quiet splash' to the grub command line in /etc/default/grub</p>
-<p><code>GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"</code></p>
-<p>then: <code>sudo update-grub</code>or<code>sudo grub-mkconfig -o /boot/grub/grub.cfg</code></p>
-<p>1.3. Rebuild your …</p></li></ol>
-                        <a class="btn primary xsmall" href="https://bridgeqiao.github.io/blog/install-plymouth.html">more ...</a>
-                </div>
-        </div>
-        <hr />
-        <div class="article">
-                <h1><a href="https://bridgeqiao.github.io/blog/an-zhuang-manjaro.html">安裝manjaro</a></h1>
-                <div class="well small"><footer class="post-info">
-<span class="label">Date</span>
-<abbr class="published" title="2017-04-08T00:00:00+08:00">
-        <i class="icon-calendar"></i>六 08 四月 2017
-</abbr>
-<span class="label">By</span>
-<a href="https://bridgeqiao.github.io/blog/author/bridgeqiao.html"><i class="icon-user"></i>BridgeQiao</a>
-<span class="label">Category</span>
-<a href="https://bridgeqiao.github.io/blog/category/linux.html"><i class="icon-folder-open"></i>linux</a>.
-
-
-</footer><!-- /.post-info --></div>
-                <div class="summary"><ul>
-<li>
-<p>烧入usb，由于电脑是bios的，将u盘的EFI文件夹重命名为back</p>
-</li>
-<li>
-<p>由于我用的版本是mate live，图形界面安装有点问题，在安装软件包的时候看不到进度，所以我下载了manjaro-architect，用命令行安装：sudo setup，不得不说live文件驱动很好，wifi能正常连接</p>
-</li>
-<li>
-<p>用命令行安装的时候，先分好区，然后挂载，如果安装过archlinux的话，应该知道这点，接着设置软件源，然后安装基础软件、图形界面之类的，装完重启</p>
-</li>
-<li>
-<p>先不登录（lightdm起不来），alt+ctrl+F2，F2到F6都行，su后设置密码，添加用户</p>
-</li>
-</ul>
-<!--more-->
-
-<ul>
-<li>
-<p>进去后设置语言：manjaro-settings-manager</p>
-</li>
-<li>
-<p>安装常用软件：<code>yaourt -S jdk8-openjdk android-studio typora</code>，主要是用来学习android</p>
-</li>
-<li>
-<p>开机后使用pacman时，经常会出现错误，要使用<code>sudo pacman -Syy</code>，先刷新软件源</p>
-</li>
-<li>
-<p>安装fcitx：<code>sudo pacman -S …</code></p></li></ul>
-                        <a class="btn primary xsmall" href="https://bridgeqiao.github.io/blog/an-zhuang-manjaro.html">more ...</a>
-                </div>
-        </div>
-        <hr />
 
         <div class="pagination">
         <ul>
@@ -461,6 +444,11 @@ chmod -R <span class="m">777</span> bin/glnxa64
     <li><a href="https://github.com"><i class="icon-external-link"></i>Github</a></li>
 
 <li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
+<li>
+<a href="https://bridgeqiao.github.io/blog/category/blog.html">
+    <i class="icon-folder-open icon-large"></i>blog
+</a>
+</li>
 <li>
 <a href="https://bridgeqiao.github.io/blog/category/fun.html">
     <i class="icon-folder-open icon-large"></i>fun

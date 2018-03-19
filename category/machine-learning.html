@@ -65,6 +65,11 @@
             <ul class="nav">
                           <li class="divider-vertical"></li>
                   <li >
+                    <a href="https://bridgeqiao.github.io/blog/category/blog.html">
+						<i class="icon-folder-open icon-large"></i>blog
+					</a>
+                  </li>
+                  <li >
                     <a href="https://bridgeqiao.github.io/blog/category/fun.html">
 						<i class="icon-folder-open icon-large"></i>fun
 					</a>
@@ -99,6 +104,112 @@
     <div class="container-fluid">
       <div class="row">
         <div class="span9" id="content">
+        <div class="article">
+                <h1><a href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-zhi-chi-xiang-liang-ji.html">《统计学习方法》-支持向量机</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2018-01-31T00:00:00+08:00">
+        <i class="icon-calendar"></i>三 31 一月 2018
+</abbr>
+<span class="label">By</span>
+<a href="https://bridgeqiao.github.io/blog/author/bridgeqiao.html"><i class="icon-user"></i>BridgeQiao</a>
+<span class="label">Category</span>
+<a href="https://bridgeqiao.github.io/blog/category/machine-learning.html"><i class="icon-folder-open"></i>Machine Learning</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>支持向量机是找到一个间隔最大的超平面，最大的将不同类数据分开。</p>
+<h2>线性支持向量机</h2>
+<h3>模型</h3>
+<p>硬间隔：
+</p>
+<div class="math">$$
+分界面：\omega x+b=0\\
+y=sign(\omega x+b)
+$$</div>
+<p>
+软间隔：
+</p>
+<div class="math">$$
+分界面：\omega^* x+b^*=0\\
+y=sign(\omega^* x+b^*)\\
+其中\omega^*的解是唯一的，而b^*的解是在一个区间内
+$$</div>
+<h3>策略</h3>
+<p>采用的是最大间隔的策略，也就是最小的分类误差，在解最大化点<span class="math">\(x_i\)</span>到超平面的距离<span class="math">\(\gamma_i = y_i(\frac{\omega x_i}{\left \| \omega \right \|}+\frac{b}{\left \| \omega \right …</span></p>
+                        <a class="btn primary xsmall" href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-zhi-chi-xiang-liang-ji.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-luo-ji-si-di-hui-gui-yu-zui-da-shang-mo-xing.html">《统计学习方法》-逻辑斯蒂回归与最大熵模型</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2018-01-23T00:00:00+08:00">
+        <i class="icon-calendar"></i>二 23 一月 2018
+</abbr>
+<span class="label">By</span>
+<a href="https://bridgeqiao.github.io/blog/author/bridgeqiao.html"><i class="icon-user"></i>BridgeQiao</a>
+<span class="label">Category</span>
+<a href="https://bridgeqiao.github.io/blog/category/machine-learning.html"><i class="icon-folder-open"></i>Machine Learning</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>逻辑斯蒂回归是一个比较经典的分类方法，最大熵模型是按照最大熵准则来进行分类的算法，两个都属于对数线性模型。</p>
+<h2>逻辑斯蒂回归</h2>
+<p>在二分类中的模型：
+</p>
+<div class="math">$$
+\begin{aligned}
+P(Y=1|X)&amp;=\frac{exp(\omega X+b)}{1+exp(\omega X+b)}\\
+P(Y=0|X)&amp;=\frac{1}{1+exp(\omega X+b)}
+\end{aligned}
+$$</div>
+<p>
+这里<span class="math">\(X\in \boldsymbol{R}^n\)</span>是输入，<span class="math">\(Y\in \{0,1\}\)</span>是输出，比较两个条件概率的大小，将实例x分到概率值大的那一类。这个公式对于求解问题不是很直观，将分类的概率变成对数几率或 …</p>
+                        <a class="btn primary xsmall" href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-luo-ji-si-di-hui-gui-yu-zui-da-shang-mo-xing.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-jue-ce-shu.html">《统计学习方法》-决策树</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2018-01-21T00:00:00+08:00">
+        <i class="icon-calendar"></i>日 21 一月 2018
+</abbr>
+<span class="label">By</span>
+<a href="https://bridgeqiao.github.io/blog/author/bridgeqiao.html"><i class="icon-user"></i>BridgeQiao</a>
+<span class="label">Category</span>
+<a href="https://bridgeqiao.github.io/blog/category/machine-learning.html"><i class="icon-folder-open"></i>Machine Learning</a>.
+
+
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>决策树是一个比较经典的分类与回归的方法，包括特征选择、决策树的生成和决策树的修剪。</p>
+<h2>模型</h2>
+<p>决策树的模型是一棵已经构造完成的决策树，由节点和有向边组成，其中节点分为内部节点和叶子节点，内部节点表示一个特征或属性，即划分的特征，叶子节点表示一个类。</p>
+<blockquote>
+<p>从根节点开始对实例中的某一个特征进行测试，比如西瓜的颜色，有花纹的分成一个类，放在一个子节点中，另一种放在另一个子节点中，如此递归的对实例进行测试，直至叶节点。</p>
+</blockquote>
+<h2>决策规则</h2>
+<p>决策树可以看成if-then规则的集合，决策过程：每一条有向边对应一条规则，路径上内部节点的特征对应着规则的条件，而叶节点的类对应着规则的结论。</p>
+<blockquote>
+<p>路径或其对应的if-then规则集合具有一个重要的性质：互斥并且完备。</p>
+</blockquote>
+<p>从所有可能的决策树中选取最优的决策树是NP完全问题，所以现实中决策树学习算法采用启发式方法，近似求解这一优化问题，这样得到的决策树是次最优的。决策树算法通常是一个递归选择最优特征，并且用该特征对数据进行分割。</p>
+<h2>算法</h2>
+<h3>特征选择</h3>
+<p>随机变量X的熵定义为：
+</p>
+<div class="math">$$
+H(X)=-\sum_{i=1}^{n}p_i\log p_i
+$$</div>
+<p>
+条件熵(conditional entropy)<span class="math">\(H(Y|X)\)</span>，定义为 …</p>
+                        <a class="btn primary xsmall" href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-jue-ce-shu.html">more ...</a>
+                </div>
+        </div>
+        <hr />
         <div class="article">
                 <h1><a href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-po-su-bei-xie-si.html">《统计学习方法》-朴素贝叶斯</a></h1>
                 <div class="well small"><footer class="post-info">
@@ -178,8 +289,6 @@ $$</div>
 <h2>1. 统计学习背景</h2>
 <p>统计学习是由一些数学组成：概率统计、信息论、优化理论，所以想要深入的了解的化，本科学的统计、高数的前几章得熟悉，然后线性代数得着重看下，对了解并行处理有很大的帮助，有需要的还可以看下凸优化相关的东西，对优化部分会有更深刻的理解。</p>
 <p>统计学习的对象是<code>数据</code>，包括数字、文字、图片、视频、音频等，这里有个前提：这些同类数据具有一定的统计规律性。目标是对数据进行预测与分析。</p>
-<!--more-->
-
 <h2>2. 三要素</h2>
 <p><span class="math">\(方法=模型+策略+算法\)</span>。</p>
 <h3>模型：</h3>
@@ -204,6 +313,8 @@ $$</div>
 
 </footer><!-- /.post-info --></div>
                 <div class="summary"><h2>模型</h2>
+<p>感知机的目标是找到一个可以将正负实例完全分开的分离超平面<span class="math">\(\omega X+b=0\)</span>，模型的形式显而易见，为：
+</p>
 <div class="math">$$
 f(x)=sign(\omega X+b)\\
 其中sign(x)=\left\{\begin{matrix}
@@ -211,13 +322,12 @@ f(x)=sign(\omega X+b)\\
 -1, &amp; x&lt;0
 \end{matrix}\right.
 $$</div>
+<p>当在平面的上面时，划分成一类，下面一类。</p>
 <h2>策略</h2>
 <p>感知机的目标是找到一个可以将正负实例完全分开的分离超平面，需要定义一个策略，即定义（经验）损失函数并将损失函数最小化。</p>
 <p>损失函数一个自然选择是误分类点的总数，另一个是误分类点到超平面S的总距离，是参数<span class="math">\(\omega,b\)</span>的连续可导函数，有利于优化。</p>
-<!--more-->
-
 <div class="math">$$
-误分类点到S的总距离是-\frac{1}{\left \| \omega \right \|}\sum_{x_i\in M}y_i(\omega x_i+b),M为误分类点的集合 …</div>
+误分类点到S的总距离L=-\frac{1}{\left \| \omega …</div>
                         <a class="btn primary xsmall" href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-gan-zhi-ji.html">more ...</a>
                 </div>
         </div>
@@ -233,6 +343,11 @@ $$</div>
     <li><a href="https://github.com"><i class="icon-external-link"></i>Github</a></li>
 
 <li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
+<li>
+<a href="https://bridgeqiao.github.io/blog/category/blog.html">
+    <i class="icon-folder-open icon-large"></i>blog
+</a>
+</li>
 <li>
 <a href="https://bridgeqiao.github.io/blog/category/fun.html">
     <i class="icon-folder-open icon-large"></i>fun

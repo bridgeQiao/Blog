@@ -65,6 +65,11 @@
             <ul class="nav">
                           <li class="divider-vertical"></li>
                   <li >
+                    <a href="https://bridgeqiao.github.io/blog/category/blog.html">
+						<i class="icon-folder-open icon-large"></i>blog
+					</a>
+                  </li>
+                  <li >
                     <a href="https://bridgeqiao.github.io/blog/category/fun.html">
 						<i class="icon-folder-open icon-large"></i>fun
 					</a>
@@ -125,6 +130,8 @@
 
 </footer><!-- /.post-info -->                </div>
                 <h2>模型</h2>
+<p>感知机的目标是找到一个可以将正负实例完全分开的分离超平面<span class="math">\(\omega X+b=0\)</span>，模型的形式显而易见，为：
+</p>
 <div class="math">$$
 f(x)=sign(\omega X+b)\\
 其中sign(x)=\left\{\begin{matrix}
@@ -132,13 +139,12 @@ f(x)=sign(\omega X+b)\\
 -1, &amp; x&lt;0
 \end{matrix}\right.
 $$</div>
+<p>当在平面的上面时，划分成一类，下面一类。</p>
 <h2>策略</h2>
 <p>感知机的目标是找到一个可以将正负实例完全分开的分离超平面，需要定义一个策略，即定义（经验）损失函数并将损失函数最小化。</p>
 <p>损失函数一个自然选择是误分类点的总数，另一个是误分类点到超平面S的总距离，是参数<span class="math">\(\omega,b\)</span>的连续可导函数，有利于优化。</p>
-<!--more-->
-
 <div class="math">$$
-误分类点到S的总距离是-\frac{1}{\left \| \omega \right \|}\sum_{x_i\in M}y_i(\omega x_i+b),M为误分类点的集合
+误分类点到S的总距离L=-\frac{1}{\left \| \omega \right \|}\sum_{x_i\in M}y_i(\omega x_i+b),M为误分类点的集合
 $$</div>
 <p>
 由于<span class="math">\(-\frac{1}{\left \| \omega\right \|}\)</span>是在一次迭代中是定值，对最后的结果不会产生影响，所以最后感知机的最小化代价函数是：
@@ -176,6 +182,7 @@ $$</div>
 </li>
 </ol>
 <p>算法的对偶形式：</p>
+<p>对偶形式可以看成是对求解问题的另一种解法，这里是将对<span class="math">\(\omega,b\)</span>的求导换成了对<span class="math">\(\eta,b\)</span>的求导。</p>
 <p>对误分类点逐步修改n次，则<span class="math">\(\omega,b\)</span>关于<span class="math">\((x_i,y_i)\)</span>的增量分别是<span class="math">\(\alpha_iy_ix_i\)</span>和<span class="math">\(\alpha_iy_i\)</span>，这里<span class="math">\(\alpha_i=n_i\eta\)</span>. 这样，从学习过程不难看出，最后学习到的<span class="math">\(\omega,b\)</span>可以分别表示为
 </p>
 <div class="math">$$
@@ -200,6 +207,7 @@ $$</div>
 <div class="math">$$
 k\leqslant \left(\frac{R}{\gamma}\right)^2
 $$</div>
+<p>优势是可以先求出Gram矩阵，加快计算速度。</p>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
@@ -268,6 +276,11 @@ $$</div>
     <li><a href="https://github.com"><i class="icon-external-link"></i>Github</a></li>
 
 <li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
+<li>
+<a href="https://bridgeqiao.github.io/blog/category/blog.html">
+    <i class="icon-folder-open icon-large"></i>blog
+</a>
+</li>
 <li>
 <a href="https://bridgeqiao.github.io/blog/category/fun.html">
     <i class="icon-folder-open icon-large"></i>fun
