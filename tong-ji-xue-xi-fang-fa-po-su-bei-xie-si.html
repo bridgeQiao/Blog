@@ -1,74 +1,40 @@
 <!DOCTYPE html>
-<html lang="en-US">
-    <head>
-        <meta charset="utf-8"> 
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="author" content="BridgeQiao" />
-        <meta name="copyright" content="BridgeQiao" />
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <title>《统计学习方法》-朴素贝叶斯</title>
+        <link rel="stylesheet" href="https://bridgeqiao.github.io/blog/theme/css/main.css" />
 
-        <meta property="og:type" content="article" />
-        <meta name="twitter:card" content="summary">
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
 
-<meta name="keywords" content=", Machine Learning, " />
-
-<meta property="og:title" content="《统计学习方法》-朴素贝叶斯 "/>
-<meta property="og:url" content="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-po-su-bei-xie-si.html" />
-<meta property="og:description" content="朴素贝叶斯和knn一样，属于懒惰学习方法的一种，假设输入的特征间是独立的，根据先验概率来求最大化后验概率（MAP）。 基本方法 了解这个章节需要复习概率统计的知识，关于概率、条件概率、全概率、最大似然等。 $$ 后验概率P(Y=c_k|X=x)=\frac{P(X=x|Y=c_k)P(Y=c_k)}{\sum_k P(X=x|Y=c_k)P(Y=c_k)} $$ 分母都是相同的，去掉分母，分类器变成了 $$ y=\arg \max_{c_k}P(Y=c_k)\prod_j P(X^{(j)}=x^{(j …" />
-<meta property="og:site_name" content="Bridge Qiao&#39;s Blog" />
-<meta property="og:article:author" content="BridgeQiao" />
-<meta property="og:article:published_time" content="2018-01-20T00:00:00+08:00" />
-<meta name="twitter:title" content="《统计学习方法》-朴素贝叶斯 ">
-<meta name="twitter:description" content="朴素贝叶斯和knn一样，属于懒惰学习方法的一种，假设输入的特征间是独立的，根据先验概率来求最大化后验概率（MAP）。 基本方法 了解这个章节需要复习概率统计的知识，关于概率、条件概率、全概率、最大似然等。 $$ 后验概率P(Y=c_k|X=x)=\frac{P(X=x|Y=c_k)P(Y=c_k)}{\sum_k P(X=x|Y=c_k)P(Y=c_k)} $$ 分母都是相同的，去掉分母，分类器变成了 $$ y=\arg \max_{c_k}P(Y=c_k)\prod_j P(X^{(j)}=x^{(j …">
-
-        <title>《统计学习方法》-朴素贝叶斯  · Bridge Qiao&#39;s Blog
-</title>
-        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
-        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="https://bridgeqiao.github.io/blog/theme/css/pygments.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="https://bridgeqiao.github.io/blog/theme/tipuesearch/tipuesearch.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="https://bridgeqiao.github.io/blog/theme/css/elegant.css" media="screen">
-        <link rel="stylesheet" type="text/css" href="https://bridgeqiao.github.io/blog/theme/css/custom.css" media="screen">
-    </head>
-    <body>
-        <div id="content-sans-footer">
-        <div class="navbar navbar-static-top">
-            <div class="navbar-inner">
-                <div class="container-fluid">
-                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </a>
-                    <a class="brand" href="https://bridgeqiao.github.io/blog/"><span class=site-name>Bridge Qiao's Blog</span></a>
-                    <div class="nav-collapse collapse">
-                        <ul class="nav pull-right top-menu">
-                            <li ><a href="https://bridgeqiao.github.io/blog">Home</a></li>
-                            <li ><a href="https://bridgeqiao.github.io/blog/categories.html">Categories</a></li>
-                            <li ><a href="https://bridgeqiao.github.io/blog/tags.html">Tags</a></li>
-                            <li ><a href="https://bridgeqiao.github.io/blog/archives.html">Archives</a></li>
-                            <li><form class="navbar-search" action="https://bridgeqiao.github.io/blog/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container-fluid">
-            <div class="row-fluid">
-                <div class="span1"></div>
-                <div class="span10">
-<article>
-<div class="row-fluid">
-    <header class="page-header span10 offset2">
-    <h1><a href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-po-su-bei-xie-si.html"> 《统计学习方法》-朴素贝叶斯  </a></h1>
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://bridgeqiao.github.io/blog/">Bridge Qiao's Blog </a></h1>
+                <nav><ul>
+                    <li><a href="https://bridgeqiao.github.io/blog/category/blog.html">blog</a></li>
+                    <li><a href="https://bridgeqiao.github.io/blog/category/fun.html">fun</a></li>
+                    <li><a href="https://bridgeqiao.github.io/blog/category/linux.html">linux</a></li>
+                    <li class="active"><a href="https://bridgeqiao.github.io/blog/category/machine-learning.html">Machine Learning</a></li>
+                    <li><a href="https://bridgeqiao.github.io/blog/category/matlab.html">Matlab</a></li>
+                </ul>
+                </nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-po-su-bei-xie-si.html" rel="bookmark"
+           title="Permalink to 《统计学习方法》-朴素贝叶斯">《统计学习方法》-朴素贝叶斯</a></h1>
     </header>
-</div>
 
-<div class="row-fluid">
-        <div class="span8 offset2 article-content">
+    <div class="entry-content">
+<footer class="post-info">
+        <span>六 20 一月 2018</span>
 
-            
-            <p>朴素贝叶斯和knn一样，属于懒惰学习方法的一种，假设输入的特征间是独立的，根据先验概率来求最大化后验概率（MAP）。</p>
+</footer><!-- /.post-info -->      <p>朴素贝叶斯和knn一样，属于懒惰学习方法的一种，假设输入的特征间是独立的，根据先验概率来求最大化后验概率（MAP）。</p>
 <h2>基本方法</h2>
 <p>了解这个章节需要复习概率统计的知识，关于概率、条件概率、全概率、最大似然等。
 </p>
@@ -138,43 +104,24 @@ $$</div>
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 </script>
-            
-            
-            <hr/>
-        </div>
-        <section>
-        <div class="span2" style="float:right;font-size:0.9em;">
-            <h4>Published</h4>
-            <time pubdate="pubdate" datetime="2018-01-20T00:00:00+08:00">1月 20, 2018</time>
-            <h4>Category</h4>
-            <a class="category-link" href="https://bridgeqiao.github.io/blog/categories.html#machine-learning-ref">Machine Learning</a>
-        </div>
-        </section>
-</div>
-</article>
-                </div>
-                <div class="span1"></div>
-            </div>
-        </div>
-        <div id="push"></div>
-    </div>
-<footer>
-<div id="footer">
-    <ul class="footer-content">
-        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
-    </ul>
-</div>
-</footer>            <script src="http://code.jquery.com/jquery.min.js"></script>
-        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-        <script>
-            function validateForm(query)
-            {
-                return (query.length > 0);
-            }
-        </script>
+    </div><!-- /.entry-content -->
 
-    
-    </body>
-    <!-- Theme: Elegant built for Pelican
-    License : http://oncrashreboot.com/pelican-elegant -->
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="https://github.com">Github</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme <a href="https://github.com/blueicefield/pelican-blueidea/">blueidea</a>, inspired by the default theme.</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
 </html>
