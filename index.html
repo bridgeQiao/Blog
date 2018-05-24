@@ -1,501 +1,193 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Bridge Qiao's Blog</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="BridgeQiao">
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="BridgeQiao" />
+        <meta name="copyright" content="BridgeQiao" />
 
-    <!-- Le styles -->
-    <link rel="stylesheet" href="https://bridgeqiao.github.io/blog/theme/css/bootstrap.dark.css" type="text/css" />
-    <style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-      .sidebar-nav {
-        padding: 9px 0;
-      }
-      .tag-1 {
-        font-size: 13pt;
-      }
-      .tag-2 {
-        font-size: 10pt;
-      }
-      .tag-2 {
-        font-size: 8pt;
-      }
-      .tag-4 {
-        font-size: 6pt;
-     }
-    </style>
-    <link href="https://bridgeqiao.github.io/blog/theme/css/bootstrap-responsive.dark.css" rel="stylesheet">
-        <link href="https://bridgeqiao.github.io/blog/theme/css/font-awesome.css" rel="stylesheet">
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
 
-    <link href="https://bridgeqiao.github.io/blog/theme/css/pygments.css" rel="stylesheet">
-
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-    <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="https://bridgeqiao.github.io/blog/theme/images/favicon.ico">
-    <link rel="apple-touch-icon" href="https://bridgeqiao.github.io/blog/theme/images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="https://bridgeqiao.github.io/blog/theme/images/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="https://bridgeqiao.github.io/blog/theme/images/apple-touch-icon-114x114.png">
-
-    <link href="https://bridgeqiao.github.io/blog/" type="application/atom+xml" rel="alternate" title="Bridge Qiao's Blog ATOM Feed" />
-
-  </head>
-
-  <body>
-
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="https://bridgeqiao.github.io/blog/index.html">Bridge Qiao's Blog </a>
-          <div class="nav-collapse">
-            <ul class="nav">
-                          <li class="divider-vertical"></li>
-                  <li >
-                    <a href="https://bridgeqiao.github.io/blog/category/blog.html">
-						<i class="icon-folder-open icon-large"></i>blog
-					</a>
-                  </li>
-                  <li >
-                    <a href="https://bridgeqiao.github.io/blog/category/fun.html">
-						<i class="icon-folder-open icon-large"></i>fun
-					</a>
-                  </li>
-                  <li >
-                    <a href="https://bridgeqiao.github.io/blog/category/linux.html">
-						<i class="icon-folder-open icon-large"></i>linux
-					</a>
-                  </li>
-                  <li >
-                    <a href="https://bridgeqiao.github.io/blog/category/machine-learning.html">
-						<i class="icon-folder-open icon-large"></i>Machine Learning
-					</a>
-                  </li>
-                  <li >
-                    <a href="https://bridgeqiao.github.io/blog/category/matlab.html">
-						<i class="icon-folder-open icon-large"></i>Matlab
-					</a>
-                  </li>
-
-                          <ul class="nav pull-right">
-                                <li><a href="https://bridgeqiao.github.io/blog/archives.html"><i class="icon-th-list"></i>Archives</a></li>
-                          </ul>
-
-            </ul>
-            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
-          </div><!--/.nav-collapse -->
+<meta property="og:title" content="Bridge Qiao&#39;s Blog"/>
+<meta name="twitter:title" content="Bridge Qiao&#39;s Blog">
+<meta property="og:url" content="https://bridgeqiao.github.io/blog" />
+<meta property="og:site_name" content="Bridge Qiao&#39;s Blog" />
+<meta property="og:article:author" content="BridgeQiao" />
+        <title>Bridge Qiao&#39;s Blog
+</title>
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="https://bridgeqiao.github.io/blog/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="https://bridgeqiao.github.io/blog/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="https://bridgeqiao.github.io/blog/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="https://bridgeqiao.github.io/blog/theme/css/custom.css" media="screen">
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="https://bridgeqiao.github.io/blog/"><span class=site-name>Bridge Qiao's Blog</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li  class="active"><a href="https://bridgeqiao.github.io/blog">Home</a></li>
+                            <li ><a href="https://bridgeqiao.github.io/blog/categories.html">Categories</a></li>
+                            <li ><a href="https://bridgeqiao.github.io/blog/tags.html">Tags</a></li>
+                            <li ><a href="https://bridgeqiao.github.io/blog/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="https://bridgeqiao.github.io/blog/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<div class="row-fluid">
+
+    <div class="row-fluid">
+
     </div>
 
-    <div class="container-fluid">
-      <div class="row">
-        <div class="span9" id="content">
-        <div class="article">
-                <h1><a href="https://bridgeqiao.github.io/blog/shi-yong-foobarti-gao-ben-di-bo-fang-yin-zhi.html">使用foobar提高本地播放音质</a></h1>
-                <div class="well small"><footer class="post-info">
-<span class="label">Date</span>
-<abbr class="published" title="2018-03-19T00:00:00+08:00">
-        <i class="icon-calendar"></i>一 19 三月 2018
-</abbr>
-<span class="label">By</span>
-<a href="https://bridgeqiao.github.io/blog/author/bridgeqiao.html"><i class="icon-user"></i>BridgeQiao</a>
-<span class="label">Category</span>
-<a href="https://bridgeqiao.github.io/blog/category/blog.html"><i class="icon-folder-open"></i>blog</a>.
-
-
-</footer><!-- /.post-info --></div>
-                <div class="summary"><p>播放无损音乐aoe之类的，用foobar2000+waspai比较好点，如果用电脑的话。</p>
-<p>下载无损音乐的<a href="http://www.51ape.com/">网站</a>，上面有很多。</p>
-<h2>安装wasapi</h2>
-<p>安装好foobar后，<span class="math">\(File\rightarrow Preference\)</span>，点击<strong>Components</strong>，点击下面的蓝色链接，在里面找到有<strong>WASAPI output support</strong>，同样在这个界面里有<strong>Install</strong>按钮，选择下载的文件就安装好了。</p>
-<h2>配置wasapi</h2>
-<p>点击<span class="math">\(Playback\rightarrow Output\)</span>，里面<strong>Device</strong>有两类WASAPI的选项：event和push，选择含扬声器的那两个其中一个，关于这两个的区别，网上有解释。</p>
-<p>我选择的是<strong>push</strong>，然后<strong>format</strong>选择<strong>32-bit</strong>。</p>
-<p>点开<span class="math">\(Advanced\rightarrow Playback\)</span>，点开<strong>WASAPI</strong>，点击含<strong>push mode …</strong></p>
-                        <a class="btn primary xsmall" href="https://bridgeqiao.github.io/blog/shi-yong-foobarti-gao-ben-di-bo-fang-yin-zhi.html">more ...</a>
+    <div class="row-fluid">
+        <div class="span8 offset2">
+            <header>
+            <h1 id="recent-posts">Recent Posts <a id="allposts" href="https://bridgeqiao.github.io/blog/archives.html">all posts</a></h1>
+            </header>
+        <div class="recent-posts">
+            <article>
+                <a href="https://bridgeqiao.github.io/blog/shi-yong-foobarti-gao-ben-di-bo-fang-yin-zhi.html">使用foobar提高本地播放音质  </a>
+                <section>
+                    posted in
+                <a href="https://bridgeqiao.github.io/blog/categories.html#blog-ref">blog</a>
+                <div class="recent-posts-time">
+                <time pubdate="pubdate" datetime="2018-03-19T00:00:00+08:00">一 19 三月 2018</time>
                 </div>
-        </div>
-        <hr />
-        <div class="article">
-                <h1><a href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-zhi-chi-xiang-liang-ji.html">《统计学习方法》-支持向量机</a></h1>
-                <div class="well small"><footer class="post-info">
-<span class="label">Date</span>
-<abbr class="published" title="2018-01-31T00:00:00+08:00">
-        <i class="icon-calendar"></i>三 31 一月 2018
-</abbr>
-<span class="label">By</span>
-<a href="https://bridgeqiao.github.io/blog/author/bridgeqiao.html"><i class="icon-user"></i>BridgeQiao</a>
-<span class="label">Category</span>
-<a href="https://bridgeqiao.github.io/blog/category/machine-learning.html"><i class="icon-folder-open"></i>Machine Learning</a>.
-
-
-</footer><!-- /.post-info --></div>
-                <div class="summary"><p>支持向量机是找到一个间隔最大的超平面，最大的将不同类数据分开。</p>
-<h2>线性支持向量机</h2>
-<h3>模型</h3>
-<p>硬间隔：
-</p>
-<div class="math">$$
-分界面：\omega x+b=0\\
-y=sign(\omega x+b)
-$$</div>
-<p>
-软间隔：
-</p>
-<div class="math">$$
-分界面：\omega^* x+b^*=0\\
-y=sign(\omega^* x+b^*)\\
-其中\omega^*的解是唯一的，而b^*的解是在一个区间内
-$$</div>
-<h3>策略</h3>
-<p>采用的是最大间隔的策略，也就是最小的分类误差，在解最大化点<span class="math">\(x_i\)</span>到超平面的距离<span class="math">\(\gamma_i = y_i(\frac{\omega x_i}{\left \| \omega \right \|}+\frac{b}{\left \| \omega \right …</span></p>
-                        <a class="btn primary xsmall" href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-zhi-chi-xiang-liang-ji.html">more ...</a>
+                </section>
+            </article>
+            <article>
+                <a href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-zhi-chi-xiang-liang-ji.html">《统计学习方法》-支持向量机  </a>
+                <section>
+                    posted in
+                <a href="https://bridgeqiao.github.io/blog/categories.html#machine-learning-ref">Machine Learning</a>
+                <div class="recent-posts-time">
+                <time pubdate="pubdate" datetime="2018-01-31T00:00:00+08:00">三 31 一月 2018</time>
                 </div>
-        </div>
-        <hr />
-        <div class="article">
-                <h1><a href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-luo-ji-si-di-hui-gui-yu-zui-da-shang-mo-xing.html">《统计学习方法》-逻辑斯蒂回归与最大熵模型</a></h1>
-                <div class="well small"><footer class="post-info">
-<span class="label">Date</span>
-<abbr class="published" title="2018-01-23T00:00:00+08:00">
-        <i class="icon-calendar"></i>二 23 一月 2018
-</abbr>
-<span class="label">By</span>
-<a href="https://bridgeqiao.github.io/blog/author/bridgeqiao.html"><i class="icon-user"></i>BridgeQiao</a>
-<span class="label">Category</span>
-<a href="https://bridgeqiao.github.io/blog/category/machine-learning.html"><i class="icon-folder-open"></i>Machine Learning</a>.
-
-
-</footer><!-- /.post-info --></div>
-                <div class="summary"><p>逻辑斯蒂回归是一个比较经典的分类方法，最大熵模型是按照最大熵准则来进行分类的算法，两个都属于对数线性模型。</p>
-<h2>逻辑斯蒂回归</h2>
-<p>在二分类中的模型：
-</p>
-<div class="math">$$
-\begin{aligned}
-P(Y=1|X)&amp;=\frac{exp(\omega X+b)}{1+exp(\omega X+b)}\\
-P(Y=0|X)&amp;=\frac{1}{1+exp(\omega X+b)}
-\end{aligned}
-$$</div>
-<p>
-这里<span class="math">\(X\in \boldsymbol{R}^n\)</span>是输入，<span class="math">\(Y\in \{0,1\}\)</span>是输出，比较两个条件概率的大小，将实例x分到概率值大的那一类。这个公式对于求解问题不是很直观，将分类的概率变成对数几率或 …</p>
-                        <a class="btn primary xsmall" href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-luo-ji-si-di-hui-gui-yu-zui-da-shang-mo-xing.html">more ...</a>
+                </section>
+            </article>
+            <article>
+                <a href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-luo-ji-si-di-hui-gui-yu-zui-da-shang-mo-xing.html">《统计学习方法》-逻辑斯蒂回归与最大熵模型  </a>
+                <section>
+                    posted in
+                <a href="https://bridgeqiao.github.io/blog/categories.html#machine-learning-ref">Machine Learning</a>
+                <div class="recent-posts-time">
+                <time pubdate="pubdate" datetime="2018-01-23T00:00:00+08:00">二 23 一月 2018</time>
                 </div>
-        </div>
-        <hr />
-        <div class="article">
-                <h1><a href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-jue-ce-shu.html">《统计学习方法》-决策树</a></h1>
-                <div class="well small"><footer class="post-info">
-<span class="label">Date</span>
-<abbr class="published" title="2018-01-21T00:00:00+08:00">
-        <i class="icon-calendar"></i>日 21 一月 2018
-</abbr>
-<span class="label">By</span>
-<a href="https://bridgeqiao.github.io/blog/author/bridgeqiao.html"><i class="icon-user"></i>BridgeQiao</a>
-<span class="label">Category</span>
-<a href="https://bridgeqiao.github.io/blog/category/machine-learning.html"><i class="icon-folder-open"></i>Machine Learning</a>.
-
-
-</footer><!-- /.post-info --></div>
-                <div class="summary"><p>决策树是一个比较经典的分类与回归的方法，包括特征选择、决策树的生成和决策树的修剪。</p>
-<h2>模型</h2>
-<p>决策树的模型是一棵已经构造完成的决策树，由节点和有向边组成，其中节点分为内部节点和叶子节点，内部节点表示一个特征或属性，即划分的特征，叶子节点表示一个类。</p>
-<blockquote>
-<p>从根节点开始对实例中的某一个特征进行测试，比如西瓜的颜色，有花纹的分成一个类，放在一个子节点中，另一种放在另一个子节点中，如此递归的对实例进行测试，直至叶节点。</p>
-</blockquote>
-<h2>决策规则</h2>
-<p>决策树可以看成if-then规则的集合，决策过程：每一条有向边对应一条规则，路径上内部节点的特征对应着规则的条件，而叶节点的类对应着规则的结论。</p>
-<blockquote>
-<p>路径或其对应的if-then规则集合具有一个重要的性质：互斥并且完备。</p>
-</blockquote>
-<p>从所有可能的决策树中选取最优的决策树是NP完全问题，所以现实中决策树学习算法采用启发式方法，近似求解这一优化问题，这样得到的决策树是次最优的。决策树算法通常是一个递归选择最优特征，并且用该特征对数据进行分割。</p>
-<h2>算法</h2>
-<h3>特征选择</h3>
-<p>随机变量X的熵定义为：
-</p>
-<div class="math">$$
-H(X)=-\sum_{i=1}^{n}p_i\log p_i
-$$</div>
-<p>
-条件熵(conditional entropy)<span class="math">\(H(Y|X)\)</span>，定义为 …</p>
-                        <a class="btn primary xsmall" href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-jue-ce-shu.html">more ...</a>
+                </section>
+            </article>
+            <article>
+                <a href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-jue-ce-shu.html">《统计学习方法》-决策树  </a>
+                <section>
+                    posted in
+                <a href="https://bridgeqiao.github.io/blog/categories.html#machine-learning-ref">Machine Learning</a>
+                <div class="recent-posts-time">
+                <time pubdate="pubdate" datetime="2018-01-21T00:00:00+08:00">日 21 一月 2018</time>
                 </div>
-        </div>
-        <hr />
-        <div class="article">
-                <h1><a href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-po-su-bei-xie-si.html">《统计学习方法》-朴素贝叶斯</a></h1>
-                <div class="well small"><footer class="post-info">
-<span class="label">Date</span>
-<abbr class="published" title="2018-01-20T00:00:00+08:00">
-        <i class="icon-calendar"></i>六 20 一月 2018
-</abbr>
-<span class="label">By</span>
-<a href="https://bridgeqiao.github.io/blog/author/bridgeqiao.html"><i class="icon-user"></i>BridgeQiao</a>
-<span class="label">Category</span>
-<a href="https://bridgeqiao.github.io/blog/category/machine-learning.html"><i class="icon-folder-open"></i>Machine Learning</a>.
-
-
-</footer><!-- /.post-info --></div>
-                <div class="summary"><p>朴素贝叶斯和knn一样，属于懒惰学习方法的一种，假设输入的特征间是独立的，根据先验概率来求最大化后验概率（MAP）。</p>
-<h2>基本方法</h2>
-<p>了解这个章节需要复习概率统计的知识，关于概率、条件概率、全概率、最大似然等。
-</p>
-<div class="math">$$
-后验概率P(Y=c_k|X=x)=\frac{P(X=x|Y=c_k)P(Y=c_k)}{\sum_k P(X=x|Y=c_k)P(Y=c_k)}
-$$</div>
-<p>
-分母都是相同的，去掉分母，分类器变成了
-</p>
-<div class="math">$$
-y=\arg \max_{c_k}P(Y=c_k)\prod_j P(X^{(j)}=x^{(j …</div>
-                        <a class="btn primary xsmall" href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-po-su-bei-xie-si.html">more ...</a>
+                </section>
+            </article>
+            <article>
+                <a href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-po-su-bei-xie-si.html">《统计学习方法》-朴素贝叶斯  </a>
+                <section>
+                    posted in
+                <a href="https://bridgeqiao.github.io/blog/categories.html#machine-learning-ref">Machine Learning</a>
+                <div class="recent-posts-time">
+                <time pubdate="pubdate" datetime="2018-01-20T00:00:00+08:00">六 20 一月 2018</time>
                 </div>
-        </div>
-        <hr />
-        <div class="article">
-                <h1><a href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-kjin-lin-fa.html">统计学习方法-k近邻法</a></h1>
-                <div class="well small"><footer class="post-info">
-<span class="label">Date</span>
-<abbr class="published" title="2018-01-19T00:00:00+08:00">
-        <i class="icon-calendar"></i>五 19 一月 2018
-</abbr>
-<span class="label">By</span>
-<a href="https://bridgeqiao.github.io/blog/author/bridgeqiao.html"><i class="icon-user"></i>BridgeQiao</a>
-<span class="label">Category</span>
-<a href="https://bridgeqiao.github.io/blog/category/machine-learning.html"><i class="icon-folder-open"></i>Machine Learning</a>.
-
-
-</footer><!-- /.post-info --></div>
-                <div class="summary"><p>k近邻算法不需要显示学习判别模型，属于懒惰学习的一种，这样要素变成了：k值的选取、距离度量和分类决策规则。</p>
-<h2>K值选择</h2>
-<p>k值决定了有多少个点参与决策，拿最简单的欧式距离（距离度量）来说，就是先选择一个固定的K值，然后比较带测试点与所有点的距离，然后将对应最小的k个距离的点选出来，选用投票法（分类决策）来决定带测试点的类别。</p>
-<p>k值的选取与模型有很大的关系，小了容易发生过拟合，大了可以减小学习的估计误差，但会增大近似误差。一般是取一个比较小的数值，然后采用交叉验证的方法来选取最优的k值（书上原话）。</p>
-<h2>距离度量</h2>
-<p>这里需要数学上的概念：范数，P范数定义是这样的：
-</p>
-<div class="math">$$
-P范数：L_p(x_i,x_j)=(\sum_{l=1}^n \vert x_i^{(l)}-x_j^{(l)}\vert^p)^{\frac{1}{p}},p\geqslant 1
-$$</div>
-<blockquote>
-<p>当然，是存在0范数的 …</p></blockquote>
-                        <a class="btn primary xsmall" href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-kjin-lin-fa.html">more ...</a>
+                </section>
+            </article>
+            <article>
+                <a href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-kjin-lin-fa.html">统计学习方法-k近邻法  </a>
+                <section>
+                    posted in
+                <a href="https://bridgeqiao.github.io/blog/categories.html#machine-learning-ref">Machine Learning</a>
+                <div class="recent-posts-time">
+                <time pubdate="pubdate" datetime="2018-01-19T00:00:00+08:00">五 19 一月 2018</time>
                 </div>
-        </div>
-        <hr />
-        <div class="article">
-                <h1><a href="https://bridgeqiao.github.io/blog/wei-xin-tiao-yi-tiao.html">微信跳一跳</a></h1>
-                <div class="well small"><footer class="post-info">
-<span class="label">Date</span>
-<abbr class="published" title="2018-01-16T00:00:00+08:00">
-        <i class="icon-calendar"></i>二 16 一月 2018
-</abbr>
-<span class="label">By</span>
-<a href="https://bridgeqiao.github.io/blog/author/bridgeqiao.html"><i class="icon-user"></i>BridgeQiao</a>
-<span class="label">Category</span>
-<a href="https://bridgeqiao.github.io/blog/category/fun.html"><i class="icon-folder-open"></i>fun</a>.
-
-
-</footer><!-- /.post-info --></div>
-                <div class="summary"><p>之前完微信跳一跳最高才60多。。。然后里面都是三位数起步的，遂刷了个分。。下面是安装记录：</p>
-<ol>
-<li>插上手机，弹出usb调试，点击确定；</li>
-<li>下载adb，我是直接用的刷机精灵，它自带了adb，加到环境变量path里就好了，就是安装目录里有adb.bat的那个，发现下载的外挂里面自带了adb（Tools），但貌似运行不起来。。。</li>
-<li>下载<a href="https://github.com/wangshub/wechat_jump_game">python外挂</a>。。。git clone或者下载zip包都行；</li>
-<li>运行wechat_jump_auto.py文件，后面是*_py3.py的得自己点，需要matplotlib包，pip安装就行；</li>
-<li>在显示的图片上先点击自己的中心点，再点击要跳的中心点，然后一直重复。。。刷到了233...，当然auto的是直接自动的了。</li>
-</ol>
-                        <a class="btn primary xsmall" href="https://bridgeqiao.github.io/blog/wei-xin-tiao-yi-tiao.html">more ...</a>
+                </section>
+            </article>
+            <article>
+                <a href="https://bridgeqiao.github.io/blog/wei-xin-tiao-yi-tiao.html">微信跳一跳  </a>
+                <section>
+                    posted in
+                <a href="https://bridgeqiao.github.io/blog/categories.html#fun-ref">fun</a>
+                <div class="recent-posts-time">
+                <time pubdate="pubdate" datetime="2018-01-16T00:00:00+08:00">二 16 一月 2018</time>
                 </div>
-        </div>
-        <hr />
-        <div class="article">
-                <h1><a href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-gai-lun.html">《统计学习方法》-概论</a></h1>
-                <div class="well small"><footer class="post-info">
-<span class="label">Date</span>
-<abbr class="published" title="2018-01-15T00:00:00+08:00">
-        <i class="icon-calendar"></i>一 15 一月 2018
-</abbr>
-<span class="label">By</span>
-<a href="https://bridgeqiao.github.io/blog/author/bridgeqiao.html"><i class="icon-user"></i>BridgeQiao</a>
-<span class="label">Category</span>
-<a href="https://bridgeqiao.github.io/blog/category/machine-learning.html"><i class="icon-folder-open"></i>Machine Learning</a>.
-
-
-</footer><!-- /.post-info --></div>
-                <div class="summary"><p>看完周志华老师的《机器学习》，对机器学习有了一个全面的了解，但其细节部分不是很了解，遂找同学借了本《统计学习方法》（感谢亲爱的波），感觉对机器学习的概念部分讲的很好，这里留作记录。</p>
-<p>概论部分讲了统计学习方法的组成、机器学习的分类及要素，还有一些评估方法。</p>
-<h2>1. 统计学习背景</h2>
-<p>统计学习是由一些数学组成：概率统计、信息论、优化理论，所以想要深入的了解的化，本科学的统计、高数的前几章得熟悉，然后线性代数得着重看下，对了解并行处理有很大的帮助，有需要的还可以看下凸优化相关的东西，对优化部分会有更深刻的理解。</p>
-<p>统计学习的对象是<code>数据</code>，包括数字、文字、图片、视频、音频等，这里有个前提：这些同类数据具有一定的统计规律性。目标是对数据进行预测与分析。</p>
-<h2>2. 三要素</h2>
-<p><span class="math">\(方法=模型+策略+算法\)</span>。</p>
-<h3>模型：</h3>
-<p>我对模型的理解是：找到一个映射关系（函数），使得输入和输出的对应关系最大化，也就是一些统计特性更好。</p>
-<p>书本上对模型的理解是在假设空间中找到最优的模型，怎么理解？书后面给了解释 …</p>
-                        <a class="btn primary xsmall" href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-gai-lun.html">more ...</a>
+                </section>
+            </article>
+            <article>
+                <a href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-gai-lun.html">《统计学习方法》-概论  </a>
+                <section>
+                    posted in
+                <a href="https://bridgeqiao.github.io/blog/categories.html#machine-learning-ref">Machine Learning</a>
+                <div class="recent-posts-time">
+                <time pubdate="pubdate" datetime="2018-01-15T00:00:00+08:00">一 15 一月 2018</time>
                 </div>
-        </div>
-        <hr />
-        <div class="article">
-                <h1><a href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-gan-zhi-ji.html">《统计学习方法》-感知机</a></h1>
-                <div class="well small"><footer class="post-info">
-<span class="label">Date</span>
-<abbr class="published" title="2018-01-15T00:00:00+08:00">
-        <i class="icon-calendar"></i>一 15 一月 2018
-</abbr>
-<span class="label">By</span>
-<a href="https://bridgeqiao.github.io/blog/author/bridgeqiao.html"><i class="icon-user"></i>BridgeQiao</a>
-<span class="label">Category</span>
-<a href="https://bridgeqiao.github.io/blog/category/machine-learning.html"><i class="icon-folder-open"></i>Machine Learning</a>.
-
-
-</footer><!-- /.post-info --></div>
-                <div class="summary"><h2>模型</h2>
-<p>感知机的目标是找到一个可以将正负实例完全分开的分离超平面<span class="math">\(\omega X+b=0\)</span>，模型的形式显而易见，为：
-</p>
-<div class="math">$$
-f(x)=sign(\omega X+b)\\
-其中sign(x)=\left\{\begin{matrix}
-+1, &amp; x\geqslant 0\\ 
--1, &amp; x&lt;0
-\end{matrix}\right.
-$$</div>
-<p>当在平面的上面时，划分成一类，下面一类。</p>
-<h2>策略</h2>
-<p>感知机的目标是找到一个可以将正负实例完全分开的分离超平面，需要定义一个策略，即定义（经验）损失函数并将损失函数最小化。</p>
-<p>损失函数一个自然选择是误分类点的总数，另一个是误分类点到超平面S的总距离，是参数<span class="math">\(\omega,b\)</span>的连续可导函数，有利于优化。</p>
-<div class="math">$$
-误分类点到S的总距离L=-\frac{1}{\left \| \omega …</div>
-                        <a class="btn primary xsmall" href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-gan-zhi-ji.html">more ...</a>
+                </section>
+            </article>
+            <article>
+                <a href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-gan-zhi-ji.html">《统计学习方法》-感知机  </a>
+                <section>
+                    posted in
+                <a href="https://bridgeqiao.github.io/blog/categories.html#machine-learning-ref">Machine Learning</a>
+                <div class="recent-posts-time">
+                <time pubdate="pubdate" datetime="2018-01-15T00:00:00+08:00">一 15 一月 2018</time>
                 </div>
-        </div>
-        <hr />
-        <div class="article">
-                <h1><a href="https://bridgeqiao.github.io/blog/shi-yong-hexo-githubda-jian-blog.html">使用hexo + github搭建blog</a></h1>
-                <div class="well small"><footer class="post-info">
-<span class="label">Date</span>
-<abbr class="published" title="2018-01-14T00:00:00+08:00">
-        <i class="icon-calendar"></i>日 14 一月 2018
-</abbr>
-<span class="label">By</span>
-<a href="https://bridgeqiao.github.io/blog/author/bridgeqiao.html"><i class="icon-user"></i>BridgeQiao</a>
-<span class="label">Category</span>
-<a href="https://bridgeqiao.github.io/blog/category/fun.html"><i class="icon-folder-open"></i>fun</a>.
-
-
-</footer><!-- /.post-info --></div>
-                <div class="summary"><p>最近使用jekyll烦了，经常出现博客编译出问题，打算试下hexo，结果很不错，所以直接换成了hexo，这里写个blog留作记录。</p>
-<h4>1. 安装环境</h4>
-<p>hexo是本地先编译成功后，再上传到github上，和jekyll不一样（github内部支持）。</p>
-<p>这里只介绍linux环境，在windows直接下载软件包安装就行。</p>
-<p>安装<code>nodejs</code>, <code>hexo</code>:</p>
-<div class="highlight"><pre><span></span>sudo apt install nodejs-legacy
-sudo npm install hexo -g
-<span class="c1"># 配置git方式部署</span>
-sudo npm install hexo-deployer-git --save
-</pre></div>
-
-
-<p>这里可以考虑使用<a href="https://lug.ustc.edu.cn/wiki/mirrors/help/npm">USTC</a>加速下载软件包：</p>
-<!--more-->
-
-<div class="highlight"><pre><span></span><span class="c1"># 编辑 ~/.npmrc</span>
-<span class="nv">registry</span><span class="o">=</span>http://npmreg.mirrors.ustc.edu.cn/
-</pre></div>
-
-
-<h4>2. 配置环境</h4>
-<p>在github上新建项目，xxx.github.io或者blog …</p>
-                        <a class="btn primary xsmall" href="https://bridgeqiao.github.io/blog/shi-yong-hexo-githubda-jian-blog.html">more ...</a>
+                </section>
+            </article>
+            <article>
+                <a href="https://bridgeqiao.github.io/blog/shi-yong-hexo-githubda-jian-blog.html">使用hexo + github搭建blog  </a>
+                <section>
+                    posted in
+                <a href="https://bridgeqiao.github.io/blog/categories.html#fun-ref">fun</a>
+                <div class="recent-posts-time">
+                <time pubdate="pubdate" datetime="2018-01-14T00:00:00+08:00">日 14 一月 2018</time>
                 </div>
+                </section>
+            </article>
         </div>
-        <hr />
-
-        <div class="pagination">
-        <ul>
-                        <li class="prev disabled"><a href="#">&larr; Previous</a></li>
-                        <li class="active"><a href="https://bridgeqiao.github.io/blog/index.html">1</a></li>
-                        <li class=""><a href="https://bridgeqiao.github.io/blog/index2.html">2</a></li>
-                        <li class="next"><a href="https://bridgeqiao.github.io/blog/index2.html">Next &rarr;</a></li>
-        </ul>
         </div>
-
-        </div><!--/span-->
-
-                <div class="span3 well sidebar-nav" id="sidebar">
-<ul class="nav nav-list">
-<li class="nav-header"><h4><i class="icon-external-link"></i>blogroll</h4></li>
-    <li><a href="http://getpelican.com/"><i class="icon-external-link"></i>Pelican</a></li>
-    <li><a href="http://python.org/"><i class="icon-external-link"></i>Python.org</a></li>
-    <li><a href="https://github.com"><i class="icon-external-link"></i>Github</a></li>
-
-<li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
-<li>
-<a href="https://bridgeqiao.github.io/blog/category/blog.html">
-    <i class="icon-folder-open icon-large"></i>blog
-</a>
-</li>
-<li>
-<a href="https://bridgeqiao.github.io/blog/category/fun.html">
-    <i class="icon-folder-open icon-large"></i>fun
-</a>
-</li>
-<li>
-<a href="https://bridgeqiao.github.io/blog/category/linux.html">
-    <i class="icon-folder-open icon-large"></i>linux
-</a>
-</li>
-<li>
-<a href="https://bridgeqiao.github.io/blog/category/machine-learning.html">
-    <i class="icon-folder-open icon-large"></i>Machine Learning
-</a>
-</li>
-<li>
-<a href="https://bridgeqiao.github.io/blog/category/matlab.html">
-    <i class="icon-folder-open icon-large"></i>Matlab
-</a>
-</li>
-
-<li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
-
-
-</ul>        </div><!--/.well -->
-
-      </div><!--/row-->
-
-      <hr>
-
-      <footer>
-        <address id="about">
-                Proudly powered by <a href="http://pelican.notmyidea.org/">Pelican <i class="icon-external-link"></i></a>,
-                                which takes great advantage of <a href="http://python.org">Python <i class="icon-external-link"></i></a>.
-        </address><!-- /#about -->
-
-        <p>The theme is based on <a href="http://twitter.github.com/bootstrap/">Bootstrap from Twitter <i class="icon-external-link"></i></a>,
-                   and <a href="http://fortawesome.github.com/Font-Awesome/">Font-Awesome <i class="icon-external-link"></i></a>, thanks!</p>
-      </footer>
-
-    </div><!--/.fluid-container-->
-
-
-
-    <!-- Le javascript -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://bridgeqiao.github.io/blog/theme/js/jquery-1.7.2.min.js"></script>
-    <script src="https://bridgeqiao.github.io/blog/theme/js/bootstrap.min.js"></script>
-  </body>
+    </div>
+</div>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+        <div id="push"></div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>        <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
+    </body>
+    <!-- Theme: Elegant built for Pelican
+    License : http://oncrashreboot.com/pelican-elegant -->
 </html>

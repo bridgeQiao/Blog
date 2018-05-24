@@ -1,135 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>安裝manjaro</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="BridgeQiao">
+<html lang="en-US">
+    <head>
+        <meta charset="utf-8"> 
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="BridgeQiao" />
+        <meta name="copyright" content="BridgeQiao" />
 
-    <!-- Le styles -->
-    <link rel="stylesheet" href="https://bridgeqiao.github.io/blog/theme/css/bootstrap.dark.css" type="text/css" />
-    <style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-      .sidebar-nav {
-        padding: 9px 0;
-      }
-      .tag-1 {
-        font-size: 13pt;
-      }
-      .tag-2 {
-        font-size: 10pt;
-      }
-      .tag-2 {
-        font-size: 8pt;
-      }
-      .tag-4 {
-        font-size: 6pt;
-     }
-    </style>
-    <link href="https://bridgeqiao.github.io/blog/theme/css/bootstrap-responsive.dark.css" rel="stylesheet">
-        <link href="https://bridgeqiao.github.io/blog/theme/css/font-awesome.css" rel="stylesheet">
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary">
 
-    <link href="https://bridgeqiao.github.io/blog/theme/css/pygments.css" rel="stylesheet">
+<meta name="keywords" content=", linux, " />
 
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+<meta property="og:title" content="安裝manjaro "/>
+<meta property="og:url" content="https://bridgeqiao.github.io/blog/an-zhuang-manjaro.html" />
+<meta property="og:description" content="烧入usb，由于电脑是bios的，将u盘的EFI文件夹重命名为back 由于我用的版本是mate live，图形界面安装有点问题，在安装软件包的时候看不到进度，所以我下载了manjaro-architect，用命令行安装：sudo setup，不得不说live文件驱动很好，wifi能正常连接 用命令行安装的时候，先分好区，然后挂载，如果安装过archlinux的话，应该知道这点，接着设置软件源，然后安装基础软件、图形界面之类的，装完重启 先不登录（lightdm起不来），alt+ctrl+F2，F2到F6都行，su后设置密码，添加用户 进去后设置语言：manjaro-settings-manager 安装常用软件：yaourt -S jdk8-openjdk android-studio typora，主要是用来学习android 开机后使用pacman时，经常会出现错误，要使用sudo pacman -Syy，先刷新软件源 安装fcitx：sudo pacman -S …" />
+<meta property="og:site_name" content="Bridge Qiao&#39;s Blog" />
+<meta property="og:article:author" content="BridgeQiao" />
+<meta property="og:article:published_time" content="2017-04-08T00:00:00+08:00" />
+<meta name="twitter:title" content="安裝manjaro ">
+<meta name="twitter:description" content="烧入usb，由于电脑是bios的，将u盘的EFI文件夹重命名为back 由于我用的版本是mate live，图形界面安装有点问题，在安装软件包的时候看不到进度，所以我下载了manjaro-architect，用命令行安装：sudo setup，不得不说live文件驱动很好，wifi能正常连接 用命令行安装的时候，先分好区，然后挂载，如果安装过archlinux的话，应该知道这点，接着设置软件源，然后安装基础软件、图形界面之类的，装完重启 先不登录（lightdm起不来），alt+ctrl+F2，F2到F6都行，su后设置密码，添加用户 进去后设置语言：manjaro-settings-manager 安装常用软件：yaourt -S jdk8-openjdk android-studio typora，主要是用来学习android 开机后使用pacman时，经常会出现错误，要使用sudo pacman -Syy，先刷新软件源 安装fcitx：sudo pacman -S …">
 
-    <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="https://bridgeqiao.github.io/blog/theme/images/favicon.ico">
-    <link rel="apple-touch-icon" href="https://bridgeqiao.github.io/blog/theme/images/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="https://bridgeqiao.github.io/blog/theme/images/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="https://bridgeqiao.github.io/blog/theme/images/apple-touch-icon-114x114.png">
-
-    <link href="https://bridgeqiao.github.io/blog/" type="application/atom+xml" rel="alternate" title="Bridge Qiao's Blog ATOM Feed" />
-
-  </head>
-
-  <body>
-
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="https://bridgeqiao.github.io/blog/index.html">Bridge Qiao's Blog </a>
-          <div class="nav-collapse">
-            <ul class="nav">
-                          <li class="divider-vertical"></li>
-                  <li >
-                    <a href="https://bridgeqiao.github.io/blog/category/blog.html">
-						<i class="icon-folder-open icon-large"></i>blog
-					</a>
-                  </li>
-                  <li >
-                    <a href="https://bridgeqiao.github.io/blog/category/fun.html">
-						<i class="icon-folder-open icon-large"></i>fun
-					</a>
-                  </li>
-                  <li class="active">
-                    <a href="https://bridgeqiao.github.io/blog/category/linux.html">
-						<i class="icon-folder-open icon-large"></i>linux
-					</a>
-                  </li>
-                  <li >
-                    <a href="https://bridgeqiao.github.io/blog/category/machine-learning.html">
-						<i class="icon-folder-open icon-large"></i>Machine Learning
-					</a>
-                  </li>
-                  <li >
-                    <a href="https://bridgeqiao.github.io/blog/category/matlab.html">
-						<i class="icon-folder-open icon-large"></i>Matlab
-					</a>
-                  </li>
-
-                          <ul class="nav pull-right">
-                                <li><a href="https://bridgeqiao.github.io/blog/archives.html"><i class="icon-th-list"></i>Archives</a></li>
-                          </ul>
-
-            </ul>
-            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
-          </div><!--/.nav-collapse -->
+        <title>安裝manjaro  · Bridge Qiao&#39;s Blog
+</title>
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="https://bridgeqiao.github.io/blog/theme/css/pygments.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="https://bridgeqiao.github.io/blog/theme/tipuesearch/tipuesearch.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="https://bridgeqiao.github.io/blog/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="https://bridgeqiao.github.io/blog/theme/css/custom.css" media="screen">
+    </head>
+    <body>
+        <div id="content-sans-footer">
+        <div class="navbar navbar-static-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="https://bridgeqiao.github.io/blog/"><span class=site-name>Bridge Qiao's Blog</span></a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav pull-right top-menu">
+                            <li ><a href="https://bridgeqiao.github.io/blog">Home</a></li>
+                            <li ><a href="https://bridgeqiao.github.io/blog/categories.html">Categories</a></li>
+                            <li ><a href="https://bridgeqiao.github.io/blog/tags.html">Tags</a></li>
+                            <li ><a href="https://bridgeqiao.github.io/blog/archives.html">Archives</a></li>
+                            <li><form class="navbar-search" action="https://bridgeqiao.github.io/blog/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span1"></div>
+                <div class="span10">
+<article>
+<div class="row-fluid">
+    <header class="page-header span10 offset2">
+    <h1><a href="https://bridgeqiao.github.io/blog/an-zhuang-manjaro.html"> 安裝manjaro  </a></h1>
+    </header>
+</div>
 
-    <div class="container-fluid">
-      <div class="row">
-        <div class="span9" id="content">
-<section id="content">
-        <article>
-                <header>
-                        <h1>
-                                <a href=""
-                                        rel="bookmark"
-                                        title="Permalink to 安裝manjaro">
-                                        安裝manjaro
-                                </a>
-                        </h1>
-                </header>
-                <div class="entry-content">
-                <div class="well">
-<footer class="post-info">
-<span class="label">Date</span>
-<abbr class="published" title="2017-04-08T00:00:00+08:00">
-        <i class="icon-calendar"></i>六 08 四月 2017
-</abbr>
-<span class="label">By</span>
-<a href="https://bridgeqiao.github.io/blog/author/bridgeqiao.html"><i class="icon-user"></i>BridgeQiao</a>
-<span class="label">Category</span>
-<a href="https://bridgeqiao.github.io/blog/category/linux.html"><i class="icon-folder-open"></i>linux</a>.
+<div class="row-fluid">
+        <div class="span8 offset2 article-content">
 
-
-</footer><!-- /.post-info -->                </div>
-                <ul>
+            
+            <ul>
 <li>
 <p>烧入usb，由于电脑是bios的，将u盘的EFI文件夹重命名为back</p>
 </li>
@@ -176,71 +115,43 @@
 <span class="n">c</span><span class="o">.</span><span class="n">ConsoleWidget</span><span class="o">.</span><span class="n">gui_completion</span> <span class="s1">&#39;plain&#39;</span>
 <span class="n">c</span><span class="o">.</span><span class="n">ConsoleWidget</span><span class="o">.</span><span class="n">height</span> <span class="mi">25</span><span class="p">,</span> <span class="n">width</span> <span class="mi">81</span>
 </pre></div>
-                </div><!-- /.entry-content -->
-        </article>
-</section>
-        </div><!--/span-->
+            
+            
+            <hr/>
+        </div>
+        <section>
+        <div class="span2" style="float:right;font-size:0.9em;">
+            <h4>Published</h4>
+            <time pubdate="pubdate" datetime="2017-04-08T00:00:00+08:00">4月 8, 2017</time>
+            <h4>Category</h4>
+            <a class="category-link" href="https://bridgeqiao.github.io/blog/categories.html#linux-ref">linux</a>
+        </div>
+        </section>
+</div>
+</article>
+                </div>
+                <div class="span1"></div>
+            </div>
+        </div>
+        <div id="push"></div>
+    </div>
+<footer>
+<div id="footer">
+    <ul class="footer-content">
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+    </ul>
+</div>
+</footer>            <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script>
+            function validateForm(query)
+            {
+                return (query.length > 0);
+            }
+        </script>
 
-                <div class="span3 well sidebar-nav" id="sidebar">
-<ul class="nav nav-list">
-<li class="nav-header"><h4><i class="icon-external-link"></i>blogroll</h4></li>
-    <li><a href="http://getpelican.com/"><i class="icon-external-link"></i>Pelican</a></li>
-    <li><a href="http://python.org/"><i class="icon-external-link"></i>Python.org</a></li>
-    <li><a href="https://github.com"><i class="icon-external-link"></i>Github</a></li>
-
-<li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
-<li>
-<a href="https://bridgeqiao.github.io/blog/category/blog.html">
-    <i class="icon-folder-open icon-large"></i>blog
-</a>
-</li>
-<li>
-<a href="https://bridgeqiao.github.io/blog/category/fun.html">
-    <i class="icon-folder-open icon-large"></i>fun
-</a>
-</li>
-<li>
-<a href="https://bridgeqiao.github.io/blog/category/linux.html">
-    <i class="icon-folder-open icon-large"></i>linux
-</a>
-</li>
-<li>
-<a href="https://bridgeqiao.github.io/blog/category/machine-learning.html">
-    <i class="icon-folder-open icon-large"></i>Machine Learning
-</a>
-</li>
-<li>
-<a href="https://bridgeqiao.github.io/blog/category/matlab.html">
-    <i class="icon-folder-open icon-large"></i>Matlab
-</a>
-</li>
-
-<li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
-
-
-</ul>        </div><!--/.well -->
-
-      </div><!--/row-->
-
-      <hr>
-
-      <footer>
-        <address id="about">
-                Proudly powered by <a href="http://pelican.notmyidea.org/">Pelican <i class="icon-external-link"></i></a>,
-                                which takes great advantage of <a href="http://python.org">Python <i class="icon-external-link"></i></a>.
-        </address><!-- /#about -->
-
-        <p>The theme is based on <a href="http://twitter.github.com/bootstrap/">Bootstrap from Twitter <i class="icon-external-link"></i></a>,
-                   and <a href="http://fortawesome.github.com/Font-Awesome/">Font-Awesome <i class="icon-external-link"></i></a>, thanks!</p>
-      </footer>
-
-    </div><!--/.fluid-container-->
-
-
-
-    <!-- Le javascript -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://bridgeqiao.github.io/blog/theme/js/jquery-1.7.2.min.js"></script>
-    <script src="https://bridgeqiao.github.io/blog/theme/js/bootstrap.min.js"></script>
-  </body>
+    
+    </body>
+    <!-- Theme: Elegant built for Pelican
+    License : http://oncrashreboot.com/pelican-elegant -->
 </html>
