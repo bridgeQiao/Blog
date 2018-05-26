@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <title>阅读《数字图像处理（MATLAB版）》笔记</title>
+        <link rel="stylesheet" href="https://bridgeqiao.github.io/blog/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://bridgeqiao.github.io/blog/">Bridge Qiao's Blog </a></h1>
+                <nav><ul>
+                    <li><a href="https://bridgeqiao.github.io/blog/category/fun.html">fun</a></li>
+                    <li class="active"><a href="https://bridgeqiao.github.io/blog/category/image-process.html">Image Process</a></li>
+                    <li><a href="https://bridgeqiao.github.io/blog/category/linux.html">linux</a></li>
+                    <li><a href="https://bridgeqiao.github.io/blog/category/machine-learning.html">Machine Learning</a></li>
+                    <li><a href="https://bridgeqiao.github.io/blog/category/matlab.html">Matlab</a></li>
+                </ul>
+                </nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://bridgeqiao.github.io/blog/yue-du-shu-zi-tu-xiang-chu-li-matlabban-bi-ji.html" rel="bookmark"
+           title="Permalink to 阅读《数字图像处理（MATLAB版）》笔记">阅读《数字图像处理（MATLAB版）》笔记</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <span>四 01 三月 2018</span>
+
+</footer><!-- /.post-info -->      <p>阅读《数字图像处理（MATLAB版）》，这里作个笔记，记录学过的东西，方便时时复习。</p>
+<h1>序言</h1>
+<p>这一章介绍了<code>MATLAB</code>的一些基础语法知识，像基础的运算、函数控制语句。其中我个人觉得匿名函数很有意思，以前只是看到有@符号，但没具体用过，这里作下记录。</p>
+<p>@表示函数句柄，可以作为<strong>函数别名</strong>和<strong>匿名函数</strong>，下面是简单的例子。</p>
+<div class="highlight"><pre><span></span><span class="c">% 函数别名，f函数可以当成sin函数使用</span>
+<span class="n">f</span><span class="p">=@</span><span class="nb">sin</span><span class="p">;</span>
+<span class="c">% 匿名函数，g(x)函数用来求x每个元素的平方</span>
+<span class="n">g</span><span class="p">=@(</span><span class="n">x</span><span class="p">)</span> <span class="n">x</span><span class="o">.^</span><span class="mi">2</span><span class="p">;</span>
+</pre></div>
+
+
+<h1>灰度变换与空间滤波</h1>
+<p>这一章主要是介绍灰度变换和空间滤波，其中，<strong>灰度变换</strong>有图像变换（<code>imadjust</code>，图像反转、简单灰度扩展）、图像拉伸（<code>stretchlim</code>，对数及对比度拉伸变换），直方图匹配（直方图相关算法、直方图均衡<code>histeq</code>），<strong>空间滤波</strong>有线性和非线性的区别。线性滤波具体的过程是由时域的卷积得来，主要使用<code>imfilter</code>函数，需要一个模板。模板可以使用<code>fspecial</code>函数产生，也可以自己写模板。非线性滤波器，书里面讲了统计排序滤波器<code>ordfilt2</code>，它们的响应基于对图像邻域中所包含像素的排序，然后使用排序结果确定的值替换邻域中的中心像素值。</p>
+<h1>频率域滤波</h1>
+<p>在频率域中滤波操作是将图片通过傅里叶变换转化为频率域之后，用相同大小的数组直接相乘。其中，进行傅里叶变换的图片需要转化成float格式（<code>im2single</code>函数），为什么不用double？因为傅里叶变换很耗内存。相乘后，使用傅里叶逆变换处理后，需要将得到的图片转化为原来的格式。频率是亮度，相位是位置。</p>
+<p>其中，频率域是周期变化的，对周期函数进行卷积操作会使相邻周期的干扰，产生折叠误差，所以会填充零来避免，当然，还存在别的填充方式，比如循环等。</p>
+<p>DFT的几个步骤：转化成float，获取填充参数，使用傅里叶变换，用滤波器乘以变换结果，逆变换，修剪成原来的大小，转换成原来的数据格式。</p>
+<p>空间滤波器和频率滤波器的变换：</p>
+<p>几种低通滤波器的传递函数：</p>
+<p>$$
+\begin{aligned}</p>
+<p>\begin{array}{ccc}</p>
+<div class="highlight"><pre><span></span>\text{标准低通滤波器ILPF} : &amp;  &amp; \\
+
+&amp; H (u, v) = \left\{ \begin{array}{cc}
+
+  1, &amp; D (u, v) \leq D_0\\
+
+  0, &amp; D (u, v) &gt; D_0
+
+\end{array} \right. &amp; \\
+
+\text{巴特沃斯低通滤波器BLPF} : &amp;  &amp; \\
+
+&amp; H (u, v) = \frac{1}{1 + D (u, v) / D_0^{2 n}} &amp; \\
+
+\text{高斯低通滤波器GLPF} : &amp;  &amp; \\
+
+&amp; H (u, v) = e^{- D^2 (u, v) / 2 \sigma^2} &amp;
+</pre></div>
+
+
+<p>\end{array}\end{aligned}
+<span class="math">\($
+高通滤波器刚好相反，\)</span> H_{HP} (u, v) = 1 -H_{LP} (u,v) $，其中巴特沃斯高通滤波器为：</p>
+<div class="math">$$
+H (u, v) = \frac{1}{1 + D_0 / D (u, v)^{2 n}}
+$$</div>
+<p>在实际应用中常混合使用这几种方法。</p>
+<h1>图像复原与重建</h1>
+<h2>图像复原</h2>
+<p>都是以预先确定的目标来改善图像，图像增强主要是主观处理，让人看起来更舒服，图像重建大部分是客观处理，利用退化现象的某种先验知识来复原一张退化的图像。</p>
+<p>退化：<span class="math">\(g (x, y) = Hf (x, y) + \eta (x, y)\)</span>,
+表示原图<span class="math">\( f (x,y) $，退化图像 $g (x, y)\)</span>。</p>
+<p><span class="math">\(f (x, y) \rightarrow H \rightarrow + \eta (x, y) \rightarrow g (x, y) \rightarrow \hat{f} (x, y)\)</span></p>
+<p>退化函数H是频率域下的变化，如果H是一个线性的、空间不变的过程，那么空间域的退化图像可表示为：</p>
+<p><span class="math">\(g (x, y) = h (x, y) \star f (x, y) + \eta (x, y)\)</span></p>
+<p><span class="math">\(f (x, y)\)</span>在频率域为<span class="math">\(F (x,y)\)</span>，有时被称为光传递函数（OTF），<span class="math">\(h (x,y)\)</span>称为点扩散函数（PSF）。OTF和PSF是一个傅里叶变换对，matlab里有<code>otf2psf</code>和<code>psf2otf</code>用于OTF和PSF间互相转换。</p>
+<p>使用<code>imnoise</code>函数添加噪声，但生成的噪声有限，如果想生成规定分布的噪声的话，需要自己动手。</p>
+<p>如果退化的只有噪声的话，可以采用空间滤波来复原原图，书上写了自适应中值滤波，代码值得一看。</p>
+<p>使用频率域滤波降低周期噪声。周期噪声再频率域上表现为类似冲击的脉冲，滤除这些分量的主要方法是使用<strong>陷波带阻滤波器</strong>。具有Q个陷波对的陷波带阻滤波器的通式为：
+</p>
+<div class="math">$$
+H{NR} (u, v) = \prod{k = 1}^Q H_k (u, v) H_{- k} (u, v)
+$$</div>
+<p>
+式中，<span class="math">\(H_k (u, v)\)</span>和<span class="math">\(H_{- k} (u,v)\)</span>都是高通滤波器，中心点分别是<span class="math">\((u_k, v_k)\)</span>和<span class="math">\((- u_k, - v_k)\)</span>。</p>
+<p><strong>直接逆滤波</strong>，即忽略噪声项，形成如下估计：
+</p>
+<div class="math">$$
+\hat{F} (u, v) = \frac{G (u, v)}{H (u, v)}
+$$</div>
+<p>
+取<span class="math">\(\hat{F} (u, v)\)</span>的傅立叶反变换就能得到图像的相应估计。</p>
+<p><strong>维纳滤波</strong>，最早也是最为知名的线性图像复原方法，寻找统计误差函数</p>
+<div class="math">$$
+e^2 = E \{(f - \hat{f})^2 \}
+$$</div>
+<p>即，均方误差的一个最小估计。在频率域上的解是：
+</p>
+<div class="math">$$
+\hat{F} (u, v) = \frac{1}{H (u, v)}  \frac{|H (u, v) |^2}{|H (u, v) |^2 - S_{\eta} (u, v) / S_f (u, v)} G (u, v)
+$$</div>
+<p>其中，<span class="math">\(H (u, v)\)</span>表示退化函数，<span class="math">\(S_{\eta} (u, v) = |N (u, v)|^2\)</span>表示噪声功率谱，<span class="math">\(S_f (u, v) = |F (u, v)|^2\)</span>表示未退化图像功率谱。</p>
+<p>用常量数组来代替<span class="math">\(S_{\eta} (u, v) / S_f (u,v)\)</span>就得到了所谓的参数维纳滤波器。即使是用一个常量数组的简单行为也可以对直接逆滤波产生重大的改进。实现维纳滤波的函数是deconvwnr函数。</p>
+<h2>图像重建</h2>
+<p>图像重建是用一系列一维投影来重建图像，在医学图像重建中的计算机断层（CT）的主要应用方法。</p>
+<p>主要的技术是反投影，沿射线射入的方向把吸收剖面投影回去。由一个吸收剖面波形生成一幅二维图像，然后使用不同的角度，将生成的二维图像进行叠加，最后形成重建图片。</p>
+<p>后面是数学上描述反投影和减少模糊的方法。</p>
+<p>数学上描述投影的机制称为雷登变换。公式为：
+</p>
+<div class="math">$$
+g (\rho, \theta) = \int_{- \infty}^{\infty} \int_{- \infty}^{\infty} f (x,
+   y) \delta (\text{xcos} \theta + \text{ycos} \theta - \rho) \text{dxdy}
+$$</div>
+<p>离散形式：
+</p>
+<div class="math">$$
+g (\rho, \theta) = \sum_{x = 0}^{M - 1} \sum_{y = 0}^{N - 1} f (x, y)
+   \delta (\text{xcos} \theta + \text{ysin} \theta - \rho)
+$$</div>
+<p>在<span class="math">\(\theta\)</span>角度的反投影图像为：
+</p>
+<div class="math">$$
+f_{\theta} (x, y) = g (\rho, \theta) = g (\text{xcos} \theta + \text{ycos}
+   \theta, \theta)
+$$</div>
+<p>对上半周进行积分，即<span class="math">\(\theta (0, \pi)\)</span>，有：
+</p>
+<div class="math">$$
+f (x, y) = \int_0^{\pi} f_{\theta} (x, y) \text{d{\theta}} = \sum_{\theta =
+   0}^{\pi} f_{\theta} (x, y)
+$$</div>
+<p>傅立叶切片定理：
+</p>
+<div class="math">$$
+G (\omega, \theta) = \int_{- \infty}^{\infty} g (\rho, \theta) e^{- j 2
+   \text{{\pi}{\omega}{\rho}}} \text{d{\rho}}
+$$</div>
+<p>一个投影的二维傅立叶变换是得到该投影区域的二维傅立叶变换的一个切片。</p>
+<p>平行束投影通过如下步骤得到：</p>
+<ol>
+<li>
+<p>计算每个投影的一维傅里叶变换；</p>
+</li>
+<li>
+<p>用滤波函数<span class="math">\(| \omega |\)</span>乘以每个傅里叶变换；</p>
+</li>
+<li>
+<p>得到第二步的每个傅里叶反变换；</p>
+</li>
+<li>
+<p>对第三步的所有结果进行积分（求和），得到<span class="math">\(f (x, y)\)</span>。</p>
+</li>
+</ol>
+<p>因为使用了一个滤波器，所以上面的办法可以称为由滤波投影重建图像。</p>
+<h1>彩色图像</h1>
+<p>彩色图像涉及到彩色图像的图像空间变换，滤波操作，阈值处理，即边缘检测，图像分割。</p>
+<p>空间滤波都可以转换成单层的灰度图像进行。而边缘检测不能够分层进行，在(x,y)点的角度为：
+</p>
+<div class="math">$$
+\theta (x, y) = \frac{1}{2} \arctan \left[ \frac{2g{xy}}{g_{xx} - g_{xy}} \right]
+$$</div>
+<p>
+其中，<span class="math">\(g_{xy} = u {\cdot}u = u^T u = \left| \frac{\partial R}{\partial x} \right|^2 + \left| \frac{\partial G}{\partial x} \right|^2 + \left| \frac{\partial B}{\partial x} \right|^2\)</span></p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdn.bootcss.com/mathjax/2.7.4/latest.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="https://github.com">Github</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme <a href="https://github.com/blueicefield/pelican-blueidea/">blueidea</a>, inspired by the default theme.</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

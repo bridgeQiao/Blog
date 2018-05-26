@@ -15,6 +15,7 @@
                 <h1><a href="https://bridgeqiao.github.io/blog/">Bridge Qiao's Blog </a></h1>
                 <nav><ul>
                     <li><a href="https://bridgeqiao.github.io/blog/category/fun.html">fun</a></li>
+                    <li><a href="https://bridgeqiao.github.io/blog/category/image-process.html">Image Process</a></li>
                     <li><a href="https://bridgeqiao.github.io/blog/category/linux.html">linux</a></li>
                     <li><a href="https://bridgeqiao.github.io/blog/category/machine-learning.html">Machine Learning</a></li>
                     <li><a href="https://bridgeqiao.github.io/blog/category/matlab.html">Matlab</a></li>
@@ -95,6 +96,33 @@
                 <section id="content" class="body">
                     <h1>Other articles</h1>
                     <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://bridgeqiao.github.io/blog/yue-du-shu-zi-tu-xiang-chu-li-matlabban-bi-ji.html" rel="bookmark"
+                           title="Permalink to 阅读《数字图像处理（MATLAB版）》笔记">阅读《数字图像处理（MATLAB版）》笔记</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>四 01 三月 2018</span>
+
+</footer><!-- /.post-info -->                <p>阅读《数字图像处理（MATLAB版）》，这里作个笔记，记录学过的东西，方便时时复习。</p>
+<h1>序言</h1>
+<p>这一章介绍了<code>MATLAB</code>的一些基础语法知识，像基础的运算、函数控制语句。其中我个人觉得匿名函数很有意思，以前只是看到有@符号，但没具体用过，这里作下记录。</p>
+<p>@表示函数句柄，可以作为<strong>函数别名</strong>和<strong>匿名函数</strong>，下面是简单的例子。</p>
+<div class="highlight"><pre><span></span><span class="c">% 函数别名，f函数可以当成sin函数使用</span>
+<span class="n">f</span><span class="p">=@</span><span class="nb">sin</span><span class="p">;</span>
+<span class="c">% 匿名函数，g(x)函数用来求x每个元素的平方</span>
+<span class="n">g</span><span class="p">=@(</span><span class="n">x</span><span class="p">)</span> <span class="n">x</span><span class="o">.^</span><span class="mi">2</span><span class="p">;</span>
+</pre></div>
+
+
+<h1>灰度变换与空间滤波</h1>
+<p>这一章主要是介绍灰度变换和空间滤波，其中，<strong>灰度变换</strong>有图像变换（<code>imadjust</code>，图像反转、简单灰度扩展）、图像拉伸（<code>stretchlim</code>，对数及对比度拉伸变换），直方图匹配（直方图相关算法、直方图均衡<code>histeq …</code></p>
+                <a class="readmore" href="https://bridgeqiao.github.io/blog/yue-du-shu-zi-tu-xiang-chu-li-matlabban-bi-ji.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -693,42 +721,6 @@ $$</div>
 }
 </script>
                 <a class="readmore" href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-gan-zhi-ji.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://bridgeqiao.github.io/blog/shi-yong-hexo-githubda-jian-blog.html" rel="bookmark"
-                           title="Permalink to 使用hexo + github搭建blog">使用hexo + github搭建blog</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>日 14 一月 2018</span>
-
-</footer><!-- /.post-info -->                <p>最近使用jekyll烦了，经常出现博客编译出问题，打算试下hexo，结果很不错，所以直接换成了hexo，这里写个blog留作记录。</p>
-<h4>1. 安装环境</h4>
-<p>hexo是本地先编译成功后，再上传到github上，和jekyll不一样（github内部支持）。</p>
-<p>这里只介绍linux环境，在windows直接下载软件包安装就行。</p>
-<p>安装<code>nodejs</code>, <code>hexo</code>:</p>
-<div class="highlight"><pre><span></span>sudo apt install nodejs-legacy
-sudo npm install hexo -g
-<span class="c1"># 配置git方式部署</span>
-sudo npm install hexo-deployer-git --save
-</pre></div>
-
-
-<p>这里可以考虑使用<a href="https://lug.ustc.edu.cn/wiki/mirrors/help/npm">USTC</a>加速下载软件包：</p>
-<!--more-->
-
-<div class="highlight"><pre><span></span><span class="c1"># 编辑 ~/.npmrc</span>
-<span class="nv">registry</span><span class="o">=</span>http://npmreg.mirrors.ustc.edu.cn/
-</pre></div>
-
-
-<h4>2. 配置环境</h4>
-<p>在github上新建项目，xxx.github.io或者blog …</p>
-                <a class="readmore" href="https://bridgeqiao.github.io/blog/shi-yong-hexo-githubda-jian-blog.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->

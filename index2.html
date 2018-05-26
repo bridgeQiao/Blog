@@ -15,6 +15,7 @@
                 <h1><a href="https://bridgeqiao.github.io/blog/">Bridge Qiao's Blog </a></h1>
                 <nav><ul>
                     <li><a href="https://bridgeqiao.github.io/blog/category/fun.html">fun</a></li>
+                    <li><a href="https://bridgeqiao.github.io/blog/category/image-process.html">Image Process</a></li>
                     <li><a href="https://bridgeqiao.github.io/blog/category/linux.html">linux</a></li>
                     <li><a href="https://bridgeqiao.github.io/blog/category/machine-learning.html">Machine Learning</a></li>
                     <li><a href="https://bridgeqiao.github.io/blog/category/matlab.html">Matlab</a></li>
@@ -24,6 +25,42 @@
 
                 <section id="content" class="body">
                     <ol id="posts-list" class="hfeed" start="9">
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://bridgeqiao.github.io/blog/shi-yong-hexo-githubda-jian-blog.html" rel="bookmark"
+                           title="Permalink to 使用hexo + github搭建blog">使用hexo + github搭建blog</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>日 14 一月 2018</span>
+
+</footer><!-- /.post-info -->                <p>最近使用jekyll烦了，经常出现博客编译出问题，打算试下hexo，结果很不错，所以直接换成了hexo，这里写个blog留作记录。</p>
+<h4>1. 安装环境</h4>
+<p>hexo是本地先编译成功后，再上传到github上，和jekyll不一样（github内部支持）。</p>
+<p>这里只介绍linux环境，在windows直接下载软件包安装就行。</p>
+<p>安装<code>nodejs</code>, <code>hexo</code>:</p>
+<div class="highlight"><pre><span></span>sudo apt install nodejs-legacy
+sudo npm install hexo -g
+<span class="c1"># 配置git方式部署</span>
+sudo npm install hexo-deployer-git --save
+</pre></div>
+
+
+<p>这里可以考虑使用<a href="https://lug.ustc.edu.cn/wiki/mirrors/help/npm">USTC</a>加速下载软件包：</p>
+<!--more-->
+
+<div class="highlight"><pre><span></span><span class="c1"># 编辑 ~/.npmrc</span>
+<span class="nv">registry</span><span class="o">=</span>http://npmreg.mirrors.ustc.edu.cn/
+</pre></div>
+
+
+<h4>2. 配置环境</h4>
+<p>在github上新建项目，xxx.github.io或者blog …</p>
+                <a class="readmore" href="https://bridgeqiao.github.io/blog/shi-yong-hexo-githubda-jian-blog.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
             <li><article class="hentry">
                 <header>
                     <h1><a href="https://bridgeqiao.github.io/blog/zai-winxia-an-zhuang-cygwin.html" rel="bookmark"
