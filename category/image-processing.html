@@ -66,7 +66,7 @@
 \end{array}
 \end{aligned}
 $$</div>
-<p>高通滤波器刚好相反，$ H_{HP} (u,v) = 1 -H_{LP} (u,v) $，其中巴特沃斯高通滤波器为：</p>
+<p>高通滤波器刚好相反，$ H_{HP}(u,v) = 1-H_{LP}(u,v) $，其中巴特沃斯高通滤波器为：</p>
 <div class="math">$$
 H (u,v) = \frac{1}{[1 + D_{0} / D (u,v)]^{2 n}}
 $$</div>
@@ -74,16 +74,13 @@ $$</div>
 <h1>图像复原与重建</h1>
 <h2>图像复原</h2>
 <p>都是以预先确定的目标来改善图像，图像增强主要是主观处理，让人看起来更舒服，图像重建大部分是客观处理，利用退化现象的某种先验知识来复原一张退化的图像。</p>
-<p>退化：<span class="math">\(g(x,y) = Hf(x,y) + \eta (x,y)\)</span>，表示原图 $ f(x,y) $，退化图像 $ g(x,y) $。</p>
+<p>退化：<span class="math">\(g(x,y) = Hf(x,y) + \eta (x,y)\)</span>，表示原图<span class="math">\( f(x,y) $，退化图像\)</span> g(x,y) $。</p>
 <p>图像退化模型是：</p>
 <div class="math">$$
 f (x,y) \rightarrow H \rightarrow + \eta (x,y) \rightarrow g(x,y) \rightarrow \hat{f} (x,y)
 $$</div>
-<p>退化函数H是频率域下的变化，如果H是一个线性的、空间不变的过程，那么空间域的退化图像可表示为：</p>
-<div class="math">$$
-g (x,y) = h (x,y) \star f (x,y) + \eta (x,y)
-$$</div>
-<p><span class="math">\( f (x,y) $在频率域为\)</span>F (x,y)<span class="math">\(，有时被称为光传递函数（OTF），\)</span>h (x,y)$称为点扩散函数（PSF）。OTF和PSF是一个傅里叶变换对，matlab里有<code>otf2psf</code>和<code>psf2otf</code>用于OTF和PSF间互相转换。</p>
+<p>退化函数H是频率域下的变化，如果H是一个线性的、空间不变的过程，那么空间域的退化图像可表示为：$ g (x,y) = h (x,y) \star f (x,y) + \eta (x,y) $</p>
+<p><span class="math">\( f(x,y) $在频率域为\)</span>F (x,y)<span class="math">\(，有时被称为光传递函数（OTF），\)</span> h(x,y) $称为点扩散函数（PSF）。OTF和PSF是一个傅里叶变换对，matlab里有<code>otf2psf</code>和<code>psf2otf</code>用于OTF和PSF间互相转换。</p>
 <p>使用<code>imnoise</code>函数添加噪声，但生成的噪声有限，如果想生成规定分布的噪声的话，需要自己动手。</p>
 <p>如果退化的只有噪声的话，可以采用空间滤波来复原原图，书上写了自适应中值滤波，代码值得一看。</p>
 <p>使用频率域滤波降低周期噪声。周期噪声再频率域上表现为类似冲击的脉冲，滤除这些分量的主要方法是使用<strong>陷波带阻滤波器</strong>。具有Q个陷波对的陷波带阻滤波器的通式为：
@@ -98,10 +95,7 @@ $$</div>
 \hat{F} (u,v) = \frac{G (u,v)}{H (u,v)}
 $$</div>
 <p>取<span class="math">\(\hat{F} (u, v)\)</span>的傅立叶反变换就能得到图像的相应估计。</p>
-<p><strong>维纳滤波</strong>，最早也是最为知名的线性图像复原方法，寻找统计误差函数</p>
-<div class="math">$$
-e^2 = E \{(f - \hat{f})^2 \}
-$$</div>
+<p><strong>维纳滤波</strong>，最早也是最为知名的线性图像复原方法，寻找统计误差函数$ e^2 = E {(f - \hat{f})^2 } $</p>
 <p>即，均方误差的一个最小估计。在频率域上的解是：</p>
 <div class="math">$$
 \hat{F} (u,v) = \frac{1}{H (u,v)}  \frac{|H (u,v) |^2}{|H (u,v) |^2 - S_{\eta} (u,v) / S_f (u,v)} G (u,v)
