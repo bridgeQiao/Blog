@@ -14,12 +14,310 @@
         <header id="banner" class="body">
                 <h1><a href="https://bridgeqiao.github.io/blog/">Bridge Qiao's Blog </a></h1>
                 <nav><ul>
+                    <li><a href="https://bridgeqiao.github.io/blog/category/fun.html">fun</a></li>
+                    <li><a href="https://bridgeqiao.github.io/blog/category/image-processing.html">Image Processing</a></li>
+                    <li><a href="https://bridgeqiao.github.io/blog/category/linux.html">linux</a></li>
+                    <li><a href="https://bridgeqiao.github.io/blog/category/machine-learning.html">Machine Learning</a></li>
+                    <li><a href="https://bridgeqiao.github.io/blog/category/matlab.html">Matlab</a></li>
                 </ul>
                 </nav>
         </header><!-- /#banner -->
-<section id="content" class="body">
-<h2>Pages</h2>
-</section>
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="https://bridgeqiao.github.io/blog/zai-ubuntu-1804xia-an-zhuang-cuda91.html">在Ubuntu 18.04下安装CUDA9.1</a></h1>
+<footer class="post-info">
+        <span>二 24 七月 2018</span>
+
+</footer><!-- /.post-info --><p>由于有台服务器一直闲置在那里，所以给配了个tensorflow-gpu的环境。电脑用的ubuntu18.04，而到现在为止，官方最新的tensorflow-gpu是不支持cuda9.1的，至于为什么要装9.1，是因为用的ubuntu内置的包，下面简要说下安装的过程：</p>
+<h3>安装NVIDIA驱动</h3>
+<div class="highlight"><pre><span></span>sudo apt install nvidia-driver-390
+</pre></div>
+
+
+<h3>安装cuda</h3>
+<div class="highlight"><pre><span></span>sudo apt install nvidia-cuda-toolkit
+</pre></div>
+
+
+<h3>安装cudnn 7.1</h3>
+<p>这个是在官网直接下载的，网速不好的话可以在百度云找到相应的文件，然后通过pandownload之类的工具下载。</p>
+<h3>安装tensorflow</h3>
+<p>由于官方还不支持cuda9.1，所以找的别人编译好的wheel文件，网上有很多，这里提供个我找的<a href="https://github.com/mind/wheels/releases">网站</a>，选择相应的即可，MKL是Intel提供的加速工具，到目前为止还不太稳定，如果没安装的话，选择no MKL的包。</p>
+<h3>任意测试下tensorflow是否安装成功</h3>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="kn">as</span> <span class="nn">tf</span>
+<span class="n">mnist</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">mnist</span>
+
+<span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
+<span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span> <span class="o">=</span> <span class="n">x_train</span> <span class="o">/</span> <span class="mf">255.0</span><span class="p">,</span> <span class="n">x_test</span> <span class="o">/</span> <span class="mf">255.0</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.2</span><span class="p">),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">)</span>
+<span class="p">])</span>
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span>
+              <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;sparse_categorical_crossentropy&#39;</span><span class="p">,</span>
+              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+
+
+<p>这是tensorflow目前最新的测试代码。</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://bridgeqiao.github.io/blog/yue-du-shu-zi-tu-xiang-chu-li-matlabban-bi-ji.html" rel="bookmark"
+                           title="Permalink to 阅读《数字图像处理（MATLAB版）》笔记">阅读《数字图像处理（MATLAB版）》笔记</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>二 03 四月 2018</span>
+
+</footer><!-- /.post-info -->                <p>阅读《数字图像处理（MATLAB版）》，这里作个笔记，记录学过的东西，方便时时复习。</p>
+<h1>序言</h1>
+<p>这一章介绍了<code>MATLAB</code>的一些基础语法知识，像基础的运算、函数控制语句。其中我个人觉得匿名函数很有意思，以前只是看到有<code>@</code>符号，但没具体用过，这里作下记录。</p>
+<p><code>@</code>表示函数句柄，可以作为<strong>函数别名</strong>和<strong>匿名函数</strong>，下面是简单的例子。</p>
+<div class="highlight"><pre><span></span><span class="c">% 函数别名，f函数可以当成sin函数使用</span>
+<span class="n">f</span><span class="p">=@</span><span class="nb">sin</span><span class="p">;</span>
+<span class="c">% 匿名函数，g(x)函数用来求x每个元素的平方</span>
+<span class="n">g</span><span class="p">=@(</span><span class="n">x</span><span class="p">)</span> <span class="n">x</span><span class="o">.^</span><span class="mi">2</span><span class="p">;</span>
+</pre></div>
+
+
+<h1>灰度变换与空间滤波</h1>
+<p>这一章主要是介绍灰度变换和空间滤波，其中，<strong>灰度变换</strong>有图像变换（<code>imadjust</code>，图像反转、简单灰度扩展）、图像拉伸（<code>stretchlim</code>，对数及对比度拉伸变换），直方图匹配（直方图相关算法、直方图均衡<code>histeq …</code></p>
+                <a class="readmore" href="https://bridgeqiao.github.io/blog/yue-du-shu-zi-tu-xiang-chu-li-matlabban-bi-ji.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://bridgeqiao.github.io/blog/shi-yong-foobarti-gao-ben-di-bo-fang-yin-zhi.html" rel="bookmark"
+                           title="Permalink to 使用foobar提高本地播放音质">使用foobar提高本地播放音质</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>一 19 三月 2018</span>
+
+</footer><!-- /.post-info -->                <p>播放无损音乐aoe之类的，用foobar2000+waspai比较好点，如果用电脑的话。</p>
+<p>下载无损音乐的<a href="http://www.51ape.com/">网站</a>，上面有很多。</p>
+<h2>安装wasapi</h2>
+<p>安装好foobar后，<span class="math">\(File\rightarrow Preference\)</span>，点击<strong>Components</strong>，点击下面的蓝色链接，在里面找到有<strong>WASAPI output support</strong>，同样在这个界面里有<strong>Install</strong>按钮，选择下载的文件就安装好了。</p>
+<h2>配置wasapi</h2>
+<p>点击<span class="math">\(Playback\rightarrow Output\)</span>，里面<strong>Device</strong>有两类WASAPI的选项：event和push，选择含扬声器的那两个其中一个，关于这两个的区别，网上有解释。</p>
+<p>我选择的是<strong>push</strong>，然后<strong>format</strong>选择<strong>32-bit</strong>。</p>
+<p>点开<span class="math">\(Advanced\rightarrow Playback\)</span>，点开<strong>WASAPI</strong>，点击含<strong>push mode …</strong></p>
+                <a class="readmore" href="https://bridgeqiao.github.io/blog/shi-yong-foobarti-gao-ben-di-bo-fang-yin-zhi.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-zhi-chi-xiang-liang-ji.html" rel="bookmark"
+                           title="Permalink to 《统计学习方法》-支持向量机">《统计学习方法》-支持向量机</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>三 31 一月 2018</span>
+
+</footer><!-- /.post-info -->                <p>支持向量机是找到一个间隔最大的超平面，最大的将不同类数据分开。</p>
+<h2>线性支持向量机</h2>
+<h3>模型</h3>
+<p>硬间隔：
+</p>
+<div class="math">$$
+分界面：\omega x+b=0\\
+y=sign(\omega x+b)
+$$</div>
+<p>
+软间隔：
+</p>
+<div class="math">$$
+分界面：\omega^* x+b^*=0\\
+y=sign(\omega^* x+b^*)\\
+其中\omega^*的解是唯一的，而b^*的解是在一个区间内
+$$</div>
+<h3>策略</h3>
+<p>采用的是最大间隔的策略，也就是最小的分类误差，在解最大化点<span class="math">\(x_i\)</span>到超平面的距离<span class="math">\(\gamma_i = y_i(\frac{\omega x_i}{\left \| \omega \right \|}+\frac{b}{\left \| \omega \right …</span></p>
+                <a class="readmore" href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-zhi-chi-xiang-liang-ji.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-luo-ji-si-di-hui-gui-yu-zui-da-shang-mo-xing.html" rel="bookmark"
+                           title="Permalink to 《统计学习方法》-逻辑斯蒂回归与最大熵模型">《统计学习方法》-逻辑斯蒂回归与最大熵模型</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>二 23 一月 2018</span>
+
+</footer><!-- /.post-info -->                <p>逻辑斯蒂回归是一个比较经典的分类方法，最大熵模型是按照最大熵准则来进行分类的算法，两个都属于对数线性模型。</p>
+<h2>逻辑斯蒂回归</h2>
+<p>在二分类中的模型：
+</p>
+<div class="math">$$
+\begin{aligned}
+P(Y=1|X)&amp;=\frac{exp(\omega X+b)}{1+exp(\omega X+b)}\\
+P(Y=0|X)&amp;=\frac{1}{1+exp(\omega X+b)}
+\end{aligned}
+$$</div>
+<p>
+这里<span class="math">\(X\in \boldsymbol{R}^n\)</span>是输入，<span class="math">\(Y\in \{0,1\}\)</span>是输出，比较两个条件概率的大小，将实例x分到概率值大的那一类。这个公式对于求解问题不是很直观，将分类的概率变成对数几率或 …</p>
+                <a class="readmore" href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-luo-ji-si-di-hui-gui-yu-zui-da-shang-mo-xing.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-jue-ce-shu.html" rel="bookmark"
+                           title="Permalink to 《统计学习方法》-决策树">《统计学习方法》-决策树</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>日 21 一月 2018</span>
+
+</footer><!-- /.post-info -->                <p>决策树是一个比较经典的分类与回归的方法，包括特征选择、决策树的生成和决策树的修剪。</p>
+<h2>模型</h2>
+<p>决策树的模型是一棵已经构造完成的决策树，由节点和有向边组成，其中节点分为内部节点和叶子节点，内部节点表示一个特征或属性，即划分的特征，叶子节点表示一个类。</p>
+<blockquote>
+<p>从根节点开始对实例中的某一个特征进行测试，比如西瓜的颜色，有花纹的分成一个类，放在一个子节点中，另一种放在另一个子节点中，如此递归的对实例进行测试，直至叶节点。</p>
+</blockquote>
+<h2>决策规则</h2>
+<p>决策树可以看成if-then规则的集合，决策过程：每一条有向边对应一条规则，路径上内部节点的特征对应着规则的条件，而叶节点的类对应着规则的结论。</p>
+<blockquote>
+<p>路径或其对应的if-then规则集合具有一个重要的性质：互斥并且完备。</p>
+</blockquote>
+<p>从所有可能的决策树中选取最优的决策树是NP完全问题，所以现实中决策树学习算法采用启发式方法，近似求解这一优化问题，这样得到的决策树是次最优的。决策树算法通常是一个递归选择最优特征，并且用该特征对数据进行分割。</p>
+<h2>算法</h2>
+<h3>特征选择</h3>
+<p>随机变量X的熵定义为：
+</p>
+<div class="math">$$
+H(X)=-\sum_{i=1}^{n}p_i\log p_i
+$$</div>
+<p>
+条件熵(conditional entropy)<span class="math">\(H(Y|X)\)</span>，定义为 …</p>
+                <a class="readmore" href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-jue-ce-shu.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-po-su-bei-xie-si.html" rel="bookmark"
+                           title="Permalink to 《统计学习方法》-朴素贝叶斯">《统计学习方法》-朴素贝叶斯</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>六 20 一月 2018</span>
+
+</footer><!-- /.post-info -->                <p>朴素贝叶斯和knn一样，属于懒惰学习方法的一种，假设输入的特征间是独立的，根据先验概率来求最大化后验概率（MAP）。</p>
+<h2>基本方法</h2>
+<p>了解这个章节需要复习概率统计的知识，关于概率、条件概率、全概率、最大似然等。
+</p>
+<div class="math">$$
+后验概率P(Y=c_k|X=x)=\frac{P(X=x|Y=c_k)P(Y=c_k)}{\sum_k P(X=x|Y=c_k)P(Y=c_k)}
+$$</div>
+<p>
+分母都是相同的，去掉分母，分类器变成了
+</p>
+<div class="math">$$
+y=\arg \max_{c_k}P(Y=c_k)\prod_j P(X^{(j)}=x^{(j …</div>
+                <a class="readmore" href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-po-su-bei-xie-si.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-kjin-lin-fa.html" rel="bookmark"
+                           title="Permalink to 统计学习方法-k近邻法">统计学习方法-k近邻法</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>五 19 一月 2018</span>
+
+</footer><!-- /.post-info -->                <p>k近邻算法不需要显示学习判别模型，属于懒惰学习的一种，这样要素变成了：k值的选取、距离度量和分类决策规则。</p>
+<h2>K值选择</h2>
+<p>k值决定了有多少个点参与决策，拿最简单的欧式距离（距离度量）来说，就是先选择一个固定的K值，然后比较带测试点与所有点的距离，然后将对应最小的k个距离的点选出来，选用投票法（分类决策）来决定带测试点的类别。</p>
+<p>k值的选取与模型有很大的关系，小了容易发生过拟合，大了可以减小学习的估计误差，但会增大近似误差。一般是取一个比较小的数值，然后采用交叉验证的方法来选取最优的k值（书上原话）。</p>
+<h2>距离度量</h2>
+<p>这里需要数学上的概念：范数，P范数定义是这样的：
+</p>
+<div class="math">$$
+P范数：L_p(x_i,x_j)=(\sum_{l=1}^n \vert x_i^{(l)}-x_j^{(l)}\vert^p)^{\frac{1}{p}},p\geqslant 1
+$$</div>
+<blockquote>
+<p>当然，是存在0范数的 …</p></blockquote>
+                <a class="readmore" href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-kjin-lin-fa.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://bridgeqiao.github.io/blog/wei-xin-tiao-yi-tiao.html" rel="bookmark"
+                           title="Permalink to 微信跳一跳">微信跳一跳</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>二 16 一月 2018</span>
+
+</footer><!-- /.post-info -->                <p>之前完微信跳一跳最高才60多。。。然后里面都是三位数起步的，遂刷了个分。。下面是安装记录：</p>
+<ol>
+<li>插上手机，弹出usb调试，点击确定；</li>
+<li>下载adb，我是直接用的刷机精灵，它自带了adb，加到环境变量path里就好了，就是安装目录里有adb.bat的那个，发现下载的外挂里面自带了adb（Tools），但貌似运行不起来。。。</li>
+<li>下载<a href="https://github.com/wangshub/wechat_jump_game">python外挂</a>。。。git clone或者下载zip包都行；</li>
+<li>运行wechat_jump_auto.py文件，后面是*_py3.py的得自己点，需要matplotlib包，pip安装就行；</li>
+<li>在显示的图片上先点击自己的中心点，再点击要跳的中心点，然后一直重复。。。刷到了233...，当然auto的是直接自动的了。</li>
+</ol>
+                <a class="readmore" href="https://bridgeqiao.github.io/blog/wei-xin-tiao-yi-tiao.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-gai-lun.html" rel="bookmark"
+                           title="Permalink to 《统计学习方法》-概论">《统计学习方法》-概论</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>一 15 一月 2018</span>
+
+</footer><!-- /.post-info -->                <p>看完周志华老师的《机器学习》，对机器学习有了一个全面的了解，但其细节部分不是很了解，遂找同学借了本《统计学习方法》（感谢亲爱的波），感觉对机器学习的概念部分讲的很好，这里留作记录。</p>
+<p>概论部分讲了统计学习方法的组成、机器学习的分类及要素，还有一些评估方法。</p>
+<h2>1. 统计学习背景</h2>
+<p>统计学习是由一些数学组成：概率统计、信息论、优化理论，所以想要深入的了解的化，本科学的统计、高数的前几章得熟悉，然后线性代数得着重看下，对了解并行处理有很大的帮助，有需要的还可以看下凸优化相关的东西，对优化部分会有更深刻的理解。</p>
+<p>统计学习的对象是<code>数据</code>，包括数字、文字、图片、视频、音频等，这里有个前提：这些同类数据具有一定的统计规律性。目标是对数据进行预测与分析。</p>
+<h2>2. 三要素</h2>
+<p><span class="math">\(方法=模型+策略+算法\)</span>。</p>
+<h3>模型：</h3>
+<p>我对模型的理解是：找到一个映射关系（函数），使得输入和输出的对应关系最大化，也就是一些统计特性更好。</p>
+<p>书本上对模型的理解是在假设空间中找到最优的模型，怎么理解？书后面给了解释 …</p>
+                <a class="readmore" href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-gai-lun.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+            </ol><!-- /#posts-list -->
+<p class="paginator">
+    Page 1 / 2
+        <a href="https://bridgeqiao.github.io/blog/index2.html">&raquo;</a>
+</p>
+            </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>blogroll</h2>

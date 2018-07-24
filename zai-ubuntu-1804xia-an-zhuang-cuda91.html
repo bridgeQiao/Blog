@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
         <meta charset="utf-8" />
-        <title>Bridge Qiao's Blog - linux</title>
+        <title>在Ubuntu 18.04下安装CUDA9.1</title>
         <link rel="stylesheet" href="https://bridgeqiao.github.io/blog/theme/css/main.css" />
 
         <!--[if IE]>
@@ -22,14 +22,19 @@
                 </ul>
                 </nav>
         </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://bridgeqiao.github.io/blog/zai-ubuntu-1804xia-an-zhuang-cuda91.html" rel="bookmark"
+           title="Permalink to 在Ubuntu 18.04下安装CUDA9.1">在Ubuntu 18.04下安装CUDA9.1</a></h1>
+    </header>
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="https://bridgeqiao.github.io/blog/zai-ubuntu-1804xia-an-zhuang-cuda91.html">在Ubuntu 18.04下安装CUDA9.1</a></h1>
+    <div class="entry-content">
 <footer class="post-info">
         <span>二 24 七月 2018</span>
 
-</footer><!-- /.post-info --><p>由于有台服务器一直闲置在那里，所以给配了个tensorflow-gpu的环境。电脑用的ubuntu18.04，而到现在为止，官方最新的tensorflow-gpu是不支持cuda9.1的，至于为什么要装9.1，是因为用的ubuntu内置的包，下面简要说下安装的过程：</p>
+</footer><!-- /.post-info -->      <p>由于有台服务器一直闲置在那里，所以给配了个tensorflow-gpu的环境。电脑用的ubuntu18.04，而到现在为止，官方最新的tensorflow-gpu是不支持cuda9.1的，至于为什么要装9.1，是因为用的ubuntu内置的包，下面简要说下安装的过程：</p>
 <h3>安装NVIDIA驱动</h3>
 <div class="highlight"><pre><span></span>sudo apt install nvidia-driver-390
 </pre></div>
@@ -66,120 +71,11 @@
 </pre></div>
 
 
-<p>这是tensorflow目前最新的测试代码。</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <ol id="posts-list" class="hfeed">
+<p>这是tensorflow目前最新的测试代码。</p>
+    </div><!-- /.entry-content -->
 
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://bridgeqiao.github.io/blog/install-plymouth.html" rel="bookmark"
-                           title="Permalink to install plymouth">install plymouth</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>日 09 四月 2017</span>
-
-</footer><!-- /.post-info -->                <ol>
-<li>
-<p>To make Plymouth work:
-     1.1. Add "plymouth" to HOOKS after "base" and "udev" in /etc/mkinitcpio.conf
-     1.2. Add 'quiet splash' to the grub command line in /etc/default/grub</p>
-<p><code>GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"</code></p>
-<p>then: <code>sudo update-grub</code>or<code>sudo grub-mkconfig -o /boot/grub/grub.cfg</code></p>
-<p>1.3. Rebuild your …</p></li></ol>
-                <a class="readmore" href="https://bridgeqiao.github.io/blog/install-plymouth.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://bridgeqiao.github.io/blog/an-zhuang-manjaro.html" rel="bookmark"
-                           title="Permalink to 安裝manjaro">安裝manjaro</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>六 08 四月 2017</span>
-
-</footer><!-- /.post-info -->                <ul>
-<li>
-<p>烧入usb，由于电脑是bios的，将u盘的EFI文件夹重命名为back</p>
-</li>
-<li>
-<p>由于我用的版本是mate live，图形界面安装有点问题，在安装软件包的时候看不到进度，所以我下载了manjaro-architect，用命令行安装：sudo setup，不得不说live文件驱动很好，wifi能正常连接</p>
-</li>
-<li>
-<p>用命令行安装的时候，先分好区，然后挂载，如果安装过archlinux的话，应该知道这点，接着设置软件源，然后安装基础软件、图形界面之类的，装完重启</p>
-</li>
-<li>
-<p>先不登录（lightdm起不来），alt+ctrl+F2，F2到F6都行，su后设置密码，添加用户</p>
-</li>
-</ul>
-<!--more-->
-
-<ul>
-<li>
-<p>进去后设置语言：manjaro-settings-manager</p>
-</li>
-<li>
-<p>安装常用软件：<code>yaourt -S jdk8-openjdk android-studio typora</code>，主要是用来学习android</p>
-</li>
-<li>
-<p>开机后使用pacman时，经常会出现错误，要使用<code>sudo pacman -Syy</code>，先刷新软件源</p>
-</li>
-<li>
-<p>安装fcitx：<code>sudo pacman -S …</code></p></li></ul>
-                <a class="readmore" href="https://bridgeqiao.github.io/blog/an-zhuang-manjaro.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://bridgeqiao.github.io/blog/an-zhuang-deepin-154.html" rel="bookmark"
-                           title="Permalink to 安装deepin 15.4">安装deepin 15.4</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>二 07 三月 2017</span>
-
-</footer><!-- /.post-info -->                <ol>
-<li>
-<p>dd到一个U盘上（直接用deepin-installer.exe也可以，但用这个在15.4上只能装个启动iso，还得装在硬盘上，而15.3则不会）；</p>
-</li>
-<li>
-<p>设置bios，用u盘启动，直接安装；</p>
-</li>
-<li>
-<p>在桌面上右键，设置热区设置，将几个角的热区取消，触发比较麻烦，还不如直接点击；</p>
-</li>
-</ol>
-<!--more-->
-
-<ol>
-<li>安装字体fonts-inconsolata,冬青黑体,infinality</li>
-</ol>
-<div class="highlight"><pre><span></span>deb http://ppa.launchpad.net/no1wantdthisname/ppa/ubuntu xenial main
-</pre></div>
-
-
-<p>其中xenial是ubuntu的版本号，还得用
-apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E985B27B，添加key</p>
-<ol>
-<li>搭建Android开发环境：下载<a href="http://tools.android-studio.org">android-studio和android_SDK</a>,复制到opt下，再解压缩，
-安装openjdk1.8：
-<code>sudo apt install …</code></li></ol>
-                <a class="readmore" href="https://bridgeqiao.github.io/blog/an-zhuang-deepin-154.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-            </ol><!-- /#posts-list -->
-<p class="paginator">
-    Page 1 / 1
-</p>
-            </section><!-- /#content -->
+  </article>
+</section>
         <section id="extras" class="body">
                 <div class="blogroll">
                         <h2>blogroll</h2>
