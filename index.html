@@ -52,7 +52,7 @@
 <span class="kt">void</span> <span class="nf">process_bracket</span><span class="p">(</span><span class="n">string</span><span class="o">::</span><span class="n">iterator</span> <span class="o">&amp;</span><span class="p">,</span> <span class="n">string</span> <span class="o">&amp;</span><span class="p">);</span>
 <span class="n">string</span> <span class="nf">process_1</span><span class="p">(</span><span class="n">string</span> <span class="n">expre</span><span class="p">)</span> <span class="p">{</span>
     <span class="n">string</span> <span class="n">ss</span><span class="p">;</span>
-    <span class="c1">// 从第一个开始处理，遇到&#39;(&#39;号交给process_1_1，括号里的正负号由ss的最后一个字符决定</span>
+    <span class="c1">// 从第一个开始处理，遇到&#39;(&#39;号交给process_bracket，括号里的正负号由ss的最后一个字符决定</span>
     <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="n">ci</span> <span class="o">=</span> <span class="n">expre</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="n">ci</span> <span class="o">!=</span> <span class="n">expre</span><span class="p">.</span><span class="n">end</span><span class="p">();</span> <span class="o">++</span><span class="n">ci</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="n">ci</span> <span class="o">!=</span> <span class="sc">&#39;(&#39;</span><span class="p">)</span>
             <span class="n">ss</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="o">*</span><span class="n">ci</span><span class="p">);</span>
