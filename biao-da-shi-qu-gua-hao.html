@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <title>表达式去括号</title>
+        <link rel="stylesheet" href="https://bridgeqiao.github.io/blog/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://bridgeqiao.github.io/blog/">Bridge Qiao's Blog </a></h1>
+                <nav><ul>
+                    <li><a href="https://bridgeqiao.github.io/blog/category/fun.html">fun</a></li>
+                    <li><a href="https://bridgeqiao.github.io/blog/category/image-processing.html">Image Processing</a></li>
+                    <li><a href="https://bridgeqiao.github.io/blog/category/linux.html">linux</a></li>
+                    <li><a href="https://bridgeqiao.github.io/blog/category/machine-learning.html">Machine Learning</a></li>
+                    <li><a href="https://bridgeqiao.github.io/blog/category/matlab.html">Matlab</a></li>
+                    <li class="active"><a href="https://bridgeqiao.github.io/blog/category/suan-fa-ti.html">算法题</a></li>
+                </ul>
+                </nav>
+        </header><!-- /#banner -->
+<section id="content" class="body">
+  <article>
+    <header>
+      <h1 class="entry-title">
+        <a href="https://bridgeqiao.github.io/blog/biao-da-shi-qu-gua-hao.html" rel="bookmark"
+           title="Permalink to 表达式去括号">表达式去括号</a></h1>
+    </header>
+
+    <div class="entry-content">
+<footer class="post-info">
+        <span>六 15 九月 2018</span>
+
+</footer><!-- /.post-info -->      <p>昨天做了道算法题，感觉有点局限性，今天重新修改了下。</p>
+<h3>数据格式</h3>
+<p>类型：<code>string</code>，</p>
+<h3>样例</h3>
+<p>输入：<code>a+b-(c+d+(e+f-(c+d))-(g-e))-d</code>，没有空格，而且只有'+'、'-'、'('和')'。</p>
+<p>输出结果：<code>a+b-c-d-e-f+c+d+g-e-d</code>。</p>
+<h3>代码</h3>
+<p>代码逻辑是：</p>
+<ul>
+<li>从第一个字符开始处理，将非'('的保存到ss中，直到遇到'('；</li>
+<li>调用process_bracket程序，继续处理后面的字符，直到遇到右括号，跳出循环；</li>
+<li>由于存在嵌套的括号，所以根据ss最后一个符号来判断正负号；</li>
+<li>如果是负号，则将'+'变成'-'，将'-'变成'+'，其余不变，保存到ss中；</li>
+<li>如果是正号，不做处理，保存到ss中；</li>
+<li>如果是左括号，迭代调用process_bracket程序。</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="kt">void</span> <span class="nf">process_bracket</span><span class="p">(</span><span class="n">string</span><span class="o">::</span><span class="n">iterator</span> <span class="o">&amp;</span><span class="p">,</span> <span class="n">string</span> <span class="o">&amp;</span><span class="p">);</span>
+<span class="n">string</span> <span class="nf">process_1</span><span class="p">(</span><span class="n">string</span> <span class="n">expre</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">string</span> <span class="n">ss</span><span class="p">;</span>
+    <span class="c1">// 从第一个开始处理，遇到&#39;(&#39;号交给process_1_1，括号里的正负号由ss的最后一个字符决定</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="n">ci</span> <span class="o">=</span> <span class="n">expre</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="n">ci</span> <span class="o">!=</span> <span class="n">expre</span><span class="p">.</span><span class="n">end</span><span class="p">();</span> <span class="o">++</span><span class="n">ci</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="n">ci</span> <span class="o">!=</span> <span class="sc">&#39;(&#39;</span><span class="p">)</span>
+            <span class="n">ss</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="o">*</span><span class="n">ci</span><span class="p">);</span>
+        <span class="k">else</span>
+            <span class="n">process_bracket</span><span class="p">(</span><span class="n">ci</span><span class="p">,</span> <span class="n">ss</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">ss</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">process_bracket</span><span class="p">(</span><span class="n">string</span><span class="o">::</span><span class="n">iterator</span> <span class="o">&amp;</span><span class="n">is</span><span class="p">,</span> <span class="n">string</span> <span class="o">&amp;</span><span class="n">ss</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ss</span><span class="p">[</span><span class="n">ss</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39;-&#39;</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 处理括号前是-号的情况，由于是可能存在嵌套括号，这里选择的是ss的正负号</span>
+        <span class="n">is</span><span class="o">++</span><span class="p">;</span>
+        <span class="k">while</span> <span class="p">(</span><span class="o">*</span><span class="n">is</span> <span class="o">!=</span> <span class="sc">&#39;)&#39;</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 处理括号里面所有的字符</span>
+            <span class="k">switch</span> <span class="p">(</span><span class="o">*</span><span class="n">is</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">case</span> <span class="sc">&#39;-&#39;</span><span class="o">:</span>
+                <span class="n">ss</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="sc">&#39;+&#39;</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="sc">&#39;+&#39;</span><span class="o">:</span>
+                <span class="n">ss</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="sc">&#39;-&#39;</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="sc">&#39;(&#39;</span><span class="o">:</span> <span class="c1">// 存在嵌套，迭代求解</span>
+                <span class="n">process_bracket</span><span class="p">(</span><span class="n">is</span><span class="p">,</span> <span class="n">ss</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">default</span><span class="o">:</span>
+                <span class="n">ss</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="o">*</span><span class="n">is</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="o">++</span><span class="n">is</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span> <span class="c1">//处理括号前是+号的情况</span>
+        <span class="n">is</span><span class="o">++</span><span class="p">;</span>
+        <span class="k">while</span> <span class="p">(</span><span class="o">*</span><span class="n">is</span> <span class="o">!=</span> <span class="sc">&#39;)&#39;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">switch</span> <span class="p">(</span><span class="o">*</span><span class="n">is</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">case</span> <span class="sc">&#39;(&#39;</span><span class="o">:</span>
+                <span class="n">process_bracket</span><span class="p">(</span><span class="n">is</span><span class="p">,</span> <span class="n">ss</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">default</span><span class="o">:</span>
+                <span class="n">ss</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="o">*</span><span class="n">is</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="o">++</span><span class="n">is</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">string</span> <span class="n">s</span><span class="p">(</span><span class="s">&quot;a+b-(c+d+(e+f-(c+d))-(g-e))-d&quot;</span><span class="p">);</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">process_1</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+    </div><!-- /.entry-content -->
+
+  </article>
+</section>
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="https://github.com">Github</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme <a href="https://github.com/blueicefield/pelican-blueidea/">blueidea</a>, inspired by the default theme.</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>

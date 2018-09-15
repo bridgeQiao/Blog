@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
         <meta charset="utf-8" />
-        <title>在win下安装cygwin</title>
+        <title>配置c/c++开发环境</title>
         <link rel="stylesheet" href="https://bridgeqiao.github.io/blog/theme/css/main.css" />
 
         <!--[if IE]>
@@ -14,8 +14,8 @@
         <header id="banner" class="body">
                 <h1><a href="https://bridgeqiao.github.io/blog/">Bridge Qiao's Blog </a></h1>
                 <nav><ul>
-                    <li class="active"><a href="https://bridgeqiao.github.io/blog/category/fun.html">fun</a></li>
-                    <li><a href="https://bridgeqiao.github.io/blog/category/image-processing.html">Image Processing</a></li>
+                    <li><a href="https://bridgeqiao.github.io/blog/category/fun.html">fun</a></li>
+                    <li class="active"><a href="https://bridgeqiao.github.io/blog/category/image-processing.html">Image Processing</a></li>
                     <li><a href="https://bridgeqiao.github.io/blog/category/linux.html">linux</a></li>
                     <li><a href="https://bridgeqiao.github.io/blog/category/machine-learning.html">Machine Learning</a></li>
                     <li><a href="https://bridgeqiao.github.io/blog/category/matlab.html">Matlab</a></li>
@@ -27,33 +27,36 @@
   <article>
     <header>
       <h1 class="entry-title">
-        <a href="https://bridgeqiao.github.io/blog/zai-winxia-an-zhuang-cygwin.html" rel="bookmark"
-           title="Permalink to 在win下安装cygwin">在win下安装cygwin</a></h1>
+        <a href="https://bridgeqiao.github.io/blog/pei-zhi-cckai-fa-huan-jing.html" rel="bookmark"
+           title="Permalink to 配置c/c++开发环境">配置c/c++开发环境</a></h1>
     </header>
 
     <div class="entry-content">
 <footer class="post-info">
-        <span>日 14 一月 2018</span>
+        <span>五 10 八月 2018</span>
 
-</footer><!-- /.post-info -->      <ol>
-<li>
-<p>从<a href="https://www.cygwin.com">官网</a>下载setup_x86_64.exe，<strong>注意这是64位的</strong>，大小在1M左右，安装到硬盘，选择网络安装，镜像网站可以选用<a href="http://mirrors.ustc.edu.cn/cygwin/">USTC</a>或者<a href="http://mirrors.163.com/cygwin/">163</a>；</p>
-</li>
-<li>
-<p>下载<a href="https://github.com/transcode-open/apt-cyg">apt-cyg</a>，将该文件放到安装目录下的bin目录；</p>
-</li>
-<li>
-<p><code>bash
-   # 换源
-   apt-cyg update -m http://mirrors.ustc.edu.cn/cygwin/x86_64/</code></p>
-</li>
-<li>
-<p>现在可以用apt-cyg安装软件了，使用方式类似apt</p>
-</li>
-<li>
-<p>可以安装常用的软件：gcc/g++/make</p>
-</li>
-</ol>
+</footer><!-- /.post-info -->      <p>由于开发opencv需要用到c++，所以配置了相应的环境。现在处于学习阶段，所以环境不是很重要，这里记录下在macos上的配置。</p>
+<h3>安装openCV</h3>
+<div class="highlight"><pre><span></span>brew install opencv
+</pre></div>
+
+
+<h3>安装vscode及其插件</h3>
+<p>为了通用性，这里选用编辑器的方式，vscode直接在官网进行下载，插件包括c/c++、vscode-clangd、bracket pair colorized、xmake。</p>
+<h3>安装xmake</h3>
+<div class="highlight"><pre><span></span>brew install xmake pkg-config
+</pre></div>
+
+
+<p>xmake是构建工具，用起来比cmake舒服很多，pkg-config是用来提供编译指令的，在xmake.lua中，</p>
+<p>加入下面两句。</p>
+<div class="highlight"><pre><span></span><span class="n">add_cxflags</span><span class="p">(</span><span class="s2">&quot;$(shell pkg-config opencv --cflags)&quot;</span><span class="p">)</span>
+<span class="n">add_ldflags</span><span class="p">(</span><span class="s2">&quot;$(shell pkg-config opencv --libs)&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<h3>使用</h3>
+<p>vscode加上xmake插件后，使用起来很舒服，最下面一排有很多按钮，可以直接点击编译、运行、调试。</p>
     </div><!-- /.entry-content -->
 
   </article>

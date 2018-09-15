@@ -19,17 +19,144 @@
                     <li><a href="https://bridgeqiao.github.io/blog/category/linux.html">linux</a></li>
                     <li><a href="https://bridgeqiao.github.io/blog/category/machine-learning.html">Machine Learning</a></li>
                     <li><a href="https://bridgeqiao.github.io/blog/category/matlab.html">Matlab</a></li>
+                    <li><a href="https://bridgeqiao.github.io/blog/category/suan-fa-ti.html">算法题</a></li>
                 </ul>
                 </nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="https://bridgeqiao.github.io/blog/zai-ubuntu-1804xia-an-zhuang-cuda91.html">在Ubuntu 18.04下安装CUDA9.1</a></h1>
+                    <h1 class="entry-title"><a href="https://bridgeqiao.github.io/blog/biao-da-shi-qu-gua-hao.html">表达式去括号</a></h1>
+<footer class="post-info">
+        <span>六 15 九月 2018</span>
+
+</footer><!-- /.post-info --><p>昨天做了道算法题，感觉有点局限性，今天重新修改了下。</p>
+<h3>数据格式</h3>
+<p>类型：<code>string</code>，</p>
+<h3>样例</h3>
+<p>输入：<code>a+b-(c+d+(e+f-(c+d))-(g-e))-d</code>，没有空格，而且只有'+'、'-'、'('和')'。</p>
+<p>输出结果：<code>a+b-c-d-e-f+c+d+g-e-d</code>。</p>
+<h3>代码</h3>
+<p>代码逻辑是：</p>
+<ul>
+<li>从第一个字符开始处理，将非'('的保存到ss中，直到遇到'('；</li>
+<li>调用process_bracket程序，继续处理后面的字符，直到遇到右括号，跳出循环；</li>
+<li>由于存在嵌套的括号，所以根据ss最后一个符号来判断正负号；</li>
+<li>如果是负号，则将'+'变成'-'，将'-'变成'+'，其余不变，保存到ss中；</li>
+<li>如果是正号，不做处理，保存到ss中；</li>
+<li>如果是左括号，迭代调用process_bracket程序。</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+<span class="kt">void</span> <span class="nf">process_bracket</span><span class="p">(</span><span class="n">string</span><span class="o">::</span><span class="n">iterator</span> <span class="o">&amp;</span><span class="p">,</span> <span class="n">string</span> <span class="o">&amp;</span><span class="p">);</span>
+<span class="n">string</span> <span class="nf">process_1</span><span class="p">(</span><span class="n">string</span> <span class="n">expre</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">string</span> <span class="n">ss</span><span class="p">;</span>
+    <span class="c1">// 从第一个开始处理，遇到&#39;(&#39;号交给process_1_1，括号里的正负号由ss的最后一个字符决定</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="n">ci</span> <span class="o">=</span> <span class="n">expre</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="n">ci</span> <span class="o">!=</span> <span class="n">expre</span><span class="p">.</span><span class="n">end</span><span class="p">();</span> <span class="o">++</span><span class="n">ci</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="n">ci</span> <span class="o">!=</span> <span class="sc">&#39;(&#39;</span><span class="p">)</span>
+            <span class="n">ss</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="o">*</span><span class="n">ci</span><span class="p">);</span>
+        <span class="k">else</span>
+            <span class="n">process_bracket</span><span class="p">(</span><span class="n">ci</span><span class="p">,</span> <span class="n">ss</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">ss</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">process_bracket</span><span class="p">(</span><span class="n">string</span><span class="o">::</span><span class="n">iterator</span> <span class="o">&amp;</span><span class="n">is</span><span class="p">,</span> <span class="n">string</span> <span class="o">&amp;</span><span class="n">ss</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">ss</span><span class="p">[</span><span class="n">ss</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39;-&#39;</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 处理括号前是-号的情况，由于是可能存在嵌套括号，这里选择的是ss的正负号</span>
+        <span class="n">is</span><span class="o">++</span><span class="p">;</span>
+        <span class="k">while</span> <span class="p">(</span><span class="o">*</span><span class="n">is</span> <span class="o">!=</span> <span class="sc">&#39;)&#39;</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 处理括号里面所有的字符</span>
+            <span class="k">switch</span> <span class="p">(</span><span class="o">*</span><span class="n">is</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">case</span> <span class="sc">&#39;-&#39;</span><span class="o">:</span>
+                <span class="n">ss</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="sc">&#39;+&#39;</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="sc">&#39;+&#39;</span><span class="o">:</span>
+                <span class="n">ss</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="sc">&#39;-&#39;</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="sc">&#39;(&#39;</span><span class="o">:</span> <span class="c1">// 存在嵌套，迭代求解</span>
+                <span class="n">process_bracket</span><span class="p">(</span><span class="n">is</span><span class="p">,</span> <span class="n">ss</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">default</span><span class="o">:</span>
+                <span class="n">ss</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="o">*</span><span class="n">is</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="o">++</span><span class="n">is</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span> <span class="c1">//处理括号前是+号的情况</span>
+        <span class="n">is</span><span class="o">++</span><span class="p">;</span>
+        <span class="k">while</span> <span class="p">(</span><span class="o">*</span><span class="n">is</span> <span class="o">!=</span> <span class="sc">&#39;)&#39;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">switch</span> <span class="p">(</span><span class="o">*</span><span class="n">is</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">case</span> <span class="sc">&#39;(&#39;</span><span class="o">:</span>
+                <span class="n">process_bracket</span><span class="p">(</span><span class="n">is</span><span class="p">,</span> <span class="n">ss</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">default</span><span class="o">:</span>
+                <span class="n">ss</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="o">*</span><span class="n">is</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="o">++</span><span class="n">is</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">string</span> <span class="n">s</span><span class="p">(</span><span class="s">&quot;a+b-(c+d+(e+f-(c+d))-(g-e))-d&quot;</span><span class="p">);</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">process_1</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://bridgeqiao.github.io/blog/pei-zhi-cckai-fa-huan-jing.html" rel="bookmark"
+                           title="Permalink to 配置c/c++开发环境">配置c/c++开发环境</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>五 10 八月 2018</span>
+
+</footer><!-- /.post-info -->                <p>由于开发opencv需要用到c++，所以配置了相应的环境。现在处于学习阶段，所以环境不是很重要，这里记录下在macos上的配置。</p>
+<h3>安装openCV</h3>
+<div class="highlight"><pre><span></span>brew install opencv
+</pre></div>
+
+
+<h3>安装vscode及其插件</h3>
+<p>为了通用性，这里选用编辑器的方式，vscode直接在官网进行下载，插件包括c/c++、vscode-clangd、bracket pair colorized、xmake。</p>
+<h3>安装xmake</h3>
+<div class="highlight"><pre><span></span>brew install xmake pkg-config
+</pre></div>
+
+
+<p>xmake是构建工具，用起来比cmake舒服很多，pkg-config是用来提供编译指令的，在xmake.lua中，</p>
+<p>加入下面两句。</p>
+<div class="highlight"><pre><span></span><span class="n">add_cxflags</span><span class="p">(</span><span class="s2">&quot;$(shell pkg-config opencv --cflags)&quot;</span><span class="p">)</span>
+<span class="n">add_ldflags</span><span class="p">(</span><span class="s2">&quot;$(shell pkg-config opencv --libs)&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<h3>使用</h3>
+<p>vscode加上xmake插件后，使用起来很舒服，最下面一排有很多按钮，可以直接点击编译、运行、调试。</p>
+                <a class="readmore" href="https://bridgeqiao.github.io/blog/pei-zhi-cckai-fa-huan-jing.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://bridgeqiao.github.io/blog/zai-ubuntu-1804xia-an-zhuang-cuda91.html" rel="bookmark"
+                           title="Permalink to 在Ubuntu 18.04下安装CUDA9.1">在Ubuntu 18.04下安装CUDA9.1</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <span>二 24 七月 2018</span>
 
-</footer><!-- /.post-info --><p>由于有台服务器一直闲置在那里，所以给配了个tensorflow-gpu的环境。电脑用的ubuntu18.04，而到现在为止，官方最新的tensorflow-gpu是不支持cuda9.1的，至于为什么要装9.1，是因为用的ubuntu内置的包，下面简要说下安装的过程：</p>
+</footer><!-- /.post-info -->                <p>由于有台服务器一直闲置在那里，所以给配了个tensorflow-gpu的环境。电脑用的ubuntu18.04，而到现在为止，官方最新的tensorflow-gpu是不支持cuda9.1的，至于为什么要装9.1，是因为用的ubuntu内置的包，下面简要说下安装的过程：</p>
 <h3>安装NVIDIA驱动</h3>
 <div class="highlight"><pre><span></span>sudo apt install nvidia-driver-390
 </pre></div>
@@ -46,31 +173,10 @@
 <p>由于官方还不支持cuda9.1，所以找的别人编译好的wheel文件，网上有很多，这里提供个我找的<a href="https://github.com/mind/wheels/releases">网站</a>，选择相应的即可，MKL是Intel提供的加速工具，到目前为止还不太稳定，如果没安装的话，选择no MKL的包。</p>
 <h3>任意测试下tensorflow是否安装成功</h3>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="kn">as</span> <span class="nn">tf</span>
-<span class="n">mnist</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">mnist</span>
-
-<span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
-<span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span> <span class="o">=</span> <span class="n">x_train</span> <span class="o">/</span> <span class="mf">255.0</span><span class="p">,</span> <span class="n">x_test</span> <span class="o">/</span> <span class="mf">255.0</span>
-
-<span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
-  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(),</span>
-  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">relu</span><span class="p">),</span>
-  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.2</span><span class="p">),</span>
-  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">softmax</span><span class="p">)</span>
-<span class="p">])</span>
-<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span>
-              <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;sparse_categorical_crossentropy&#39;</span><span class="p">,</span>
-              <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
-
-<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-</pre></div>
-
-
-<p>这是tensorflow目前最新的测试代码。</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <ol id="posts-list" class="hfeed">
+<span class="n">mnist</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">mnist …</span></pre></div>
+                <a class="readmore" href="https://bridgeqiao.github.io/blog/zai-ubuntu-1804xia-an-zhuang-cuda91.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -264,52 +370,6 @@ $$</div>
 <blockquote>
 <p>当然，是存在0范数的 …</p></blockquote>
                 <a class="readmore" href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-kjin-lin-fa.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://bridgeqiao.github.io/blog/wei-xin-tiao-yi-tiao.html" rel="bookmark"
-                           title="Permalink to 微信跳一跳">微信跳一跳</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>二 16 一月 2018</span>
-
-</footer><!-- /.post-info -->                <p>之前完微信跳一跳最高才60多。。。然后里面都是三位数起步的，遂刷了个分。。下面是安装记录：</p>
-<ol>
-<li>插上手机，弹出usb调试，点击确定；</li>
-<li>下载adb，我是直接用的刷机精灵，它自带了adb，加到环境变量path里就好了，就是安装目录里有adb.bat的那个，发现下载的外挂里面自带了adb（Tools），但貌似运行不起来。。。</li>
-<li>下载<a href="https://github.com/wangshub/wechat_jump_game">python外挂</a>。。。git clone或者下载zip包都行；</li>
-<li>运行wechat_jump_auto.py文件，后面是*_py3.py的得自己点，需要matplotlib包，pip安装就行；</li>
-<li>在显示的图片上先点击自己的中心点，再点击要跳的中心点，然后一直重复。。。刷到了233...，当然auto的是直接自动的了。</li>
-</ol>
-                <a class="readmore" href="https://bridgeqiao.github.io/blog/wei-xin-tiao-yi-tiao.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-gai-lun.html" rel="bookmark"
-                           title="Permalink to 《统计学习方法》-概论">《统计学习方法》-概论</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>一 15 一月 2018</span>
-
-</footer><!-- /.post-info -->                <p>看完周志华老师的《机器学习》，对机器学习有了一个全面的了解，但其细节部分不是很了解，遂找同学借了本《统计学习方法》（感谢亲爱的波），感觉对机器学习的概念部分讲的很好，这里留作记录。</p>
-<p>概论部分讲了统计学习方法的组成、机器学习的分类及要素，还有一些评估方法。</p>
-<h2>1. 统计学习背景</h2>
-<p>统计学习是由一些数学组成：概率统计、信息论、优化理论，所以想要深入的了解的化，本科学的统计、高数的前几章得熟悉，然后线性代数得着重看下，对了解并行处理有很大的帮助，有需要的还可以看下凸优化相关的东西，对优化部分会有更深刻的理解。</p>
-<p>统计学习的对象是<code>数据</code>，包括数字、文字、图片、视频、音频等，这里有个前提：这些同类数据具有一定的统计规律性。目标是对数据进行预测与分析。</p>
-<h2>2. 三要素</h2>
-<p><span class="math">\(方法=模型+策略+算法\)</span>。</p>
-<h3>模型：</h3>
-<p>我对模型的理解是：找到一个映射关系（函数），使得输入和输出的对应关系最大化，也就是一些统计特性更好。</p>
-<p>书本上对模型的理解是在假设空间中找到最优的模型，怎么理解？书后面给了解释 …</p>
-                <a class="readmore" href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-gai-lun.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
