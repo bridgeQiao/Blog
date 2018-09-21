@@ -28,6 +28,32 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-kjin-lin-fa.html" rel="bookmark"
+                           title="Permalink to 统计学习方法-k近邻法">统计学习方法-k近邻法</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>五 19 一月 2018</span>
+
+</footer><!-- /.post-info -->                <p>k近邻算法不需要显示学习判别模型，属于懒惰学习的一种，这样要素变成了：k值的选取、距离度量和分类决策规则。</p>
+<h2>K值选择</h2>
+<p>k值决定了有多少个点参与决策，拿最简单的欧式距离（距离度量）来说，就是先选择一个固定的K值，然后比较带测试点与所有点的距离，然后将对应最小的k个距离的点选出来，选用投票法（分类决策）来决定带测试点的类别。</p>
+<p>k值的选取与模型有很大的关系，小了容易发生过拟合，大了可以减小学习的估计误差，但会增大近似误差。一般是取一个比较小的数值，然后采用交叉验证的方法来选取最优的k值（书上原话）。</p>
+<h2>距离度量</h2>
+<p>这里需要数学上的概念：范数，P范数定义是这样的：
+</p>
+<div class="math">$$
+P范数：L_p(x_i,x_j)=(\sum_{l=1}^n \vert x_i^{(l)}-x_j^{(l)}\vert^p)^{\frac{1}{p}},p\geqslant 1
+$$</div>
+<blockquote>
+<p>当然，是存在0范数的 …</p></blockquote>
+                <a class="readmore" href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-kjin-lin-fa.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="https://bridgeqiao.github.io/blog/wei-xin-tiao-yi-tiao.html" rel="bookmark"
                            title="Permalink to 微信跳一跳">微信跳一跳</a></h1>
                 </header>

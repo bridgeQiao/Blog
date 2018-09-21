@@ -26,11 +26,55 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="https://bridgeqiao.github.io/blog/biao-da-shi-qu-gua-hao.html">表达式去括号</a></h1>
+                    <h1 class="entry-title"><a href="https://bridgeqiao.github.io/blog/mexdiao-yong-opencv.html">mex调用opencv</a></h1>
+<footer class="post-info">
+        <span>五 21 九月 2018</span>
+
+</footer><!-- /.post-info --><p>最近在学习opencv3，突然想到matlab能不能用opencv，下面是笔记。</p>
+<h3>使用mex</h3>
+<p>不用多说，首先肯定是能正常使用mex，需要安装c++环境，由于我使用的是Windows，所以visual studio是最好的，当然mingw也行。安装好后，直接运行：</p>
+<div class="highlight"><pre><span></span><span class="n">mex</span> <span class="o">-</span><span class="n">setup</span> <span class="n">c</span><span class="o">++</span>
+</pre></div>
+
+
+<p>显示为：</p>
+<blockquote>
+<p>MEX 配置为使用 'Microsoft Visual C++ 2017' 以进行 C++ 语言编译。</p>
+</blockquote>
+<p>警告不用管它，接下来需要使用opencv。</p>
+<h3>调用openCV</h3>
+<p>我将openCV安装在了<code>D:\Program Files\opencv</code>这个目录，当编写好c++文件后，有两种调用方式，注意这里文件名是<code>featureExtra.cpp</code>，改成你自己的就可以了。</p>
+<div class="highlight"><pre><span></span><span class="c">% 第一种，其中最后面的opencv_worldxxx根据版本的不同而不同，</span>
+<span class="c">% 具体的在-L的目录下，vcxx表示visualstuio的版本，这里是vc15</span>
+<span class="c">% 3.4.3版本的lib目录下面只有这一个lib文件，根据实际情况进行修改。</span>
+<span class="n">mex</span> <span class="o">-</span><span class="n">g</span> <span class="n">featureExtra</span><span class="p">.</span><span class="n">cpp</span> <span class="o">-</span><span class="n">I</span>&quot;<span class="n">D</span><span class="p">:</span><span class="o">\</span><span class="n">Program</span> <span class="n">Files</span><span class="o">\</span><span class="n">opencv</span><span class="o">\</span><span class="n">build</span><span class="o">\</span><span class="n">include</span>&quot; <span class="o">-</span><span class="n">L</span>&quot;<span class="n">D</span><span class="p">:</span><span class="o">\</span><span class="n">Program</span> <span class="n">Files</span><span class="o">\</span><span class="n">opencv</span><span class="o">\</span><span class="n">build</span><span class="o">\</span><span class="n">x64</span><span class="o">\</span><span class="n">vc15</span><span class="o">\</span><span class="n">lib</span>&quot; <span class="o">-</span><span class="n">lopencv_world343</span>
+
+<span class="c">% 第二种是用eval命令，看起来会简洁点</span>
+<span class="c">% 借鉴的kernlen的博客：https://blog.csdn.net/kernlen/article/details/52513205</span>
+<span class="n">OpenCV_INLCUDE_DIR</span> <span class="p">=</span> <span class="s">&#39;-I&quot;D:\Program Files\opencv\build\include&quot;&#39;</span><span class="p">;</span>
+<span class="n">OpenCV_LIBRARY_DIR</span> <span class="p">=</span> <span class="s">&#39;-L&quot;D:\Program Files\opencv\build\x64\vc15\lib&quot; -lopencv_world343&#39;</span><span class="p">;</span>
+
+<span class="n">eval</span><span class="p">([</span><span class="s">&#39;mex featureExtra.cpp &#39;</span> <span class="n">OpenCV_INLCUDE_DIR</span> <span class="n">OpenCV_LIBRARY_DIR</span><span class="p">]);</span>  
+</pre></div>
+
+
+<p>第二种会报找不到库文件的错误，是由于-L没有起作用，没找到具体原因，很奇怪。</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://bridgeqiao.github.io/blog/biao-da-shi-qu-gua-hao.html" rel="bookmark"
+                           title="Permalink to 表达式去括号">表达式去括号</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <span>六 15 九月 2018</span>
 
-</footer><!-- /.post-info --><p>昨天做了道算法题，感觉有点局限性，今天重新修改了下。</p>
+</footer><!-- /.post-info -->                <p>昨天做了道算法题，感觉有点局限性，今天重新修改了下。</p>
 <h3>数据格式</h3>
 <p>类型：<code>string</code>，</p>
 <h3>样例</h3>
@@ -44,71 +88,10 @@
 <li>由于存在嵌套的括号，所以根据ss最后一个符号来判断正负号；</li>
 <li>如果是负号，则将'+'变成'-'，将'-'变成'+'，其余不变，保存到ss中；</li>
 <li>如果是正号，不做处理，保存到ss中；</li>
-<li>如果是左括号，迭代调用process_bracket程序。</li>
-</ul>
-<div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
-
-<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
-<span class="kt">void</span> <span class="nf">process_bracket</span><span class="p">(</span><span class="n">string</span><span class="o">::</span><span class="n">iterator</span> <span class="o">&amp;</span><span class="p">,</span> <span class="n">string</span> <span class="o">&amp;</span><span class="p">);</span>
-<span class="n">string</span> <span class="nf">process_1</span><span class="p">(</span><span class="n">string</span> <span class="n">expre</span><span class="p">)</span> <span class="p">{</span>
-    <span class="n">string</span> <span class="n">ss</span><span class="p">;</span>
-    <span class="c1">// 从第一个开始处理，遇到&#39;(&#39;号交给process_bracket，括号里的正负号由ss的最后一个字符决定</span>
-    <span class="k">for</span> <span class="p">(</span><span class="k">auto</span> <span class="n">ci</span> <span class="o">=</span> <span class="n">expre</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span> <span class="n">ci</span> <span class="o">!=</span> <span class="n">expre</span><span class="p">.</span><span class="n">end</span><span class="p">();</span> <span class="o">++</span><span class="n">ci</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="o">*</span><span class="n">ci</span> <span class="o">!=</span> <span class="sc">&#39;(&#39;</span><span class="p">)</span>
-            <span class="n">ss</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="o">*</span><span class="n">ci</span><span class="p">);</span>
-        <span class="k">else</span>
-            <span class="n">process_bracket</span><span class="p">(</span><span class="n">ci</span><span class="p">,</span> <span class="n">ss</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">ss</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="kt">void</span> <span class="nf">process_bracket</span><span class="p">(</span><span class="n">string</span><span class="o">::</span><span class="n">iterator</span> <span class="o">&amp;</span><span class="n">is</span><span class="p">,</span> <span class="n">string</span> <span class="o">&amp;</span><span class="n">ss</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">ss</span><span class="p">[</span><span class="n">ss</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39;-&#39;</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 处理括号前是-号的情况，由于是可能存在嵌套括号，这里选择的是ss的正负号</span>
-        <span class="n">is</span><span class="o">++</span><span class="p">;</span>
-        <span class="k">while</span> <span class="p">(</span><span class="o">*</span><span class="n">is</span> <span class="o">!=</span> <span class="sc">&#39;)&#39;</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// 处理括号里面所有的字符</span>
-            <span class="k">switch</span> <span class="p">(</span><span class="o">*</span><span class="n">is</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">case</span> <span class="sc">&#39;-&#39;</span><span class="o">:</span>
-                <span class="n">ss</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="sc">&#39;+&#39;</span><span class="p">);</span>
-                <span class="k">break</span><span class="p">;</span>
-            <span class="k">case</span> <span class="sc">&#39;+&#39;</span><span class="o">:</span>
-                <span class="n">ss</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="sc">&#39;-&#39;</span><span class="p">);</span>
-                <span class="k">break</span><span class="p">;</span>
-            <span class="k">case</span> <span class="sc">&#39;(&#39;</span><span class="o">:</span> <span class="c1">// 存在嵌套，迭代求解</span>
-                <span class="n">process_bracket</span><span class="p">(</span><span class="n">is</span><span class="p">,</span> <span class="n">ss</span><span class="p">);</span>
-                <span class="k">break</span><span class="p">;</span>
-            <span class="k">default</span><span class="o">:</span>
-                <span class="n">ss</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="o">*</span><span class="n">is</span><span class="p">);</span>
-                <span class="k">break</span><span class="p">;</span>
-            <span class="p">}</span>
-            <span class="o">++</span><span class="n">is</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span> <span class="c1">//处理括号前是+号的情况</span>
-        <span class="n">is</span><span class="o">++</span><span class="p">;</span>
-        <span class="k">while</span> <span class="p">(</span><span class="o">*</span><span class="n">is</span> <span class="o">!=</span> <span class="sc">&#39;)&#39;</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">switch</span> <span class="p">(</span><span class="o">*</span><span class="n">is</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">case</span> <span class="sc">&#39;(&#39;</span><span class="o">:</span>
-                <span class="n">process_bracket</span><span class="p">(</span><span class="n">is</span><span class="p">,</span> <span class="n">ss</span><span class="p">);</span>
-                <span class="k">break</span><span class="p">;</span>
-            <span class="k">default</span><span class="o">:</span>
-                <span class="n">ss</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="o">*</span><span class="n">is</span><span class="p">);</span>
-                <span class="k">break</span><span class="p">;</span>
-            <span class="p">}</span>
-            <span class="o">++</span><span class="n">is</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">string</span> <span class="n">s</span><span class="p">(</span><span class="s">&quot;a+b-(c+d+(e+f-(c+d))-(g-e))-d&quot;</span><span class="p">);</span>
-    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">process_1</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
-
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <ol id="posts-list" class="hfeed">
+<li>如果是左括号，迭代调用process_bracket程序 …</li></ul>
+                <a class="readmore" href="https://bridgeqiao.github.io/blog/biao-da-shi-qu-gua-hao.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
 
             <li><article class="hentry">
                 <header>
@@ -344,32 +327,6 @@ $$</div>
 <div class="math">$$
 y=\arg \max_{c_k}P(Y=c_k)\prod_j P(X^{(j)}=x^{(j …</div>
                 <a class="readmore" href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-po-su-bei-xie-si.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-kjin-lin-fa.html" rel="bookmark"
-                           title="Permalink to 统计学习方法-k近邻法">统计学习方法-k近邻法</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>五 19 一月 2018</span>
-
-</footer><!-- /.post-info -->                <p>k近邻算法不需要显示学习判别模型，属于懒惰学习的一种，这样要素变成了：k值的选取、距离度量和分类决策规则。</p>
-<h2>K值选择</h2>
-<p>k值决定了有多少个点参与决策，拿最简单的欧式距离（距离度量）来说，就是先选择一个固定的K值，然后比较带测试点与所有点的距离，然后将对应最小的k个距离的点选出来，选用投票法（分类决策）来决定带测试点的类别。</p>
-<p>k值的选取与模型有很大的关系，小了容易发生过拟合，大了可以减小学习的估计误差，但会增大近似误差。一般是取一个比较小的数值，然后采用交叉验证的方法来选取最优的k值（书上原话）。</p>
-<h2>距离度量</h2>
-<p>这里需要数学上的概念：范数，P范数定义是这样的：
-</p>
-<div class="math">$$
-P范数：L_p(x_i,x_j)=(\sum_{l=1}^n \vert x_i^{(l)}-x_j^{(l)}\vert^p)^{\frac{1}{p}},p\geqslant 1
-$$</div>
-<blockquote>
-<p>当然，是存在0范数的 …</p></blockquote>
-                <a class="readmore" href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-kjin-lin-fa.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
             </ol><!-- /#posts-list -->
