@@ -28,6 +28,32 @@
                     <ol id="posts-list" class="hfeed" start="9">
             <li><article class="hentry">
                 <header>
+                    <h1><a href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-po-su-bei-xie-si.html" rel="bookmark"
+                           title="Permalink to 《统计学习方法》-朴素贝叶斯">《统计学习方法》-朴素贝叶斯</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>六 20 一月 2018</span>
+
+</footer><!-- /.post-info -->                <p>朴素贝叶斯和knn一样，属于懒惰学习方法的一种，假设输入的特征间是独立的，根据先验概率来求最大化后验概率（MAP）。</p>
+<h2>基本方法</h2>
+<p>了解这个章节需要复习概率统计的知识，关于概率、条件概率、全概率、最大似然等。
+</p>
+<div class="math">$$
+后验概率P(Y=c_k|X=x)=\frac{P(X=x|Y=c_k)P(Y=c_k)}{\sum_k P(X=x|Y=c_k)P(Y=c_k)}
+$$</div>
+<p>
+分母都是相同的，去掉分母，分类器变成了
+</p>
+<div class="math">$$
+y=\arg \max_{c_k}P(Y=c_k)\prod_j P(X^{(j)}=x^{(j …</div>
+                <a class="readmore" href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-po-su-bei-xie-si.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
                     <h1><a href="https://bridgeqiao.github.io/blog/tong-ji-xue-xi-fang-fa-kjin-lin-fa.html" rel="bookmark"
                            title="Permalink to 统计学习方法-k近邻法">统计学习方法-k近邻法</a></h1>
                 </header>
@@ -300,50 +326,11 @@ chmod -R <span class="m">777</span> bin/glnxa64
                 <a class="readmore" href="https://bridgeqiao.github.io/blog/an-zhuang-manjaro.html">read more</a>
                 </div><!-- /.entry-content -->
             </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="https://bridgeqiao.github.io/blog/an-zhuang-deepin-154.html" rel="bookmark"
-                           title="Permalink to 安装deepin 15.4">安装deepin 15.4</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <span>二 07 三月 2017</span>
-
-</footer><!-- /.post-info -->                <ol>
-<li>
-<p>dd到一个U盘上（直接用deepin-installer.exe也可以，但用这个在15.4上只能装个启动iso，还得装在硬盘上，而15.3则不会）；</p>
-</li>
-<li>
-<p>设置bios，用u盘启动，直接安装；</p>
-</li>
-<li>
-<p>在桌面上右键，设置热区设置，将几个角的热区取消，触发比较麻烦，还不如直接点击；</p>
-</li>
-</ol>
-<!--more-->
-
-<ol>
-<li>安装字体fonts-inconsolata,冬青黑体,infinality</li>
-</ol>
-<div class="highlight"><pre><span></span>deb http://ppa.launchpad.net/no1wantdthisname/ppa/ubuntu xenial main
-</pre></div>
-
-
-<p>其中xenial是ubuntu的版本号，还得用
-apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E985B27B，添加key</p>
-<ol>
-<li>搭建Android开发环境：下载<a href="http://tools.android-studio.org">android-studio和android_SDK</a>,复制到opt下，再解压缩，
-安装openjdk1.8：
-<code>sudo apt install …</code></li></ol>
-                <a class="readmore" href="https://bridgeqiao.github.io/blog/an-zhuang-deepin-154.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
             </ol><!-- /#posts-list -->
 <p class="paginator">
         <a href="https://bridgeqiao.github.io/blog/index.html">&laquo;</a>
-    Page 2 / 2
+    Page 2 / 3
+        <a href="https://bridgeqiao.github.io/blog/index3.html">&raquo;</a>
 </p>
             </section><!-- /#content -->
         <section id="extras" class="body">
