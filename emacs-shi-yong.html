@@ -2,7 +2,7 @@
 <html lang="zh">
 <head>
         <meta charset="utf-8" />
-        <title>微信跳一跳</title>
+        <title>emacs 使用</title>
         <link rel="stylesheet" href="https://bridgeqiao.github.io/blog/theme/css/main.css" />
 
         <!--[if IE]>
@@ -27,22 +27,40 @@
   <article>
     <header>
       <h1 class="entry-title">
-        <a href="https://bridgeqiao.github.io/blog/wei-xin-tiao-yi-tiao.html" rel="bookmark"
-           title="Permalink to 微信跳一跳">微信跳一跳</a></h1>
+        <a href="https://bridgeqiao.github.io/blog/emacs-shi-yong.html" rel="bookmark"
+           title="Permalink to emacs 使用">emacs 使用</a></h1>
     </header>
 
     <div class="entry-content">
 <footer class="post-info">
-        <span>二 16 一月 2018</span>
+        <span>五 19 十月 2018</span>
 
-</footer><!-- /.post-info -->      <p>之前完微信跳一跳最高才60多。。。然后里面都是三位数起步的，遂刷了个分。。下面是安装记录：</p>
-<ol>
-<li>插上手机，弹出usb调试，点击确定；</li>
-<li>下载adb，我是直接用的刷机精灵，它自带了adb，加到环境变量path里就好了，就是安装目录里有adb.bat的那个，发现下载的外挂里面自带了adb（Tools），但貌似运行不起来。。。</li>
-<li>下载<a href="https://github.com/wangshub/wechat_jump_game">python外挂</a>。。。git clone或者下载zip包都行；</li>
-<li>运行wechat_jump_auto.py文件，后面是*_py3.py的得自己点，需要matplotlib包，pip安装就行；</li>
-<li>在显示的图片上先点击自己的中心点，再点击要跳的中心点，然后一直重复。。。刷到了233...，当然auto的是直接自动的了。</li>
-</ol>
+</footer><!-- /.post-info -->      <p>最近把报告给写完了，暂时是不想再碰了，突然想起了emscs,这次就学下，网站是<a href="https://book.emacs-china.org">emacs中国</a>，由于之前学过一点，所以这次学的比较快。</p>
+<h2>看tutorial</h2>
+<p>大概要花个半小时到一个小时，总结下：</p>
+<ul>
+<li>
+<p>关于screen-ful的命令，<code>c-v</code>、<code>m-v</code>、<code>c-l</code>，其中前两个类似pagedown和pageup，最后的那个用于控制鼠标所在行在界面的位置；</p>
+</li>
+<li>
+<p>移动的命令，c-n(ext)、p(revious)、b(ackward)、f(orward)、(c-a c-e)，特殊的移动到文本最前端和最后端(m-s- &lt;、&gt;)同时m-(npbf)也对应，对应关系是：
+| c(trl) | m(eta) |
+|---|---|
+| 字符 | 单词 |
+| 一行 | 句子 |</p>
+</li>
+<li>
+<p>删除(c-d、m-d)，移除(c-k、m-k)查找(c-s)复制(c-w)粘贴(c-y m-y)</p>
+</li>
+<li>buffer和minibuffer的概念</li>
+</ul>
+<h2>elisp语法</h2>
+<p>每个句子都是s表达式，每个部分都是原子。看s表达式的括号左边有没quote，有的话，即是列表，没有的话，表达式第一项是函数或者特殊表达式，后几项如果有quote，则是类似字符串，没有的话是变量。</p>
+<p>elisp内置了很多函数和变量，所以要经常翻文档，感觉有点麻烦。</p>
+<h2>配置</h2>
+<p>搞清楚基础的操作后，就可以开始尝试配置emacs了，<a href="https://book.emacs-china.org">文档</a>推荐在<code>~/.emacs.d/init.el</code>里写配置，然后为了方便配置，用了多文档的方式，就是将插件、UI、更好的配置(better default)等分成单个文件。</p>
+<h2>总结</h2>
+<p>基本上，emacs算是入门了，后面的就剩下具体怎么配置了，加插件、换主题、改默认配置等等。</p>
     </div><!-- /.entry-content -->
 
   </article>

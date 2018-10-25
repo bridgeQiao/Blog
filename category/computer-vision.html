@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+        <meta charset="utf-8" />
+        <title>Bridge Qiao's Blog - Computer vision</title>
+        <link rel="stylesheet" href="https://bridgeqiao.github.io/blog/theme/css/main.css" />
+
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+</head>
+
+<body id="index" class="home">
+        <header id="banner" class="body">
+                <h1><a href="https://bridgeqiao.github.io/blog/">Bridge Qiao's Blog </a></h1>
+                <nav><ul>
+                    <li class="active"><a href="https://bridgeqiao.github.io/blog/category/computer-vision.html">Computer vision</a></li>
+                    <li><a href="https://bridgeqiao.github.io/blog/category/fun.html">fun</a></li>
+                    <li><a href="https://bridgeqiao.github.io/blog/category/linux.html">linux</a></li>
+                    <li><a href="https://bridgeqiao.github.io/blog/category/machine-learning.html">Machine Learning</a></li>
+                    <li><a href="https://bridgeqiao.github.io/blog/category/matlab.html">Matlab</a></li>
+                    <li><a href="https://bridgeqiao.github.io/blog/category/suan-fa-ti.html">算法题</a></li>
+                </ul>
+                </nav>
+        </header><!-- /#banner -->
+
+            <aside id="featured" class="body">
+                <article>
+                    <h1 class="entry-title"><a href="https://bridgeqiao.github.io/blog/opencv3bian-cheng-ru-men-xue-xi-bi-ji.html">《OpenCV3编程入门》学习笔记</a></h1>
+<footer class="post-info">
+        <span>四 25 十月 2018</span>
+
+</footer><!-- /.post-info --><p>花了一个多月的时间看完OpenCV3入门这本书，总体感觉不错，就是代码占了书的大部分篇幅，感觉最后面的特征检测与匹配部分写的有点匆忙。这个笔记主要是记类似提纲的东西。</p>
+<h2>Mat类(core.hpp)</h2>
+<p>可以说OpenCV3最最重要的莫过于Mat类了，这个类的实现质量直接决定了整个工程的效果。对比了Mat类和MATLAB的矩阵操作，当然，这不具备可比性，就是对Mat类作一个简要概述。可以说Mat类已经是很完善了，基本的加减乘除、转置、逆变换、切片(Rect, Range)、索引(得到mask，然后使用带mask的函数)都可以实现，就是得习惯C++的那一套，使用函数、指针(不是说OpenCV4要用c++11重新么，为什么一些函数还是用的原始数组和指针操作)来进行替换。</p>
+<p>还有矩阵的创建(create, zeros, ones, eye)，显示(format)等。</p>
+<h2>imgproc</h2>
+<p>这部分主要是图像处理的部分，像线性非线性形态学滤波、边缘检测(高通滤波)、直方图的处理(OpenCV没有直方图的显示函数)、阈值处理等，可以参考《数字图像处理MATLAB版》，更详细一点，这本书感觉主要是讲怎么用OpenCV实现。</p>
+<h2>highgui</h2>
+<p>对图片读取、显示、保存操作，还有创建滑动条，主要就是干这个。</p>
+<h2>其它</h2>
+<p>还有一些类，像Point, Scalar, Size等，在对矩阵操作时要用到，然后像图像分割、识别、修复之类的算是对一些函数的使用，感觉调个包就能实现，基本的原理还得具体去学。</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://bridgeqiao.github.io/blog/mexdiao-yong-opencv.html" rel="bookmark"
+                           title="Permalink to mex调用opencv">mex调用opencv</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>五 21 九月 2018</span>
+
+</footer><!-- /.post-info -->                <p>最近在学习opencv3，突然想到matlab能不能用opencv，下面是笔记。</p>
+<h3>使用mex</h3>
+<p>不用多说，首先肯定是能正常使用mex，需要安装c++环境，由于我使用的是Windows，所以visual studio是最好的，当然mingw也行。安装好后，直接运行：</p>
+<div class="highlight"><pre><span></span><span class="n">mex</span> <span class="o">-</span><span class="n">setup</span> <span class="n">c</span><span class="o">++</span>
+</pre></div>
+
+
+<p>显示为：</p>
+<blockquote>
+<p>MEX 配置为使用 'Microsoft Visual C++ 2017' 以进行 C++ 语言编译。</p>
+</blockquote>
+<p>警告不用管它，接下来需要使用opencv。</p>
+<h3>调用openCV</h3>
+<p>我将openCV安装在了<code>D:\Program Files\opencv</code>这个目录，当编写好c++文件后，有两种调用方式，注意这里文件名是<code>featureExtra.cpp</code>，改成你自己的就可以了。</p>
+<div class="highlight"><pre><span></span><span class="c">% 第一种，其中最后面的opencv_worldxxx根据版本的不同而不同，</span>
+<span class="c">% 具体的在-L的目录下，vcxx表示visualstuio的版本，这里是vc15</span>
+<span class="c">% 3.4 …</span></pre></div>
+                <a class="readmore" href="https://bridgeqiao.github.io/blog/mexdiao-yong-opencv.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://bridgeqiao.github.io/blog/opencvpei-zhi-cckai-fa-huan-jing.html" rel="bookmark"
+                           title="Permalink to openCV配置c/c++开发环境">openCV配置c/c++开发环境</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>五 10 八月 2018</span>
+
+</footer><!-- /.post-info -->                <p>由于开发openCV需要用到c++，所以配置了相应的环境。现在处于学习阶段，所以环境不是很重要，这里记录下在macos上的配置。</p>
+<h3>安装openCV</h3>
+<div class="highlight"><pre><span></span>brew install opencv
+</pre></div>
+
+
+<h3>安装vscode及其插件</h3>
+<p>为了通用性，这里选用编辑器的方式，vscode直接在官网进行下载，插件包括c/c++、vscode-clangd、bracket pair colorized、xmake。</p>
+<h3>安装xmake</h3>
+<div class="highlight"><pre><span></span>brew install xmake pkg-config
+</pre></div>
+
+
+<p>xmake是构建工具，用起来比cmake舒服很多，pkg-config是用来提供编译指令的，在xmake.lua中，</p>
+<p>加入下面两句。</p>
+<div class="highlight"><pre><span></span><span class="n">add_cxflags</span><span class="p">(</span><span class="s2">&quot;$(shell pkg-config opencv --cflags)&quot;</span><span class="p">)</span>
+<span class="n">add_ldflags</span><span class="p">(</span><span class="s2">&quot;$(shell pkg-config opencv --libs)&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<h3>使用</h3>
+<p>vscode加上xmake插件后，使用起来很舒服，最下面一排有很多按钮，可以直接点击编译、运行、调试。</p>
+                <a class="readmore" href="https://bridgeqiao.github.io/blog/opencvpei-zhi-cckai-fa-huan-jing.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="https://bridgeqiao.github.io/blog/yue-du-shu-zi-tu-xiang-chu-li-matlabban-bi-ji.html" rel="bookmark"
+                           title="Permalink to 阅读《数字图像处理（MATLAB版）》笔记">阅读《数字图像处理（MATLAB版）》笔记</a></h1>
+                </header>
+
+                <div class="entry-content">
+<footer class="post-info">
+        <span>二 03 四月 2018</span>
+
+</footer><!-- /.post-info -->                <p>阅读《数字图像处理（MATLAB版）》，这里作个笔记，记录学过的东西，方便时时复习。</p>
+<h1>序言</h1>
+<p>这一章介绍了<code>MATLAB</code>的一些基础语法知识，像基础的运算、函数控制语句。其中我个人觉得匿名函数很有意思，以前只是看到有<code>@</code>符号，但没具体用过，这里作下记录。</p>
+<p><code>@</code>表示函数句柄，可以作为<strong>函数别名</strong>和<strong>匿名函数</strong>，下面是简单的例子。</p>
+<div class="highlight"><pre><span></span><span class="c">% 函数别名，f函数可以当成sin函数使用</span>
+<span class="n">f</span><span class="p">=@</span><span class="nb">sin</span><span class="p">;</span>
+<span class="c">% 匿名函数，g(x)函数用来求x每个元素的平方</span>
+<span class="n">g</span><span class="p">=@(</span><span class="n">x</span><span class="p">)</span> <span class="n">x</span><span class="o">.^</span><span class="mi">2</span><span class="p">;</span>
+</pre></div>
+
+
+<h1>灰度变换与空间滤波</h1>
+<p>这一章主要是介绍灰度变换和空间滤波，其中，<strong>灰度变换</strong>有图像变换（<code>imadjust</code>，图像反转、简单灰度扩展）、图像拉伸（<code>stretchlim</code>，对数及对比度拉伸变换），直方图匹配（直方图相关算法、直方图均衡<code>histeq …</code></p>
+                <a class="readmore" href="https://bridgeqiao.github.io/blog/yue-du-shu-zi-tu-xiang-chu-li-matlabban-bi-ji.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+            </ol><!-- /#posts-list -->
+<p class="paginator">
+    Page 1 / 1
+</p>
+            </section><!-- /#content -->
+        <section id="extras" class="body">
+                <div class="blogroll">
+                        <h2>blogroll</h2>
+                        <ul>
+                            <li><a href="http://getpelican.com/">Pelican</a></li>
+                            <li><a href="http://python.org/">Python.org</a></li>
+                            <li><a href="https://github.com">Github</a></li>
+                        </ul>
+                </div><!-- /.blogroll -->
+        </section><!-- /#extras -->
+
+        <footer id="contentinfo" class="body">
+                <p>Powered by <a href="http://getpelican.com/">Pelican</a>. Theme <a href="https://github.com/blueicefield/pelican-blueidea/">blueidea</a>, inspired by the default theme.</p>
+        </footer><!-- /#contentinfo -->
+
+</body>
+</html>
